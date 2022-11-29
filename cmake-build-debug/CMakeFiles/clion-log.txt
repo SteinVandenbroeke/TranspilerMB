@@ -1,0 +1,4 @@
+C:\windows\system32\wsl.exe --distribution Ubuntu --exec /bin/sh -c "export CLION_IDE=TRUE && export JETBRAINS_IDE=TRUE && cd '/mnt/d/onedrive - Uantwerpen/OneDrive - Universiteit Antwerpen/Documenten/Jaar 3 UA/Semester 1/Machines en berekenbaarheid/transpiler/cmake-build-debug' && /usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G 'CodeBlocks - Unix Makefiles' '/mnt/d/onedrive - Uantwerpen/OneDrive - Universiteit Antwerpen/Documenten/Jaar 3 UA/Semester 1/Machines en berekenbaarheid/transpiler'; exitcode=$?; sleep 0.001; (exit $exitcode)"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /mnt/d/onedrive - Uantwerpen/OneDrive - Universiteit Antwerpen/Documenten/Jaar 3 UA/Semester 1/Machines en berekenbaarheid/transpiler/cmake-build-debug

@@ -1,0 +1,195 @@
+{
+  "Variables": [
+    "S",
+    "ProgramLine",
+    "LOOP",
+    "Declatation",
+    "Initalization",
+    "Loop",
+    "If",
+    "Body",
+    "Condition",
+    "AnyType",
+    "AnyBoolOperator",
+    "ArithmeticOperations",
+    "TEMPIMPORT",
+    "VarName",
+    "numberI",
+    "stringI",
+    "charI"
+  ],
+  "Terminals": [
+    ";",
+    "int",
+    "double",
+    "char",
+    "string",
+    "=",
+    "while",
+    "if",
+    "(",
+    ")",
+    "<=",
+    ">=",
+    "<",
+    ">",
+    "==",
+    "{",
+    "}",
+    "+",
+    "-",
+    "*",
+    "/",
+    "[VARNAMETOKEN]",
+    "[NUMBERTOKEN]",
+    "[STRINGTOKEN]",
+    "[CHARTOKEN]"
+  ],
+  "Productions": [
+    {
+      "head": "S",
+      "body": ["ProgramLine",";"]
+    },
+    {
+      "head": "S",
+      "body": ["ProgramLine", ";", "S"]
+    },
+    {
+      "head": "ProgramLine",
+      "body": ["Initalization"]
+    },
+    {
+      "head": "ProgramLine",
+      "body": ["Declatation"]
+    },
+    {
+      "head": "ProgramLine",
+      "body": ["Loop"]
+    },
+    {
+      "head": "ProgramLine",
+      "body": ["If"]
+    },
+    {
+      "head": "ProgramLine",
+      "body": ["Body"]
+    },
+    {
+      "head": "Declatation",
+      "body": ["int", "VarName", "=", "ArithmeticOperations"]
+    },
+    {
+      "head": "Declatation",
+      "body": ["double", "VarName", "=", "ArithmeticOperations"]
+    },
+    {
+      "head": "Declatation",
+      "body": ["char", "VarName", "=", "CHARTOKEN"]
+    },
+    {
+      "head": "Declatation",
+      "body": ["string", "VarName", "=", "STRINGTOKEN"]
+    },
+    {
+      "head": "Initalization",
+      "body": ["VarName", "=", "AnyType"]
+    },
+    {
+      "head": "Loop",
+      "body": ["while", "(", "Condition", ")", "Body"]
+    },
+    {
+      "head": "If",
+      "body": ["if", "(", "Condition", ")", "Body"]
+    },
+    {
+      "head": "Body",
+      "body": ["{", "S", "}"]
+    },
+    {
+      "head": "Condition",
+      "body": ["AnyType", "AnyBoolOperator", "AnyType"]
+    },
+    {
+      "head": "AnyType",
+      "body": ["ArithmeticOperations"]
+    },
+    {
+      "head": "AnyType",
+      "body": ["string"]
+    },
+    {
+      "head": "AnyType",
+      "body": ["char"]
+    },
+    {
+      "head": "AnyBoolOperator",
+      "body": [">="]
+    },
+    {
+      "head": "AnyBoolOperator",
+      "body": ["<="]
+    },
+    {
+      "head": "AnyBoolOperator",
+      "body": [">"]
+    },
+    {
+      "head": "AnyBoolOperator",
+      "body": ["<"]
+    },
+    {
+      "head": "AnyBoolOperator",
+      "body": ["=="]
+    },
+    {
+      "head": "ArithmeticOperations",
+      "body": ["number", "+", "ArithmeticOperations"]
+    },
+    {
+      "head": "ArithmeticOperations",
+      "body": ["number", "-", "ArithmeticOperations"]
+    },
+    {
+      "head": "ArithmeticOperations",
+      "body": ["number", "/", "ArithmeticOperations"]
+    },
+    {
+      "head": "ArithmeticOperations",
+      "body": ["number", "*", "ArithmeticOperations"]
+    },
+    {
+      "head": "ArithmeticOperations",
+      "body": ["(", "ArithmeticOperations", ")"]
+    },
+    {
+      "head": "ArithmeticOperations",
+      "body": ["numberI"]
+    },
+    {
+      "head": "ArithmeticOperations",
+      "body": ["VarName"]
+    }
+  ,
+    {
+      "head": "VarName",
+      "body": ["[VARNAMETOKEN]"]
+    }
+  ,
+    {
+      "head": "numberI",
+      "body": ["[NUMBERTOKEN]"]
+    }
+  ,
+    {
+      "head": "stringI",
+      "body": ["[STRINGTOKEN]"]
+    }
+  ,
+    {
+      "head": "charI",
+      "body": ["[CHARTOKEN]"]
+    }
+  ],
+  "Start": "S"
+}
