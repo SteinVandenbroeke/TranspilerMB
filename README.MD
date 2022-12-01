@@ -1,4 +1,4 @@
-#Transpiler to JS
+# Transpiler to JS
 project MB 2022 a c like language to js
 
 ## TODO
@@ -10,7 +10,7 @@ project MB 2022 a c like language to js
 - [ ] type error detection
 - [ ] Undefined var detection
 
-##cfg
+## cfg
 Can be found in
 ./docs/taal.cfg
 ./docs/taal.json
