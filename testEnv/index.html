@@ -58,6 +58,9 @@
     console.log = function(output){document.getElementById("javascriptOutputs").innerHTML += output + "\n";};
     console.warn = function(output){document.getElementById("javascriptWarnings").innerHTML += output + "\n";};
     console.error = function(output){document.getElementById("javascriptErrors").innerHTML += output + "\n";};
+    window.onerror = function(msg, url, lineNo, columnNo, error){
+        document.getElementById('javascriptErrors').innerHTML += "location(" + lineNo + "," + columnNo + "): " + msg + "\n";
+    }
     </script>
 
     <script type="text/javascript">
