@@ -8,16 +8,146 @@
 #include "Token.h"
 #include "string"
 
+///forward declarations
+class AstProgramLine;
+class AstProgramLine;
+class AstDeclartion;
+class AstIntalisations;
+class AstWhile;
+class AstIf;
+class AstBody;
+class AstCondition;
+class AstBoolOperator;
+class AstArithmeticOperations;
+class AstVar;
+class AstNumber;
+class AstString;
+class AstChar;
+class AstProgram;
+class AstValue;
+class AstVarOrValue;
+///forward declarations
+
+
 class AstNode {
-    std::vector<AstNode*> childeren;
     Token* token;
     bool containsCode();
 public:
     AstNode(Token* token);
+    AstNode();
     std::string getTokenType();
     std::string getTokenText();
     std::string getJsCode();
 };
 
+class AstProgram: AstNode{
+    std::vector<AstNode*> lines;
+public:
+    AstProgram();
+    void addLine(AstNode* programLine);
+};
 
+/**
+ * AstDeclartion node to represent declaration
+ * structure:
+ *     [this]
+ *    /     \
+ * AstVar  AstValue
+ *
+ *
+ * vb: int i = 10;
+ *      int
+ *    /     \
+ * AstVar  AstValue
+ */
+class AstDeclartion: AstNode{
+    AstVar* var = nullptr;
+    AstValue* value = nullptr;
+public:
+    AstDeclartion(Token* token);
+    AstDeclartion(Token* token, AstVar* var, AstValue* value);
+    void setAstVar(AstVar* var);
+    void setAstValue(AstValue* value);
+    AstVar* getAstVar();
+    AstValue* getAstValue();
+    std::vector<AstNode*> getChilderen();
+    std::string getJsCode();
+};
+
+class AstIntalisations: AstNode{
+    AstVar* var = nullptr;
+    AstValue* value = nullptr;
+public:
+    AstIntalisations();
+    AstIntalisations(AstVar* var, AstValue* value);
+    void setAstVar(AstVar* var);
+    void setAstValue(AstValue* value);
+    AstVar* getAstVar();
+    AstValue* getAstValue();
+    std::vector<AstNode*> getChilderen();
+    std::string getJsCode();
+};
+
+class AstConditionBody: AstNode{
+    AstCondition* condition = nullptr;
+    AstBody* value = nullptr;
+public:
+    AstConditionBody();
+    AstConditionBody(AstCondition* condition, AstBody* body);
+    void setAstCondition(AstCondition* condition);
+    void setAstBody(AstBody* body);
+    AstCondition* getAstCondition();
+    AstBody* getAstBody();
+    std::vector<AstNode*> getChilderen();
+    std::string getJsCode();
+};
+
+class AstWhile: AstConditionBody{
+
+};
+
+class AstIf: AstConditionBody{
+
+};
+
+class AstBody: AstProgram{
+
+};
+
+class AstCondition: AstNode{
+    AstVarOrValue* val1;
+    AstVarOrValue* val2;
+public:
+    AstCondition(Token* token);
+    AstCondition(Token* token, AstVarOrValue* var1, AstVarOrValue* var2);
+    void setVar1(AstVarOrValue* valOrValue);
+    void setVar2(AstVarOrValue* valOrValue);
+    std::vector<AstNode*> getChilderen();
+    std::string getJsCode();
+};
+
+class AstArithmeticOperations: AstNode{
+    AstNode* val1;
+    AstNode
+};
+
+class AstBoolOperator: AstNode{
+public:
+    AstBoolOperator(Token* token);
+    std::string getJsCode();
+};
+
+class AstVarOrValue: AstNode{
+
+};
+
+class AstVar: AstVarOrValue{
+    AstBoolOperator(Token* token);
+    std::string getJsCode();
+};
+
+class AstValue: AstVarOrValue{
+    AstBoolOperator(Token* token);
+    std::string getJsCode();
+};
 #endif //TRANSPILER_ASTNODE_H
