@@ -10,7 +10,6 @@
 
 ///forward declarations
 class AstProgramLine;
-class AstProgramLine;
 class AstDeclartion;
 class AstIntalisations;
 class AstWhile;
@@ -28,6 +27,9 @@ class AstValue;
 class AstVarOrValue;
 ///forward declarations
 
+enum astNodeType {AstProgramC, AstDeclartionC, AstIntalisationsC, AstWhileC, AstIfC,AstBodyC,
+        AstConditionC,AstBoolOperatorC,AstArithmeticOperationsC,AstVarC,AstNumberC,AstStringC,AstCharC,
+        AstValueC, AstVarOrValueC};
 
 class AstNode {
     Token* token;
@@ -128,7 +130,14 @@ public:
 
 class AstArithmeticOperations: AstNode{
     AstNode* val1;
-    AstNode
+    AstNode* val2;
+public:
+    AstArithmeticOperations(Token* token);
+    AstArithmeticOperations(Token* token, AstNode* val1, AstNode* val2);
+    void setVal1(AstVarOrValue* valOrValue);
+    void setVal2(AstVarOrValue* valOrValue);
+    std::vector<AstNode*> getChilderen();
+    std::string getJsCode();
 };
 
 class AstBoolOperator: AstNode{
@@ -142,12 +151,12 @@ class AstVarOrValue: AstNode{
 };
 
 class AstVar: AstVarOrValue{
-    AstBoolOperator(Token* token);
+    AstVar(Token* token);
     std::string getJsCode();
 };
 
 class AstValue: AstVarOrValue{
-    AstBoolOperator(Token* token);
+    AstValue(Token* token);
     std::string getJsCode();
 };
 #endif //TRANSPILER_ASTNODE_H
