@@ -1,10 +1,21 @@
 #include <iostream>
 #include "filesystem"
+#include "AstNode.h"
 
 int main() {
-    std::cout << "Transpiling" << std::endl;
-    std::string testEnv = std::string ("xdg-open \"") + std::string (std::filesystem::current_path()) + "/testEnv/index.html\"";
-    std::cout << testEnv << std::endl;
-    system(testEnv.c_str());
+    Token* tokenVarI = new Token("[VARNAMETOKEN]", "i");
+    AstVar* varI = new AstVar(tokenVarI);
+
+    Token* tokenValue = new Token("[NUMBERTOKEN]", "10");
+    AstValue* value = new AstValue(tokenValue);
+
+    Token* tokenDeclaration = new Token("int");
+    AstDeclartion* declartion = new AstDeclartion(tokenDeclaration, varI, value);
+
+    AstProgram program = AstProgram();
+    program.addLine(declartion);
+    program.addLine(declartion);
+    std::cout << program.getJsCode();
+
     return 0;
 }

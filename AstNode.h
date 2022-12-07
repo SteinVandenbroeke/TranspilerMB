@@ -32,21 +32,24 @@ enum astNodeType {AstProgramC, AstDeclartionC, AstIntalisationsC, AstWhileC, Ast
         AstValueC, AstVarOrValueC};
 
 class AstNode {
+protected:
     Token* token;
-    bool containsCode();
 public:
     AstNode(Token* token);
     AstNode();
     std::string getTokenType();
     std::string getTokenText();
-    std::string getJsCode();
+    virtual std::string getJsCode() = 0;
+    virtual astNodeType getType() = 0;
 };
 
-class AstProgram: AstNode{
+class AstProgram: public AstNode{
     std::vector<AstNode*> lines;
 public:
-    AstProgram();
     void addLine(AstNode* programLine);
+    std::string getJsCode() override;
+    astNodeType getType() override;
+    bool checkTypes();
 };
 
 /**
@@ -62,7 +65,7 @@ public:
  *    /     \
  * AstVar  AstValue
  */
-class AstDeclartion: AstNode{
+class AstDeclartion:public AstNode{
     AstVar* var = nullptr;
     AstValue* value = nullptr;
 public:
@@ -70,13 +73,27 @@ public:
     AstDeclartion(Token* token, AstVar* var, AstValue* value);
     void setAstVar(AstVar* var);
     void setAstValue(AstValue* value);
-    AstVar* getAstVar();
+    AstVar * getAstVar();
     AstValue* getAstValue();
     std::vector<AstNode*> getChilderen();
-    std::string getJsCode();
+    std::string getJsCode() override;
+    astNodeType getType() override;
 };
 
-class AstIntalisations: AstNode{
+/**
+ * AstIntalisations node to represent variable initialisation
+ * structure:
+ *     [this]
+ *    /     \
+ * AstVar  AstValue
+ *
+ *
+ * vb: i = 10;
+ *       =
+ *    /     \
+ * AstVar  AstValue
+ */
+class AstIntalisations:public AstNode{
     AstVar* var = nullptr;
     AstValue* value = nullptr;
 public:
@@ -87,12 +104,14 @@ public:
     AstVar* getAstVar();
     AstValue* getAstValue();
     std::vector<AstNode*> getChilderen();
-    std::string getJsCode();
+    std::string getJsCode() override;
+    astNodeType getType() override;
 };
 
-class AstConditionBody: AstNode{
+class AstConditionBody: public AstNode{
+protected:
     AstCondition* condition = nullptr;
-    AstBody* value = nullptr;
+    AstBody* body = nullptr;
 public:
     AstConditionBody();
     AstConditionBody(AstCondition* condition, AstBody* body);
@@ -101,62 +120,114 @@ public:
     AstCondition* getAstCondition();
     AstBody* getAstBody();
     std::vector<AstNode*> getChilderen();
-    std::string getJsCode();
+    virtual std::string getJsCode() = 0;
+    virtual astNodeType getType() = 0;
 };
 
-class AstWhile: AstConditionBody{
-
+/**
+ * AstWhile node to represent a while loop
+ * structure:
+ *           [this]
+ *          /     \
+ * AstCondition  AstBody
+ *
+ *
+ * vb: while(i < 10){ body }
+ *           while
+ *          /     \
+ * AstCondition  AstBody
+ */
+class AstWhile: public AstConditionBody{
+public:
+    std::string getJsCode() override;
+    astNodeType getType() override;
 };
 
-class AstIf: AstConditionBody{
-
+/**
+ * AstIf node to represent a if statement
+ * structure:
+ *           [this]
+ *          /     \
+ * AstCondition  AstBody
+ *
+ *
+ * vb: if(i < 10){ body }
+ *             if
+ *          /     \
+ * AstCondition  AstBody
+ */
+class AstIf:public AstConditionBody{
+public:
+    std::string getJsCode() override;
+    astNodeType getType() override;
 };
 
-class AstBody: AstProgram{
-
+/**
+ * AstBody node to represent a body
+ * structure:
+ *           [this]
+ */
+class AstBody:public AstProgram{
+public:
+    std::string getJsCode() override;
+    astNodeType getType() override;
 };
 
-class AstCondition: AstNode{
-    AstVarOrValue* val1;
-    AstVarOrValue* val2;
+/**
+ * AstCondition node to represent a condition
+ * structure:
+ *           [this]
+ *          /     \
+ * AstVarOrValue  AstVarOrValue
+ *
+ *
+ * vb: i == 10
+ *             ==
+ *          /     \
+ * AstVarOrValue  AstVarOrValue
+ */
+class AstCondition:public AstNode{
+    AstNode* val1;
+    AstNode* val2;
 public:
     AstCondition(Token* token);
-    AstCondition(Token* token, AstVarOrValue* var1, AstVarOrValue* var2);
-    void setVar1(AstVarOrValue* valOrValue);
-    void setVar2(AstVarOrValue* valOrValue);
+    AstCondition(Token* token, AstNode* var1, AstNode* var2);
+    void setVar1(AstNode* valOrValue);
+    void setVar2(AstNode* valOrValue);
     std::vector<AstNode*> getChilderen();
-    std::string getJsCode();
+    std::string getJsCode() override;
+    astNodeType getType() override;
 };
 
-class AstArithmeticOperations: AstNode{
+class AstArithmeticOperations:public AstNode{
     AstNode* val1;
     AstNode* val2;
 public:
     AstArithmeticOperations(Token* token);
     AstArithmeticOperations(Token* token, AstNode* val1, AstNode* val2);
-    void setVal1(AstVarOrValue* valOrValue);
-    void setVal2(AstVarOrValue* valOrValue);
+    void setVal1(AstNode* valOrValue);
+    void setVal2(AstNode* valOrValue);
     std::vector<AstNode*> getChilderen();
-    std::string getJsCode();
+    std::string getJsCode() override;
+    astNodeType getType() override;
 };
 
-class AstBoolOperator: AstNode{
+class AstVarOrValue:public AstNode{
 public:
-    AstBoolOperator(Token* token);
-    std::string getJsCode();
+    AstVarOrValue(Token* token);
 };
 
-class AstVarOrValue: AstNode{
-
-};
-
-class AstVar: AstVarOrValue{
+class AstVar:public AstVarOrValue{
+public:
     AstVar(Token* token);
-    std::string getJsCode();
+    std::string getJsCode() override;
+    astNodeType getType() override;
 };
 
-class AstValue: AstVarOrValue{
+class AstValue:public AstVarOrValue{
+public:
     AstValue(Token* token);
-    std::string getJsCode();
+    std::string getJsCode() override;
+    astNodeType getType() override;
 };
 #endif //TRANSPILER_ASTNODE_H

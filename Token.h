@@ -6,8 +6,16 @@
 #define TRANSPILER_TOKEN_H
 
 
-class Token {
+#include <string>
 
+class Token {
+std::string type;
+std::string text;
+public:
+    Token(std::string type);
+    Token(std::string type, std::string text);
+    std::string getText();
+    std::string getType();
 };
 
 
