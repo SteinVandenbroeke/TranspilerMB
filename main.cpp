@@ -12,11 +12,15 @@ int main() {
     Token* tokenDeclaration = new Token("int");
     AstDeclartion* declartion = new AstDeclartion(tokenDeclaration, varI, value);
 
+    AstIntalisation* intalisation = new AstIntalisation(varI, value);
+
     AstProgram program = AstProgram();
+    program.addLine(intalisation);
     program.addLine(declartion);
     program.addLine(declartion);
+    //program.addLine(declartion);
+    program.addLine(intalisation);
     program.checkTypes();
     std::cout << program.getJsCode();
-
     return 0;
 }

@@ -43,6 +43,9 @@ bool SymbolTable::IsVarInitialized(std::string varName) {
     if(table.find(varName) != table.end()){
         return table[varName];
     }
+    else if(outerScope == nullptr){
+        return false;
+    }
     return outerScope->IsVarInitialized(varName);
 }
 

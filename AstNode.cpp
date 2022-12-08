@@ -17,7 +17,14 @@ std::string AstNode::getTokenText() {
 }
 
 bool AstNode::checkTypes(SymbolTable &table) {
+    for(AstNode* item: this->getChilderen()){
+        item->checkTypes(table);
+    }
     return true;
+}
+
+std::vector<AstNode *> AstNode::getChilderen() {
+    return std::vector<AstNode *>{};
 }
 
 void AstProgram::addLine(AstNode *programLine) {
@@ -89,37 +96,37 @@ bool AstDeclartion::checkTypes(SymbolTable &table) {
     return true;
 }
 
-AstIntalisations::AstIntalisations() {
+AstIntalisation::AstIntalisation() {
 
 }
 
-AstIntalisations::AstIntalisations(AstVar *var, AstValue *value): var(var), value(value) {}
+AstIntalisation::AstIntalisation(AstVar *var, AstValue *value): var(var), value(value) {}
 
-void AstIntalisations::setAstVar(AstVar *var) {
+void AstIntalisation::setAstVar(AstVar *var) {
     this->var = var;
 }
 
-void AstIntalisations::setAstValue(AstValue *value) {
+void AstIntalisation::setAstValue(AstValue *value) {
     this->value = value;
 }
 
-AstVar *AstIntalisations::getAstVar() {
+AstVar *AstIntalisation::getAstVar() {
     return var;
 }
 
-AstValue *AstIntalisations::getAstValue() {
+AstValue *AstIntalisation::getAstValue() {
     return value;
 }
 
-std::vector<AstNode *> AstIntalisations::getChilderen() {
+std::vector<AstNode *> AstIntalisation::getChilderen() {
     return std::vector<AstNode *>{var, value};
 }
 
-std::string AstIntalisations::getJsCode() {
+std::string AstIntalisation::getJsCode() {
     return var->getTokenText() + " = " + value->getTokenText() + ";";
 }
 
-astNodeType AstIntalisations::getType() {
+astNodeType AstIntalisation::getType() {
     return AstIntalisationsC;
 }
 
@@ -157,6 +164,8 @@ astNodeType AstWhile::getType() {
     return AstWhileC;
 }
 
+AstWhile::AstWhile(AstCondition *condition, AstBody *body) : AstConditionBody(condition, body) {}
+
 std::string AstIf::getJsCode() {
     return "if(" + condition->getJsCode() + ")" + body->getJsCode();
 }
@@ -164,6 +173,8 @@ std::string AstIf::getJsCode() {
 astNodeType AstIf::getType() {
     return AstIfC;
 }
+
+AstIf::AstIf(AstCondition *condition, AstBody *body) : AstConditionBody(condition, body) {}
 
 std::string AstBody::getJsCode() {
     return "{\n" + token->getText() + "\n}";
@@ -244,7 +255,7 @@ astNodeType AstVar::getType() {
 }
 
 bool AstVar::checkTypes(SymbolTable &table) {
-    if(!table.IsVarInitialized(this->getTokenText())){
+    if(!table.IsVarDeclared(this->getTokenText())){
         std::cout << "error on line: " << token->getLine() << " [" << "Variable " << this->getTokenText() << " is not initialized." << "]" << std::endl;
         return false;
     }
