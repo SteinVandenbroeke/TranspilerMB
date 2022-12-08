@@ -3,5 +3,5 @@ project(transpiler)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(transpiler main.cpp AstNode.h AstNode.cpp Token.h Token.cpp)
+add_executable(transpiler main.cpp AstNode.h AstNode.cpp Token.h Token.cpp SymbolTable.cpp SymbolTable.h)
 file(COPY testEnv DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
