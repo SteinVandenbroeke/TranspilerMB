@@ -19,3 +19,7 @@ std::string Token::getText() {
 std::string Token::getType() {
     return type;
 }
+
+int Token::getLine() {
+    return lineCount;
+}

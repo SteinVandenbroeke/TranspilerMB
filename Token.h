@@ -11,11 +11,13 @@
 class Token {
 std::string type;
 std::string text;
+int lineCount;
 public:
     Token(std::string type);
     Token(std::string type, std::string text);
     std::string getText();
     std::string getType();
+    int getLine();
 };
 
 

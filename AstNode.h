@@ -4,9 +4,11 @@
 
 #ifndef TRANSPILER_ASTNODE_H
 #define TRANSPILER_ASTNODE_H
-#include "vector"
+#include <vector>
 #include "Token.h"
-#include "string"
+#include <string>
+#include "SymbolTable.h"
+#include <iostream>
 
 ///forward declarations
 class AstProgramLine;
@@ -41,6 +43,7 @@ public:
     std::string getTokenText();
     virtual std::string getJsCode() = 0;
     virtual astNodeType getType() = 0;
+    virtual bool checkTypes(SymbolTable& table);
 };
 
 class AstProgram: public AstNode{
@@ -78,6 +81,7 @@ public:
     std::vector<AstNode*> getChilderen();
     std::string getJsCode() override;
     astNodeType getType() override;
+    bool checkTypes(SymbolTable& table) override;
 };
 
 /**
@@ -222,6 +226,7 @@ public:
     AstVar(Token* token);
     std::string getJsCode() override;
     astNodeType getType() override;
+    bool checkTypes(SymbolTable& table) override;
 };
 
 class AstValue:public AstVarOrValue{

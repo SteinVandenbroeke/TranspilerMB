@@ -33,6 +33,9 @@ bool SymbolTable::IsVarDeclared(std::string varName) {
     if(table.find(varName) != table.end()){
         return true;
     }
+    else if(outerScope == nullptr){
+        return false;
+    }
     return outerScope->IsVarDeclared(varName);
 }
 

@@ -16,6 +16,10 @@ std::string AstNode::getTokenText() {
     return token->getText();
 }
 
+bool AstNode::checkTypes(SymbolTable &table) {
+    return true;
+}
+
 void AstProgram::addLine(AstNode *programLine) {
     this->lines.push_back(programLine);
 }
@@ -33,8 +37,11 @@ astNodeType AstProgram::getType() {
 }
 
 bool AstProgram::checkTypes() {
-
-    return false;
+    SymbolTable symbolTable = SymbolTable();
+    for(AstNode* programLine: lines){
+        programLine->checkTypes(symbolTable);
+    }
+    return true;
 }
 
 AstDeclartion::AstDeclartion(Token *token) : AstNode(token) {
@@ -71,6 +78,15 @@ std::string AstDeclartion::getJsCode() {
 
 astNodeType AstDeclartion::getType() {
     return AstDeclartionC;
+}
+
+bool AstDeclartion::checkTypes(SymbolTable &table) {
+    if(table.IsVarDeclared(this->var->getTokenText())){
+        std::cout << "error on line: " << token->getLine() << " [" << "Variable " << this->var->getTokenText() << " is declared multiple times" << "]" << std::endl;
+        return false;
+    }
+    table.newVar(this->var->getTokenText());
+    return true;
 }
 
 AstIntalisations::AstIntalisations() {
@@ -225,6 +241,14 @@ std::string AstVar::getJsCode() {
 
 astNodeType AstVar::getType() {
     return AstVarC;
+}
+
+bool AstVar::checkTypes(SymbolTable &table) {
+    if(!table.IsVarInitialized(this->getTokenText())){
+        std::cout << "error on line: " << token->getLine() << " [" << "Variable " << this->getTokenText() << " is not initialized." << "]" << std::endl;
+        return false;
+    }
+    return true;
 }
 
 AstValue::AstValue(Token *token) : AstVarOrValue(token) {}

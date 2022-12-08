@@ -15,6 +15,7 @@ int main() {
     AstProgram program = AstProgram();
     program.addLine(declartion);
     program.addLine(declartion);
+    program.checkTypes();
     std::cout << program.getJsCode();
 
     return 0;

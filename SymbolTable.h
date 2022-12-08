@@ -11,7 +11,7 @@
 
 class SymbolTable {
     SymbolTable* outerScope = nullptr;
-    std::map<std::string, bool> table;
+    std::map<std::string, bool> table = std::map<std::string, bool>();
 public:
     SymbolTable();
     SymbolTable(SymbolTable* outerScope);
