@@ -1,8 +1,17 @@
 #include <iostream>
 #include "filesystem"
 #include "AstNode.h"
+#include "ENFA.h"
 
 int main() {
+    //ENFA testing
+    ENFA e = ENFA("inputs/input1.json");
+    e.print();
+    for(auto s : e.closure(e.getStartState())){
+        std::cout << s->getName() << std::endl;
+    }
+    std::cout << std::endl << e.accepts("0.0") << std::endl;
+    /*
     Token* tokenVarI = new Token("[VARNAMETOKEN]", "i");
     AstVar* varI = new AstVar(tokenVarI);
 
@@ -22,5 +31,6 @@ int main() {
     program.addLine(intalisation);
     program.checkTypes();
     std::cout << program.getJsCode();
+     */
     return 0;
 }
