@@ -100,7 +100,7 @@ AstIntalisation::AstIntalisation() {
 
 }
 
-AstIntalisation::AstIntalisation(AstVar *var, AstValue *value): var(var), value(value) {}
+AstIntalisation::AstIntalisation(AstVar *var, AstNode *value): var(var), value(value) {}
 
 void AstIntalisation::setAstVar(AstVar *var) {
     this->var = var;
@@ -114,7 +114,7 @@ AstVar *AstIntalisation::getAstVar() {
     return var;
 }
 
-AstValue *AstIntalisation::getAstValue() {
+AstNode *AstIntalisation::getAstValue() {
     return value;
 }
 
