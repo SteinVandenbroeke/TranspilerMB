@@ -7,6 +7,7 @@
 CSTNode::CSTNode(Token *token) : token{token} {}
 
 CST::CST(std::vector<Token *> &tokens, const std::string &parseTable) {
+    root = new CSTNode(new Token("", ""));
     std::ifstream input(parseTable);
     json j;
     input >> j;
@@ -14,34 +15,59 @@ CST::CST(std::vector<Token *> &tokens, const std::string &parseTable) {
     int index = 0;
     std::vector<std::string> terminals = j["Terminals"];
     std::vector<std::string> variables = j["Variables"];
+    bool accepts = false;
     while (true){
-        bool hasAccepted = false;
         Token* currToken = tokens[index];
-        for (const auto& variable : variables){
-            if (currToken->getText() == variable){
-                index++;
-                continue;
-            }
-        }
         for (auto entry : j["ActionTable"]){
-            if (entry["Input"] == currToken->getText() and entry["StateIndex"] == stack.back()){
+            if (entry["Input"] == currToken->getType() and entry["StateIndex"] == stack.back()){
                 if (entry["ActionType"] == "s"){
                     root->addChild(new CSTNode(currToken));
                     stack.push_back(entry["ActionArgument"]);
                     index++;
                 }
                 else if (entry["ActionType"] == "r"){
-
-                } else{
-                    hasAccepted = true;
+                    int productionIndex = entry["ActionArgument"];
+                    for (auto production : j["Productions"]){
+                        if (production["index"] == productionIndex){
+                            std::vector<CSTNode*> children;
+                            for (int i = 0; i < production["body"].size(); i++){
+                                stack.pop_back();
+                                children.push_back(root->removeChild(root->getChildren().back()));
+                            }
+                            for (auto gotoEntry : j["GotoTable"]){
+                                if (gotoEntry["Input"] == production["head"] and gotoEntry["StateIndex"] == stack.back()){
+                                    stack.push_back(gotoEntry["GotoIndex"]);
+                                    break;
+                                }
+                            }
+                            root->addChild(new CSTNode(new Token(production["head"])));
+                            for (auto child : children){
+                                root->getChildren().back()->addChild(child);
+                            }
+                        }
+                    }
                 }
-                break;
+                else if (entry["ActionType"] == "acc"){
+                    accepts = true;
+                }
             }
         }
-        if (hasAccepted){
+        if (accepts){
             break;
         }
     }
+    if (accepts){
+        CSTNode* temp = root;
+        root = root->getChildren().back();
+        for (auto child : temp->getChildren()){
+            temp->removeChild(child);
+        }
+        delete temp;
+    }
+}
+
+CST::~CST() {
+    delete root;
 }
 
 const std::vector<CSTNode *> &CSTNode::getChildren() const {
@@ -65,4 +91,10 @@ CSTNode *CSTNode::removeChild(CSTNode *node) {
 
 void CSTNode::addChild(CSTNode *node) {
     children.push_back(node);
+}
+
+CSTNode::~CSTNode() {
+    for (auto child : children){
+        delete child;
+    }
 }

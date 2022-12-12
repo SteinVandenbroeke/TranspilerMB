@@ -12,6 +12,7 @@ using nlohmann::json;
 
 class CSTNode {
 public:
+    ~CSTNode();
     CSTNode(Token* token);
     const std::vector<CSTNode *> &getChildren() const;
     Token *getToken() const;
@@ -24,6 +25,7 @@ private:
 
 class CST{
 public:
+    ~CST();
     CST(std::vector<Token*>& tokens, const std::string& parseTable);
 private:
     CSTNode* root;

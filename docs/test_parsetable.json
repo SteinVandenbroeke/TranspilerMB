@@ -1,0 +1,161 @@
+{
+    "ActionTable": [
+        {
+            "ActionArgument": 1,
+            "ActionType": "r",
+            "Input": "c",
+            "StateIndex": 8
+        },
+        {
+            "ActionArgument": 1,
+            "ActionType": "r",
+            "Input": "d",
+            "StateIndex": 8
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "s",
+            "Input": "d",
+            "StateIndex": 0
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "c",
+            "StateIndex": 4
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "$",
+            "StateIndex": 7
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "s",
+            "Input": "c",
+            "StateIndex": 0
+        },
+        {
+            "ActionType": "acc",
+            "Input": "$",
+            "StateIndex": 1
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "s",
+            "Input": "d",
+            "StateIndex": 2
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "s",
+            "Input": "c",
+            "StateIndex": 6
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "s",
+            "Input": "c",
+            "StateIndex": 2
+        },
+        {
+            "ActionArgument": 0,
+            "ActionType": "r",
+            "Input": "$",
+            "StateIndex": 5
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "s",
+            "Input": "c",
+            "StateIndex": 3
+        },
+        {
+            "ActionArgument": 1,
+            "ActionType": "r",
+            "Input": "$",
+            "StateIndex": 9
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "s",
+            "Input": "d",
+            "StateIndex": 3
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "d",
+            "StateIndex": 4
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "s",
+            "Input": "d",
+            "StateIndex": 6
+        }
+    ],
+    "GotoTable": [
+        {
+            "GotoIndex": 1,
+            "Input": "S",
+            "StateIndex": 0
+        },
+        {
+            "GotoIndex": 2,
+            "Input": "C",
+            "StateIndex": 0
+        },
+        {
+            "GotoIndex": 5,
+            "Input": "C",
+            "StateIndex": 2
+        },
+        {
+            "GotoIndex": 8,
+            "Input": "C",
+            "StateIndex": 3
+        },
+        {
+            "GotoIndex": 9,
+            "Input": "C",
+            "StateIndex": 6
+        }
+    ],
+    "NumberOfProductions": 3,
+    "Productions": [
+        {
+            "body": [
+                "C",
+                "C"
+            ],
+            "head": "S",
+            "index": 0
+        },
+        {
+            "body": [
+                "c",
+                "C"
+            ],
+            "head": "C",
+            "index": 1
+        },
+        {
+            "body": [
+                "d"
+            ],
+            "head": "C",
+            "index": 2
+        }
+    ],
+    "Terminals": [
+        "c",
+        "d",
+        "$"
+    ],
+    "Variables": [
+        "S",
+        "C"
+    ]
+}
