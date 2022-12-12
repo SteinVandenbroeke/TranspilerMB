@@ -4,7 +4,10 @@
 
 #include <vector>
 #include <set>
+#include <map>
 #include <string>
+#include <iostream>
+#include <fstream>
 
 #include "ENFA.h"
 
@@ -14,9 +17,14 @@
 class Tokenizer {
 private:
     std::vector<std::string> keywords = {"while", "if", "else", "print"};
-    std::vector<std::string> separators = {"{", "}", "(", ")", ";"};
+    std::vector<char> separators = {' ', '{', '}', '(', ')', ';', '"', '\''};
     std::vector<std::string> operations = {"*", "/", "+", "-", "<", "<=", ">=", ">", "==", "!="};
-    std::vector<std::string> variables = {"int", "double", "bool"};
+    std::vector<std::string> variables = {"int", "double", "bool", "string"};
+
+public:
+    Tokenizer(){}
+
+    void convert(std::string file);
 };
 
 

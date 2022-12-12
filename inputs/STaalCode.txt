@@ -1,0 +1,5 @@
+int cringe = 69;
+while(cringe > 0){
+    print(cringe);
+    cringe = cringe - 1;
+}
