@@ -7,10 +7,14 @@
 #include "CSTNode.h"
 
 
-int cstConstructionTest() {
-    std::vector<Token> tokens {Token{"c"}, Token{"d"}, Token{"d"}, Token{"$"}};
-    std::vector<Token*> tokenptrs = {&tokens[0],&tokens[1],&tokens[2]};
-    CST cst{tokenptrs, "LR1ParserGenerator/test_grammar_0.json_PARSETABLE.json"};
+void cstConstructionTest() {
+    std::vector<Token> tokens {Token{"c"}, Token{"c"}, Token{"d"}, Token{"d"}, Token{"$"}};
+    std::vector<Token*> tokenptrs = {&tokens[0],&tokens[1],&tokens[2], &tokens[3], &tokens[4]};
+    try{
+        CST cst{tokenptrs, "docs/test_grammar_0_PARSETABLE.json"};
+    } catch (const std::runtime_error& e){
+        std::cerr << e.what() << std::endl;
+    }
 }
 
 int main() {
@@ -50,7 +54,7 @@ int main() {
     std::cout << program.getJsCode();
      */
 
-    //cstConstructionTest();
+    cstConstructionTest();
 
     return 0;
 }

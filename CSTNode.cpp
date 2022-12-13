@@ -6,15 +6,13 @@
 
 CSTNode::CSTNode(Token *token) : token{token} {}
 
-CST::CST(std::vector<Token *> &tokens, const std::string &parseTable) try{
+CST::CST(const std::vector<Token *> &tokens, const std::string &parseTable){
     root = new CSTNode(new Token("", ""));
     std::ifstream input(parseTable);
     json j;
     input >> j;
     std::vector<int> stack = {0};
     int index = 0;
-    std::vector<std::string> terminals = j["Terminals"];
-    std::vector<std::string> variables = j["Variables"];
     bool accepts = false;
     while (true){
         bool changed = false;
@@ -58,7 +56,7 @@ CST::CST(std::vector<Token *> &tokens, const std::string &parseTable) try{
         if (accepts){
             break;
         } else if (!changed){
-            throw (std::runtime_error("LR(1) parsing error!"));
+            throw (std::runtime_error("LR(1) parsing error!")); //Parsing is unresolved / has failed
         }
     }
     CSTNode* temp = root;
@@ -67,9 +65,6 @@ CST::CST(std::vector<Token *> &tokens, const std::string &parseTable) try{
         temp->removeChild(child);
     }
     delete temp;
-} catch (const std::runtime_error& e){
-    std::cerr << e.what() << std::endl;
-    exit(0);
 }
 
 CST::~CST() {

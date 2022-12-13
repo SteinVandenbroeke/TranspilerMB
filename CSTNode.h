@@ -27,7 +27,7 @@ private:
 class CST{
 public:
     ~CST();
-    CST(std::vector<Token*>& tokens, const std::string& parseTable);
+    CST(const std::vector<Token*>& tokens, const std::string& parseTable);
 private:
     CSTNode* root;
 };
