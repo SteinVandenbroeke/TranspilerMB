@@ -8,6 +8,7 @@
 #include <vector>
 #include "json.hpp"
 #include <fstream>
+#include "iostream"
 using nlohmann::json;
 
 class CSTNode {

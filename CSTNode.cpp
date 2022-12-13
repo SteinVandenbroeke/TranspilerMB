@@ -6,7 +6,7 @@
 
 CSTNode::CSTNode(Token *token) : token{token} {}
 
-CST::CST(std::vector<Token *> &tokens, const std::string &parseTable) {
+CST::CST(std::vector<Token *> &tokens, const std::string &parseTable) try{
     root = new CSTNode(new Token("", ""));
     std::ifstream input(parseTable);
     json j;
@@ -17,9 +17,11 @@ CST::CST(std::vector<Token *> &tokens, const std::string &parseTable) {
     std::vector<std::string> variables = j["Variables"];
     bool accepts = false;
     while (true){
+        bool changed = false;
         Token* currToken = tokens[index];
         for (auto entry : j["ActionTable"]){
             if (entry["Input"] == currToken->getType() and entry["StateIndex"] == stack.back()){
+                changed = true;
                 if (entry["ActionType"] == "s"){
                     root->addChild(new CSTNode(currToken));
                     stack.push_back(entry["ActionArgument"]);
@@ -50,20 +52,24 @@ CST::CST(std::vector<Token *> &tokens, const std::string &parseTable) {
                 else if (entry["ActionType"] == "acc"){
                     accepts = true;
                 }
+                break; //Go to next token
             }
         }
         if (accepts){
             break;
+        } else if (!changed){
+            throw (std::runtime_error("LR(1) parsing error!"));
         }
     }
-    if (accepts){
-        CSTNode* temp = root;
-        root = root->getChildren().back();
-        for (auto child : temp->getChildren()){
-            temp->removeChild(child);
-        }
-        delete temp;
+    CSTNode* temp = root;
+    root = root->getChildren().back();
+    for (auto child : temp->getChildren()){
+        temp->removeChild(child);
     }
+    delete temp;
+} catch (const std::runtime_error& e){
+    std::cerr << e.what() << std::endl;
+    exit(0);
 }
 
 CST::~CST() {
