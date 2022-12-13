@@ -4,6 +4,15 @@
 #include "ENFA.h"
 #include "Tokenizer.h"
 
+#include "CSTNode.h"
+
+
+int cstConstructionTest() {
+    std::vector<Token> tokens {Token{"c"}, Token{"d"}, Token{"d"}, Token{"$"}};
+    std::vector<Token*> tokenptrs = {&tokens[0],&tokens[1],&tokens[2]};
+    CST cst{tokenptrs, "LR1ParserGenerator/test_grammar_0.json_PARSETABLE.json"};
+}
+
 int main() {
     //Tokenizer testing
     Tokenizer t = Tokenizer();
@@ -40,5 +49,9 @@ int main() {
     program.checkTypes();
     std::cout << program.getJsCode();
      */
+
+    //cstConstructionTest();
+
     return 0;
 }
+
