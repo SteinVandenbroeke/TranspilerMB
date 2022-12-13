@@ -26,7 +26,6 @@ CST::CST(std::vector<Token *> &tokens, const std::string &parseTable) try{
                     root->addChild(new CSTNode(currToken));
                     stack.push_back(entry["ActionArgument"]);
                     index++;
-                    break; // We are done with this token: stop iterating the ActionTable
                 }
                 else if (entry["ActionType"] == "r"){
                     int productionIndex = entry["ActionArgument"];
@@ -49,11 +48,9 @@ CST::CST(std::vector<Token *> &tokens, const std::string &parseTable) try{
                             }
                         }
                     }
-                    break; //We are done with this token
                 }
                 else if (entry["ActionType"] == "acc"){
                     accepts = true;
-                    break; //We are done with this token
                 }
                 break; //Go to next token
             }
