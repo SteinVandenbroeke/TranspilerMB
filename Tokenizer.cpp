@@ -4,7 +4,7 @@
 
 #include "Tokenizer.h"
 
-void Tokenizer::convert(std::string file) {
+void Tokenizer::convert(const std::string& file) {
     std::vector<std::string> lines;
     std::map<int, std::vector<std::string>> split;
 
@@ -16,11 +16,14 @@ void Tokenizer::convert(std::string file) {
     }
 
     for(int i = 0; i < lines.size(); i++){
-        std::string word = "";
+        std::string word;
         for(auto s : lines[i]){
-            if(std::count(separators.begin(), separators.end(), s) > 0){
+            std::string temp;
+            temp = s;
+            if(std::count(separators.begin(), separators.end(), temp) > 0){
                 split[i].push_back(word);
                 word = "";
+                if( s == ' '){ continue;}
                 word += s;
                 split[i].push_back(word);
                 word = "";
@@ -30,9 +33,9 @@ void Tokenizer::convert(std::string file) {
         }
     }
 
-    for(auto i : split){
+    for(const auto& i : split){
         std::cout << i.first << ": ";
-        for(auto j : i.second){
+        for(const auto& j : i.second){
             std::cout << j << " | ";
         }
         std::cout << std::endl;

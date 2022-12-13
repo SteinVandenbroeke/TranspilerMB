@@ -17,10 +17,52 @@ void cstConstructionTest() {
     }
 }
 
+ENFA createENFA(const std::vector<std::string>& words){
+    ENFA temp = ENFA();
+    std::map<std::string, ENFA_State*> tempStates;
+    std::vector<ENFA_State*> tempFinal;
+    std::set<char> alfabet;
+    auto* start = new ENFA_State("start", true, false);
+    tempStates[start->getName()] = start;
+    int name = 0;
+    for(auto w : words){
+        ENFA_State* current = start;
+        for(auto c : w){
+            alfabet.insert(c);
+            auto* next = new ENFA_State(std::to_string(name), false, false);
+            if(c == w.back()){
+                next->setAccepting(true);
+                tempFinal.push_back(next);
+            }
+            tempStates[next->getName()] = next;
+            current->setNextState(c, next);
+            current = next;
+        }
+    }
+    temp.setStates(tempStates);
+    temp.setCurrentStates({start});
+    temp.setFinalStates(tempFinal);
+    temp.setStartState(start);
+    std::vector<char> alphabet(alfabet.begin(), alfabet.end());
+    temp.setAlfabet(alphabet);
+    for(const auto& w : words){
+        if(!temp.accepts(w)){
+            std::cout << "you fucked up" << std::endl;
+        }
+    }
+    return temp;
+}
+
 int main() {
     //Tokenizer testing
-    Tokenizer t = Tokenizer();
-    t.convert("inputs/STaalCode.txt");
+    //Tokenizer t = Tokenizer();
+    //t.convert("inputs/STaalCode.txt");
+    std::vector<std::string> variables = {"int", "double", "bool", "string"};
+    std::vector<std::string> keywords = {"while", "if", "else", "print"};
+    ENFA temp = createENFA(keywords);
+    for(auto w : keywords){
+        std::cout << temp.accepts(w) << std::endl;
+    }
 
     //ENFA testing
     /*

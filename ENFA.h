@@ -48,7 +48,6 @@ public:
 
     bool isAccepting() const;
     void setAccepting(bool accepting);
-
 };
 
 
@@ -62,6 +61,8 @@ private:
     std::vector<ENFA_State*> currentStates;
 public:
     ENFA(std::string jsonFile);
+
+    ENFA() {}
 
     ~ENFA(){
         for(auto i : states){ // ga door alle states van de enfa en verwijder ze
