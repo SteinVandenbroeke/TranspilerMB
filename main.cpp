@@ -1,8 +1,8 @@
 #include <iostream>
 #include "filesystem"
 #include "AstNode.h"
-#include "ENFA.h"
-#include "Tokenizer.h"
+#include "tokenizer/ENFA.h"
+#include "tokenizer/Tokenizer.h"
 
 #include "CSTNode.h"
 

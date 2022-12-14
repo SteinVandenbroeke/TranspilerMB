@@ -23,5 +23,5 @@ add_executable(parser_generator
         )
 target_include_directories(parser_generator PUBLIC LR1ParserGenerator)
 
-add_executable(transpiler main.cpp AstNode.h AstNode.cpp Token.h Token.cpp SymbolTable.cpp SymbolTable.h ENFA.h ENFA.cpp Tokenizer.cpp Tokenizer.h CSTNode.h CSTNode.cpp)
+add_executable(transpiler main.cpp AstNode.h AstNode.cpp tokenizer/Token.h tokenizer/Token.cpp SymbolTable.cpp SymbolTable.h tokenizer/ENFA.h tokenizer/ENFA.cpp tokenizer/Tokenizer.cpp tokenizer/Tokenizer.h CSTNode.h CSTNode.cpp)
 file(COPY testEnv DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")

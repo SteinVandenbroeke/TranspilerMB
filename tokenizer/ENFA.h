@@ -13,7 +13,7 @@
 #include <iomanip>
 #include <map>
 
-#include "json.hpp"
+#include "../json.hpp"
 
 
 class ENFA_State {
