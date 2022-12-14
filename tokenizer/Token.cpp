@@ -17,6 +17,9 @@ Token::Token(std::string type, std::string text, int lN, int lP): type(type), te
 }
 
 std::string Token::getText() {
+    if(text == ""){
+        return type;
+    }
     return text;
 }
 

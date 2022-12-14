@@ -61,6 +61,7 @@ CST::CST(const std::vector<Token *> &tokens, const std::string &parseTable){
                 break;
             }
         } else {
+            std::cout << "error on line " << currToken->getLine() << std::endl;
             throw (std::runtime_error("LR(1) parsing error!")); //Parsing is unresolved / has failed
         }
     }
@@ -94,7 +95,13 @@ void CST::DOTNode(std::string &s, CSTNode* node) const {
 }
 
 void CST::assignNodes(std::string &s, CSTNode *node) const {
-    s += std::to_string(node->getIdentifier()) + " [label=\"" + node->getValue() + "\"];\n";
+    std::string value = node->getValue();
+    if(value[0] == '"' && value[value.length() - 1] == '"'){
+        value.erase(value.begin());
+        value.pop_back();
+        value = "\\\"" + value + "\\\"";
+    }
+    s += std::to_string(node->getIdentifier()) + " [label=\"" + value + "\"];\n";
     for (auto i : node->getChildren()){
         assignNodes(s, i);
     }
@@ -109,7 +116,7 @@ Token *LeafNode::getToken() const {
 }
 
 std::string LeafNode::getValue() {
-    return token->getType();
+    return token->getText();
 }
 
 CSTNode *CSTNode::removeChild(CSTNode *node) {
