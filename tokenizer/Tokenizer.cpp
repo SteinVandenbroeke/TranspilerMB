@@ -27,13 +27,28 @@ std::vector<Token*> Tokenizer::convert(const std::string& file) {
 
     for(int i = 0; i < lines.size(); i++){
         std::string word;
+        bool separator = false;
         for(auto s : lines[i]){
             std::string temp;
             temp = s;
-            if(std::count(separators.begin(), separators.end(), temp) > 0){
+            if(std::count(separators.begin(), separators.end(), temp) > 0 && !separator){
                 if(!word.empty()){ split[i].push_back(word);}
                 word = "";
                 if( s == ' '){ continue;}
+                word += s;
+                separator = true;
+                continue;
+            }if(separator){
+                if(std::count(separators.begin(), separators.end(), temp) >= 1 && s != ' '){
+                    word += s;
+                    continue;
+                }
+                split[i].push_back(word);
+                word = "";
+                separator = false;
+                if(s == ' '){
+                    continue;
+                }
                 word += s;
                 split[i].push_back(word);
                 word = "";
