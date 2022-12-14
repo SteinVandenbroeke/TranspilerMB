@@ -19,12 +19,17 @@ void cstConstructionTest() {
 
 int main() {
     //Tokenizer testing
+
     Tokenizer t = Tokenizer();
     std::vector<Token*> tokens = t.convert("inputs/STaalCode.txt");
+    CST cst = CST(tokens,"LR1ParserGenerator/test_grammar_0.json_PARSETABLE.json");
+    std::cout << cst.generateDOT() << std::endl;
+
+    /*
     for(auto token : tokens){
         token->print();
     }
-
+    */
     //ENFA testing
     /*
     ENFA e = ENFA("inputs/input1.json");
@@ -35,34 +40,41 @@ int main() {
     std::cout << std::endl << e.accepts("0.0") << std::endl;
     */
 
-    /*
+/*
     Token* tokenVarA = new Token("[VARNAMETOKEN]", "a");
     AstVar* varA = new AstVar(tokenVarA);
 
+    Token* tokenVarI = new Token("[VARNAMETOKEN]", "i");
+    AstVar* varI = new AstVar(tokenVarI);
+
     Token* tokenDeclarationA = new Token("int");
+    Token* tokenDeclarationI = new Token("int");
 
-    std::vector<Token *> tokenList{new Token("int"),new Token("[VARNAMETOKEN]","i"),new Token("="),new Token("[NUMBERTOKEN]", "10"),new Token(";"),new Token("while"),new Token("("),new Token("[VARNAMETOKEN]","i"), new Token("<"), new Token("[NUMBERTOKEN]","11"),new Token(")"),new Token("{"), new Token("int"),new Token("[VARNAMETOKEN]","a"),new Token("="),new Token("[NUMBERTOKEN]", "10"),new Token(";"),new Token("}"), new Token("$")};
-    CST cst = CST(tokenList,"LR1ParserGenerator/test_grammar_0.json_PARSETABLE.json");
-
-
+    Token* number = new Token("[NUMBERTOKEN]", "10");
+    AstValue* value = new AstValue(number);
+*/
+//    std::vector<Token *> tokenList{new Token("int"),new Token("[VARNAMETOKEN]","i"),new Token("="),new Token("[NUMBERTOKEN]", "10"),new Token(";"),new Token("while"),new Token("("),new Token("[VARNAMETOKEN]","i"), new Token("<"), new Token("[NUMBERTOKEN]","11"),new Token(")"),new Token("{"), new Token("int"),new Token("[VARNAMETOKEN]","a"),new Token("="),new Token("[NUMBERTOKEN]", "10"),new Token(";"),new Token("}"), new Token("$")};
+//    CST cst = CST(tokenList,"LR1ParserGenerator/test_grammar_0.json_PARSETABLE.json");
+//    cst.generateDOT();
+/*
+    AstDeclartion* declartionI = new AstDeclartion(tokenDeclarationI, varI, value);
     AstDeclartion* declartionA = new AstDeclartion(tokenDeclarationA, varA, value);
 
     AstIntalisation* intalisation = new AstIntalisation(varI, varA);
 
 
     AstProgram program = AstProgram();
-    program.addLine(intalisation);
-    program.addLine(declartion);
-    program.addLine(declartion);
+    program.addLine(declartionI);
+    program.addLine(declartionA);
+    //program.addLine(declartionA);
+    //program.addLine(declartion);
     //program.addLine(declartion);
     program.addLine(intalisation);
     program.checkTypes();
     std::cout << program.getJsCode();
-     */
 
-
-
-    cstConstructionTest();
+*/
+   // cstConstructionTest();
 
     return 0;
 }

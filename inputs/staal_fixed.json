@@ -14,7 +14,9 @@
     "VarName",
     "numberI",
     "stringI",
-    "charI"
+    "charI",
+    "Print",
+    "ArithmeticOperations1"
   ],
   "Terminals": [
     ";",
@@ -24,6 +26,7 @@
     "string",
     "=",
     "while",
+    "print",
     "if",
     "(",
     ")",
@@ -46,27 +49,31 @@
   "Productions": [
     {
       "head": "S",
-      "body": ["ProgramLine",";"]
+      "body": ["ProgramLine"]
     },
     {
       "head": "S",
-      "body": ["ProgramLine", ";", "S"]
+      "body": ["ProgramLine", "S"]
     },
     {
-      "head": "S",
+      "head": "ProgramLine",
       "body": ["Loop"]
     },
     {
-      "head": "S",
+      "head": "ProgramLine",
       "body": ["If"]
     },
     {
       "head": "ProgramLine",
-      "body": ["Initalization"]
+      "body": ["Initalization",";"]
     },
     {
       "head": "ProgramLine",
-      "body": ["Declatation"]
+      "body": ["Declatation",";"]
+    },
+    {
+      "head": "ProgramLine",
+      "body": ["Print", ";"]
     },
     {
       "head": "ProgramLine",
@@ -101,6 +108,10 @@
       "body": ["if", "(", "Condition", ")", "Body"]
     },
     {
+      "head": "Print",
+      "body": ["print", "(" , "AnyType" ,")"]
+    },
+    {
       "head": "Body",
       "body": ["{", "S", "}"]
     },
@@ -114,19 +125,19 @@
     },
     {
       "head": "AnyType",
-      "body": ["string"]
+      "body": ["stringI"]
     },
     {
       "head": "AnyType",
-      "body": ["char"]
+      "body": ["charI"]
     },
     {
       "head": "AnyBoolOperator",
-      "body": [">="]
+      "body": [">", "="]
     },
     {
       "head": "AnyBoolOperator",
-      "body": ["<="]
+      "body": ["<", "="]
     },
     {
       "head": "AnyBoolOperator",
@@ -138,23 +149,23 @@
     },
     {
       "head": "AnyBoolOperator",
-      "body": ["=="]
+      "body": ["=", "="]
     },
     {
       "head": "ArithmeticOperations",
-      "body": ["numberI", "+", "ArithmeticOperations"]
+      "body": ["ArithmeticOperations1", "+", "ArithmeticOperations"]
     },
     {
       "head": "ArithmeticOperations",
-      "body": ["numberI", "-", "ArithmeticOperations"]
+      "body": ["ArithmeticOperations1", "-", "ArithmeticOperations"]
     },
     {
       "head": "ArithmeticOperations",
-      "body": ["numberI", "/", "ArithmeticOperations"]
+      "body": ["ArithmeticOperations1", "/", "ArithmeticOperations"]
     },
     {
       "head": "ArithmeticOperations",
-      "body": ["numberI", "*", "ArithmeticOperations"]
+      "body": ["ArithmeticOperations1", "*", "ArithmeticOperations"]
     },
     {
       "head": "ArithmeticOperations",
@@ -167,8 +178,19 @@
     {
       "head": "ArithmeticOperations",
       "body": ["VarName"]
-    }
-  ,
+    },
+    {
+      "head": "ArithmeticOperations1",
+      "body": ["numberI"]
+    },
+    {
+      "head": "ArithmeticOperations1",
+      "body": ["VarName"]
+    },
+    {
+      "head": "ArithmeticOperations1",
+      "body": ["(", "ArithmeticOperations", ")"]
+    },
     {
       "head": "VarName",
       "body": ["[VARNAMETOKEN]"]
