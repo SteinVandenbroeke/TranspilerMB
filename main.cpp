@@ -33,16 +33,19 @@ int main() {
     */
 
     /*
-    Token* tokenVarI = new Token("[VARNAMETOKEN]", "i");
-    AstVar* varI = new AstVar(tokenVarI);
+    Token* tokenVarA = new Token("[VARNAMETOKEN]", "a");
+    AstVar* varA = new AstVar(tokenVarA);
 
-    Token* tokenValue = new Token("[NUMBERTOKEN]", "10");
-    AstValue* value = new AstValue(tokenValue);
+    Token* tokenDeclarationA = new Token("int");
 
-    Token* tokenDeclaration = new Token("int");
-    AstDeclartion* declartion = new AstDeclartion(tokenDeclaration, varI, value);
+    std::vector<Token *> tokenList{new Token("int"),new Token("[VARNAMETOKEN]","i"),new Token("="),new Token("[NUMBERTOKEN]", "10"),new Token(";"),new Token("while"),new Token("("),new Token("[VARNAMETOKEN]","i"), new Token("<"), new Token("[NUMBERTOKEN]","11"),new Token(")"),new Token("{"), new Token("int"),new Token("[VARNAMETOKEN]","a"),new Token("="),new Token("[NUMBERTOKEN]", "10"),new Token(";"),new Token("}"), new Token("$")};
+    CST cst = CST(tokenList,"LR1ParserGenerator/test_grammar_0.json_PARSETABLE.json");
 
-    AstIntalisation* intalisation = new AstIntalisation(varI, value);
+
+    AstDeclartion* declartionA = new AstDeclartion(tokenDeclarationA, varA, value);
+
+    AstIntalisation* intalisation = new AstIntalisation(varI, varA);
+
 
     AstProgram program = AstProgram();
     program.addLine(intalisation);
@@ -54,8 +57,9 @@ int main() {
     std::cout << program.getJsCode();
      */
 
+
+
     cstConstructionTest();
 
     return 0;
 }
-

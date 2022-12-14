@@ -22,37 +22,29 @@ SymbolTable *SymbolTable::removeScope() {
     return outerScope;
 }
 
-bool SymbolTable::IsVarInCurrentScope(std::string varName) {
-    if(table.find(varName) != table.end()){
+bool SymbolTable::IsVarInCurrentScope(std::string varName, std::string varType) {
+    if(table.find(varName) != table.end() && table[varName] == varType){
         return true;
     }
     return false;
 }
 
-bool SymbolTable::IsVarDeclared(std::string varName) {
-    if(table.find(varName) != table.end()){
+bool SymbolTable::IsVarDeclared(std::string varName, std::string varType) {
+    if(table.find(varName) != table.end() && table[varName] == varType){
         return true;
     }
     else if(outerScope == nullptr){
         return false;
     }
-    return outerScope->IsVarDeclared(varName);
+    return outerScope->IsVarDeclared(varName, varType);
 }
 
-bool SymbolTable::IsVarInitialized(std::string varName) {
-    if(table.find(varName) != table.end()){
-        return table[varName];
-    }
-    else if(outerScope == nullptr){
-        return false;
-    }
-    return outerScope->IsVarInitialized(varName);
+
+void SymbolTable::newVar(std::string varName, std::string varType) {
+    this->table[varName] = varType;
 }
 
-void SymbolTable::newVar(std::string varName) {
-    this->table[varName] = false;
-}
+bool SymbolTable::checkVarType() {
 
-void SymbolTable::InitializedVar(std::string varName) {
-    this->table[varName] = true;
+    return false;
 }

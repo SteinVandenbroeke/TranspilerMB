@@ -88,11 +88,11 @@ astNodeType AstDeclartion::getType() {
 }
 
 bool AstDeclartion::checkTypes(SymbolTable &table) {
-    if(table.IsVarDeclared(this->var->getTokenText())){
+    if(table.IsVarDeclared(this->var->getTokenText(), this->getTokenText())){
         std::cout << "error on line: " << token->getLine() << " [" << "Variable " << this->var->getTokenText() << " is declared multiple times" << "]" << std::endl;
         return false;
     }
-    table.newVar(this->var->getTokenText());
+    table.newVar(this->var->getTokenText(), this->getTokenText());
     return true;
 }
 
@@ -255,7 +255,7 @@ astNodeType AstVar::getType() {
 }
 
 bool AstVar::checkTypes(SymbolTable &table) {
-    if(!table.IsVarDeclared(this->getTokenText())){
+    if(!table.IsVarDeclared(this->getTokenText(), "/")){
         std::cout << "error on line: " << token->getLine() << " [" << "Variable " << this->getTokenText() << " is not initialized." << "]" << std::endl;
         return false;
     }

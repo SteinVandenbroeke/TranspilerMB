@@ -83,7 +83,6 @@ public:
     std::string getJsCode() override;
     astNodeType getType() override;
     bool checkTypes(SymbolTable& table) override;
-
 };
 
 /**
