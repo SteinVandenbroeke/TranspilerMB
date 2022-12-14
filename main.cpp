@@ -21,8 +21,8 @@ int main() {
     //Tokenizer testing
     Tokenizer t = Tokenizer();
     std::vector<Token*> tokens = t.convert("inputs/STaalCode.txt");
-    for(auto t : tokens){
-        t->print();
+    for(auto token : tokens){
+        token->print();
     }
 
     //ENFA testing

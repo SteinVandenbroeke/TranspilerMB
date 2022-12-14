@@ -5,7 +5,9 @@
   "alphabet": [
     "v0",
     "v1",
-    "."
+    ".",
+    "'",
+    "\""
   ],
   "states": [
     {
@@ -14,7 +16,7 @@
       "accepting": false
     },
     {
-      "name": "var",
+      "name": "var0",
       "starting": false,
       "accepting": true
     },
@@ -57,12 +59,12 @@
   "transitions": [
     {
       "from": "start",
-      "to": "var",
+      "to": "var0",
       "input": "v0"
     },
     {
-      "from": "var",
-      "to": "var",
+      "from": "var0",
+      "to": "var0",
       "input": ["v0", "v1"]
     },
     {

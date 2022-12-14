@@ -82,6 +82,8 @@ public:
 
     bool accepts(const std::string& input);
 
+    std::pair<bool, std::vector<ENFA_State*>> acceptsHelper(const std::string& input);
+
     const std::vector<char> &getAlfabet() const;
     void setAlfabet(const std::vector<char> &alfabet);
 

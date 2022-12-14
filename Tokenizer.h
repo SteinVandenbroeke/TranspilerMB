@@ -19,8 +19,9 @@ class Tokenizer {
 private:
     std::vector<std::string> separators = {" ", ";", "(", ")", "=", "!=", "<=", ">=", "<", ">", "==", "{", "}", "+", "-", "*", "/"};
     std::vector<std::string> keywords = {";", "int", "double", "char", "string", "=", "while", "if", "(", ")", "<=", ">=", "<", ">", "==", "{", "}", "+", "-", "*", "/"};
+    std::map<std::string, std::string> types;
 public:
-    Tokenizer()= default;
+    Tokenizer();
 
     std::vector<Token*> convert(const std::string& file);
 };
