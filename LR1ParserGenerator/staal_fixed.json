@@ -53,20 +53,20 @@
       "body": ["ProgramLine", ";", "S"]
     },
     {
+      "head": "S",
+      "body": ["Loop"]
+    },
+    {
+      "head": "S",
+      "body": ["If"]
+    },
+    {
       "head": "ProgramLine",
       "body": ["Initalization"]
     },
     {
       "head": "ProgramLine",
       "body": ["Declatation"]
-    },
-    {
-      "head": "ProgramLine",
-      "body": ["Loop"]
-    },
-    {
-      "head": "ProgramLine",
-      "body": ["If"]
     },
     {
       "head": "ProgramLine",

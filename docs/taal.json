@@ -2,7 +2,6 @@
   "Variables": [
     "S",
     "ProgramLine",
-    "LOOP",
     "Declatation",
     "Initalization",
     "Loop",
@@ -12,7 +11,6 @@
     "AnyType",
     "AnyBoolOperator",
     "ArithmeticOperations",
-    "TEMPIMPORT",
     "VarName",
     "numberI",
     "stringI",
@@ -55,20 +53,20 @@
       "body": ["ProgramLine", ";", "S"]
     },
     {
+      "head": "S",
+      "body": ["Loop"]
+    },
+    {
+      "head": "S",
+      "body": ["If"]
+    },
+    {
       "head": "ProgramLine",
       "body": ["Initalization"]
     },
     {
       "head": "ProgramLine",
       "body": ["Declatation"]
-    },
-    {
-      "head": "ProgramLine",
-      "body": ["Loop"]
-    },
-    {
-      "head": "ProgramLine",
-      "body": ["If"]
     },
     {
       "head": "ProgramLine",
@@ -84,11 +82,11 @@
     },
     {
       "head": "Declatation",
-      "body": ["char", "VarName", "=", "CHARTOKEN"]
+      "body": ["char", "VarName", "=", "[CHARTOKEN]"]
     },
     {
       "head": "Declatation",
-      "body": ["string", "VarName", "=", "STRINGTOKEN"]
+      "body": ["string", "VarName", "=", "[STRINGTOKEN]"]
     },
     {
       "head": "Initalization",
@@ -144,19 +142,19 @@
     },
     {
       "head": "ArithmeticOperations",
-      "body": ["number", "+", "ArithmeticOperations"]
+      "body": ["numberI", "+", "ArithmeticOperations"]
     },
     {
       "head": "ArithmeticOperations",
-      "body": ["number", "-", "ArithmeticOperations"]
+      "body": ["numberI", "-", "ArithmeticOperations"]
     },
     {
       "head": "ArithmeticOperations",
-      "body": ["number", "/", "ArithmeticOperations"]
+      "body": ["numberI", "/", "ArithmeticOperations"]
     },
     {
       "head": "ArithmeticOperations",
-      "body": ["number", "*", "ArithmeticOperations"]
+      "body": ["numberI", "*", "ArithmeticOperations"]
     },
     {
       "head": "ArithmeticOperations",
