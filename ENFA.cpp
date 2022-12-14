@@ -11,7 +11,6 @@ const std::string &ENFA_State::getName() const {
 
 void ENFA_State::setName(const std::string &name) {
     ENFA_State::name = name;
-    return;
 }
 
 std::vector<ENFA_State *> ENFA_State::getNextState(const char s){
@@ -43,19 +42,62 @@ void ENFA_State::setAccepting(bool accepting) {
 
 //ENFA
 
-ENFA::ENFA(std::string jsonFile) {
+void ENFA::transitionHelper(std::string input, std::vector<std::vector<char>> vectors, const std::string& from, const std::string& to) {
+    if(input.size() > 2){
+        input.pop_back();
+        input.erase(input.begin());
+    }
+    char in;
+    if(input[0] == 'v'){
+        input.erase(input.begin());
+        for(auto c : vectors[std::stoi(input)]){
+            states[from]->setNextState(c, states[to]);
+        }
+        return;
+    }
+    if(input.empty()){
+        in = eps;
+    }else{
+        in = input[1];
+    }
+    states[from]->setNextState(in, states[to]); // access de benodigde states uit map
+}
+
+ENFA::ENFA(const std::string& jsonFile) {
     std::ifstream input(jsonFile); // lees de inputfile
     nlohmann::json j;
     input >> j;
+    std::vector<std::vector<char>> vectors;
     if(j["type"] != "ENFA"){ // check of het een NFA is
         return;
     }
-    for(auto i : j["alphabet"]){ // ga naar het segment alphabet in de json file en ga doorheen de elementen
+    int vectorCount = 0;
+    std::string vector = "v" + std::to_string(vectorCount);
+    while(j.contains(vector)){
+        std::vector<char> temp;
+        for(const auto& i : j[vector]){
+            temp.push_back(to_string(i)[1]);
+        }
+        vectors.push_back(temp);
+        vectorCount++;
+        vector = "v" + std::to_string(vectorCount);
+    }
+
+    for(const auto& i : j["alphabet"]){ // ga naar het segment alphabet in de json file en ga doorheen de elementen
         std::string temp = to_string(i); // convert het element naar een string
-        alfabet.push_back(temp[1]); // neem het middelste element van de nieuwe string
+        temp.pop_back();
+        temp.erase(temp.begin());
+        if(temp.size() > 1){
+            temp.erase(temp.begin());
+            for(auto c : vectors[std::stoi(temp)]){
+                alfabet.push_back(c);
+            }
+            continue;
+        }
+        alfabet.push_back(temp[0]); // neem het middelste element van de nieuwe string
     }
     for(auto k : j["states"]){ // ga naar het segment states in de json file en ga doorheen de elementen
-        ENFA_State* s = new ENFA_State(k["name"]);  // maak een nieuwe state met naam van de huidige state
+        auto* s = new ENFA_State(k["name"]);  // maak een nieuwe state met naam van de huidige state
         states[k["name"]] = s; // voeg nieuwe state toe aan map met alle states
         if(k["starting"] == true){ // check of het de startingstate is
             s->setStarting(true);
@@ -69,13 +111,51 @@ ENFA::ENFA(std::string jsonFile) {
     }
     for(auto t : j["transitions"]){ // doorloop de transitions in de json file
         std::string input = to_string(t["input"]);
-        char in;
-        if(input.size() > 2){
-            in = input[1];
-        }else{
-            in = eps;
+        std::string from = t["from"];
+        std::string to = t["to"];
+        if(input[0] == '['){
+            for(const auto& trans : t["input"]){
+                transitionHelper(trans, vectors, from, to);
+            }
+            continue;
         }
-        states[t["from"]]->setNextState(in, states[t["to"]]); // access de benodigde states uit map
+        transitionHelper(input, vectors, from, to);
+    }
+}
+
+ENFA::ENFA(const std::vector<std::string>& words){
+    ENFA temp = ENFA();
+    std::map<std::string, ENFA_State*> tempStates;
+    std::vector<ENFA_State*> tempFinal;
+    std::set<char> alfa;
+    auto* start = new ENFA_State("start", true, false);
+    tempStates[start->getName()] = start;
+    int name = 0;
+    for(auto w : words){
+        ENFA_State* current = start;
+        for(auto c : w){
+            alfa.insert(c);
+            auto* next = new ENFA_State(std::to_string(name), false, false);
+            if(c == w.back()){
+                next->setAccepting(true);
+                tempFinal.push_back(next);
+            }
+            tempStates[next->getName()] = next;
+            current->setNextState(c, next);
+            current = next;
+            name++;
+        }
+    }
+    states = tempStates;
+    currentStates = {start};
+    finalStates = tempFinal;
+    startState = start;
+    std::vector<char> alphabet(alfa.begin(), alfa.end());
+    alfabet = alphabet;
+    for(const auto& w : words){
+        if(!accepts(w)){
+            std::cout << "you fucked up" << std::endl;
+        }
     }
 }
 
@@ -101,7 +181,7 @@ nlohmann::json ENFA::toJSON() const {
                 j["transitions"].push_back({});
                 j["transitions"][b]["from"] = s.first;
                 j["transitions"][b]["to"] = toState->getName();
-                std::string input = "";
+                std::string input;
                 if(chr != eps){
                     input = std::string{chr};
                 }
@@ -113,11 +193,11 @@ nlohmann::json ENFA::toJSON() const {
     return j;
 }
 
-void ENFA::print() {
+void ENFA::print() const {
     std::cout << std::setw(4) << toJSON() << std::endl;
 }
 
-std::vector<ENFA_State*> ENFA::closure(ENFA_State* state){
+std::vector<ENFA_State*> ENFA::closure(ENFA_State* state) const{
     std::set<ENFA_State*> result = {state};
     int oldSize = result.size();
     std::vector<ENFA_State*> temp = state->getNextState(eps);
@@ -133,7 +213,7 @@ std::vector<ENFA_State*> ENFA::closure(ENFA_State* state){
 
 }
 
-const bool ENFA::accepts(std::string input) {
+bool ENFA::accepts(const std::string& input) {
     // ga door elk element van de string
     currentStates = {startState};
     std::set current = {startState};

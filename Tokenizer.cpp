@@ -4,45 +4,11 @@
 
 #include "Tokenizer.h"
 
-ENFA createENFA(const std::vector<std::string>& words){
-    ENFA temp = ENFA();
-    std::map<std::string, ENFA_State*> tempStates;
-    std::vector<ENFA_State*> tempFinal;
-    std::set<char> alfabet;
-    auto* start = new ENFA_State("start", true, false);
-    tempStates[start->getName()] = start;
-    int name = 0;
-    for(auto w : words){
-        ENFA_State* current = start;
-        for(auto c : w){
-            alfabet.insert(c);
-            auto* next = new ENFA_State(std::to_string(name), false, false);
-            if(c == w.back()){
-                next->setAccepting(true);
-                tempFinal.push_back(next);
-            }
-            tempStates[next->getName()] = next;
-            current->setNextState(c, next);
-            current = next;
-        }
-    }
-    temp.setStates(tempStates);
-    temp.setCurrentStates({start});
-    temp.setFinalStates(tempFinal);
-    temp.setStartState(start);
-    std::vector<char> alphabet(alfabet.begin(), alfabet.end());
-    temp.setAlfabet(alphabet);
-    for(const auto& w : words){
-        if(!temp.accepts(w)){
-            std::cout << "you fucked up" << std::endl;
-        }
-    }
-    return temp;
-}
-
-void Tokenizer::convert(const std::string& file) {
+std::vector<Token*> Tokenizer::convert(const std::string& file) {
     std::vector<std::string> lines;
     std::map<int, std::vector<std::string>> split;
+
+    std::vector<Token*> tokens;
 
     std::ifstream code(file);
 
@@ -80,4 +46,25 @@ void Tokenizer::convert(const std::string& file) {
         }
         std::cout << std::endl;
     }
+
+    ENFA symbols = ENFA(keywords);
+    ENFA var = ENFA("inputs/var.json");
+    for(const auto& i  : split){
+        for(int j = 0; j < i.second.size(); j++){
+            if(symbols.accepts(i.second[j])){
+                Token* token = new Token(i.second[j], "", i.first, j);
+                tokens.push_back(token);
+                continue;
+            }
+            if(var.accepts(i.second[j])){
+                std::string type;
+                Token* token = new Token(type, i.second[j], i.first, j);
+                tokens.push_back(token);
+                continue;
+            }
+
+        }
+    }
+    return tokens;
+
 }

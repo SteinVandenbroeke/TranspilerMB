@@ -60,7 +60,9 @@ private:
     std::vector<ENFA_State*> finalStates;
     std::vector<ENFA_State*> currentStates;
 public:
-    ENFA(std::string jsonFile);
+    ENFA(const std::string& jsonFile);
+
+    ENFA(const std::vector<std::string>& words);
 
     ENFA() {}
 
@@ -70,13 +72,15 @@ public:
         }
     }
 
+    void transitionHelper(std::string input, std::vector<std::vector<char>> vectors, const std::string& from, const std::string& to);
+
     nlohmann::json toJSON() const;
 
-    void print();
+    void print() const;
 
-    std::vector<ENFA_State*> closure(ENFA_State* state);
+    std::vector<ENFA_State*> closure(ENFA_State* state) const;
 
-    const bool accepts(std::string input);
+    bool accepts(const std::string& input);
 
     const std::vector<char> &getAlfabet() const;
     void setAlfabet(const std::vector<char> &alfabet);

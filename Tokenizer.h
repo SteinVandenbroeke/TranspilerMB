@@ -22,7 +22,7 @@ private:
 public:
     Tokenizer()= default;
 
-    void convert(const std::string& file);
+    std::vector<Token*> convert(const std::string& file);
 };
 
 

@@ -1,0 +1,119 @@
+{
+  "type": "ENFA",
+  "v0": ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"],
+  "v1": ["0","1","2", "3", "4", "5", "6","7", "8", "9"],
+  "alphabet": [
+    "v0",
+    "v1",
+    "."
+  ],
+  "states": [
+    {
+      "name": "start",
+      "starting": true,
+      "accepting": false
+    },
+    {
+      "name": "var",
+      "starting": false,
+      "accepting": true
+    },
+    {
+      "name": "string0",
+      "starting": false,
+      "accepting": false
+    },
+    {
+      "name": "string1",
+      "starting": false,
+      "accepting": true
+    },
+    {
+      "name": "char0",
+      "starting": false,
+      "accepting": false
+    },
+    {
+      "name": "char1",
+      "starting": false,
+      "accepting": false
+    },
+    {
+      "name": "char2",
+      "starting": false,
+      "accepting": true
+    },
+    {
+      "name": "num0",
+      "starting": false,
+      "accepting": true
+    },
+    {
+      "name": "num1",
+      "starting": false,
+      "accepting": true
+    }
+  ],
+  "transitions": [
+    {
+      "from": "start",
+      "to": "var",
+      "input": "v0"
+    },
+    {
+      "from": "var",
+      "to": "var",
+      "input": ["v0", "v1"]
+    },
+    {
+      "from": "start",
+      "to": "string0",
+      "input": "\""
+    },
+    {
+      "from": "string0",
+      "to": "string0",
+      "input": ["v0", "v1"]
+    },
+    {
+      "from": "string0",
+      "to": "string1",
+      "input": "\""
+    },
+    {
+      "from": "start",
+      "to": "char0",
+      "input": "'"
+    },
+    {
+      "from": "char0",
+      "to": "char1",
+      "input": ["v0", "v1", ""]
+    },
+    {
+      "from": "char1",
+      "to": "char2",
+      "input": "'"
+    },
+    {
+      "from": "start",
+      "to": "num0",
+      "input": "v1"
+    },
+    {
+      "from": "num0",
+      "to": "num0",
+      "input": "v1"
+    },
+    {
+      "from": "num0",
+      "to": "num1",
+      "input": "."
+    },
+    {
+      "from": "num1",
+      "to": "num1",
+      "input": "v1"
+    }
+  ]
+}

@@ -20,7 +20,10 @@ void cstConstructionTest() {
 int main() {
     //Tokenizer testing
     Tokenizer t = Tokenizer();
-    t.convert("inputs/STaalCode.txt");
+    std::vector<Token*> tokens = t.convert("inputs/STaalCode.txt");
+    for(auto t : tokens){
+        t->print();
+    }
 
     //ENFA testing
     /*
