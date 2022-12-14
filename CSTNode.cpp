@@ -16,7 +16,7 @@ CST::CST(const std::vector<Token *> &tokens, const std::string &parseTable){
     std::vector<int> stack = {0};
     std::map<std::pair<int, std::string>, std::pair<int, std::string>> actionTable;
     std::map<std::pair<int, std::string>, int> gotoTable;
-    std::vector<std::pair<std::string, std::string>> productions(j["NumberOfProductions"], {"", ""});
+    std::vector<std::pair<std::string, std::vector<std::string>>> productions(j["NumberOfProductions"], {"", {""}});
     for (auto entry : j["ActionTable"]){
         int actionArgument;
         if (entry["ActionType"] != "acc"){
@@ -30,15 +30,14 @@ CST::CST(const std::vector<Token *> &tokens, const std::string &parseTable){
         gotoTable[{entry["StateIndex"], entry["Input"]}] = entry["GotoIndex"];
     }
     for (auto entry : j["Productions"]){
-        std::string rightSide;
-        for (const auto& character : entry["body"]){
-            rightSide += character;
-        }
-        productions[entry["index"]] = {entry["head"], rightSide};
+        productions[entry["index"]] = {entry["head"], entry["body"]};
     }
     int index = 0;
     while (true){
         Token* currToken = tokens[index];
+        if (index == 15){
+            std::cout << "";
+        }
         if (actionTable.find({stack.back(), currToken->getType()}) != actionTable.end()){
             std::pair<int, std::string> actionPair = actionTable[{stack.back(), currToken->getType()}];
             if (actionPair.second == "s"){

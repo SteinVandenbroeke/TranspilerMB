@@ -2,7 +2,5 @@ int cringe = 69;
 string pain = "pain";
 double cringeSequel = 6.9;
 while(cringe > 0){
-    print(cringe);
-    cringe = cringe - 1;
-}
-print(cringe);
+    cringe = cringe;
+};
