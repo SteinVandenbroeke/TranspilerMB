@@ -4,6 +4,8 @@
 
 #include "CSTNode.h"
 
+int id = 0;
+
 LeafNode::LeafNode(Token *token) : token{token} {}
 
 CST::CST(const std::vector<Token *> &tokens, const std::string &parseTable){
@@ -75,12 +77,40 @@ CST::~CST() {
     delete root;
 }
 
+std::string CST::generateDOT() const {
+    std::string DOT = "digraph G {\n";
+    assignNodes(DOT, root);
+    DOTNode(DOT, root);
+    DOT += "}";
+    return DOT;
+}
+
+void CST::DOTNode(std::string &s, CSTNode* node) const {
+    for (auto i : node->getChildren()){
+        s += std::to_string(node->getIdentifier()) + " -> " + std::to_string(i->getIdentifier()) + "\n";
+    }
+    for (auto i : node->getChildren()){
+        DOTNode(s, i);
+    }
+}
+
+void CST::assignNodes(std::string &s, CSTNode *node) const {
+    s += std::to_string(node->getIdentifier()) + " [label=\"" + node->getValue() + "\"];\n";
+    for (auto i : node->getChildren()){
+        assignNodes(s, i);
+    }
+}
+
 const std::vector<CSTNode *> &CSTNode::getChildren() const {
     return children;
 }
 
 Token *LeafNode::getToken() const {
     return token;
+}
+
+std::string LeafNode::getValue() {
+    return token->getType();
 }
 
 CSTNode *CSTNode::removeChild(CSTNode *node) {
@@ -104,10 +134,20 @@ CSTNode::~CSTNode() {
     }
 }
 
+int CSTNode::getIdentifier() const {
+    return CSTNode::identifier;
+}
+
+CSTNode::CSTNode() : identifier(id){
+    id++;
+}
+
 const std::string &InternalNode::getValue() const {
     return value;
 }
 
-InternalNode::InternalNode(const std::string& value) : value{value}{
+InternalNode::InternalNode(const std::string& value) : value{value} {}
 
+std::string InternalNode::getValue() {
+    return value;
 }
