@@ -214,8 +214,8 @@ std::vector<ENFA_State*> ENFA::closure(ENFA_State* state) const{
 std::pair<bool, std::vector<ENFA_State*>> ENFA::acceptsHelper(const std::string& input) {
     // ga door elk element van de string
     std::pair<bool, std::vector<ENFA_State*>> p;
-    currentStates = {startState};
-    std::set current = {startState};
+    currentStates = closure(startState);
+    std::set<ENFA_State*> current;
     for (auto i : input){
         if(count(alfabet.begin(), alfabet.end(), i) < 1){
             p.first = false;
@@ -227,21 +227,20 @@ std::pair<bool, std::vector<ENFA_State*>> ENFA::acceptsHelper(const std::string&
         std::set<ENFA_State*> temp0;
         std::set<ENFA_State*> temp1;
         for(auto s : currentStates){
+            temp = s->getNextState(i); // bepaal de nextstates
+            temp1 = {};
+            temp1.insert(temp.begin(), temp.end());
+            temp0.insert(temp1.begin(), temp1.end());
+        }
+        std::vector<ENFA_State*> temp3(temp0.begin(), temp0.end());
+        currentStates = temp3;
+
+        for(auto s : currentStates){
             close = this->closure(s);
             current.insert(close.begin(), close.end());
         }
         std::vector<ENFA_State*> temp2(current.begin(), current.end());
         currentStates = temp2;
-
-        for(auto s : currentStates){
-            temp = s->getNextState(i); // bepaal de nextstates
-            temp1 = {};
-            temp1.insert(temp.begin(), temp.end());
-            temp0.insert(currentStates.begin(), currentStates.end());
-            temp0.insert(temp1.begin(), temp1.end());
-        }
-        std::vector<ENFA_State*> temp3(temp0.begin(), temp0.end());
-        currentStates = temp3;
 
     }
     for(auto state : currentStates){

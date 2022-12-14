@@ -21,6 +21,7 @@ std::vector<Token*> Tokenizer::convert(const std::string& file) {
 
     std::string line;
     while(std::getline(code, line)){
+        if(line[0] == '/' && line[1] == '/'){ continue;}
         lines.push_back(line);
     }
 
@@ -72,6 +73,7 @@ std::vector<Token*> Tokenizer::convert(const std::string& file) {
                         std::string name = s->getName();
                         name.pop_back();
                         type = types[name];
+                        break;
                     }
                 }
                 Token* token = new Token(type, check, i.first, j);
