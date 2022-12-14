@@ -84,9 +84,7 @@ ENFA::ENFA(const std::string& jsonFile) {
     }
 
     for(const auto& i : j["alphabet"]){ // ga naar het segment alphabet in de json file en ga doorheen de elementen
-        std::string temp = to_string(i); // convert het element naar een string
-        temp.pop_back();
-        temp.erase(temp.begin());
+        std::string temp = i.get<std::string>(); // convert het element naar een string
         if(temp.size() > 1){
             temp.erase(temp.begin());
             for(auto c : vectors[std::stoi(temp)]){
@@ -213,13 +211,16 @@ std::vector<ENFA_State*> ENFA::closure(ENFA_State* state) const{
 
 }
 
-bool ENFA::accepts(const std::string& input) {
+std::pair<bool, std::vector<ENFA_State*>> ENFA::acceptsHelper(const std::string& input) {
     // ga door elk element van de string
+    std::pair<bool, std::vector<ENFA_State*>> p;
     currentStates = {startState};
     std::set current = {startState};
     for (auto i : input){
         if(count(alfabet.begin(), alfabet.end(), i) < 1){
-            return false;
+            p.first = false;
+            p.second = currentStates;
+            return p;
         }
         std::vector<ENFA_State*> temp;
         std::vector<ENFA_State*> close;
@@ -245,12 +246,20 @@ bool ENFA::accepts(const std::string& input) {
     }
     for(auto state : currentStates){
         if(state->isAccepting()){ // check of de currentstate een finalstates is
+            p.first = true;
+            p.second = currentStates;
             currentStates = {startState};
-            return true;
+            return p;
         }
     }
+    p.first = false;
+    p.second = currentStates;
     currentStates = {startState};
-    return false;
+    return p;
+}
+
+bool ENFA::accepts(const std::string &input) {
+    return acceptsHelper(input).first;
 }
 
 const std::vector<char> &ENFA::getAlfabet() const {

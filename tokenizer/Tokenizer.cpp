@@ -4,6 +4,13 @@
 
 #include "Tokenizer.h"
 
+Tokenizer::Tokenizer(){
+    types["string"] = "[STRINGTOKEN]";
+    types["var"] = "[VARNAMETOKEN]";
+    types["num"] = "[NUMBERTOKEN]";
+    types["char"] = "[CHARTOKEN]";
+}
+
 std::vector<Token*> Tokenizer::convert(const std::string& file) {
     std::vector<std::string> lines;
     std::map<int, std::vector<std::string>> split;
@@ -51,20 +58,30 @@ std::vector<Token*> Tokenizer::convert(const std::string& file) {
     ENFA var = ENFA("inputs/var.json");
     for(const auto& i  : split){
         for(int j = 0; j < i.second.size(); j++){
-            if(symbols.accepts(i.second[j])){
-                Token* token = new Token(i.second[j], "", i.first, j);
+            std::string check = i.second[j];
+            if(symbols.accepts(check)){
+                Token* token = new Token(check, "", i.first, j);
                 tokens.push_back(token);
                 continue;
             }
-            if(var.accepts(i.second[j])){
+            std::pair<bool, std::vector<ENFA_State*>> p = var.acceptsHelper(check);
+            if(p.first){
                 std::string type;
-                Token* token = new Token(type, i.second[j], i.first, j);
+                for(auto s : p.second){
+                    if(s->isAccepting()){
+                        std::string name = s->getName();
+                        name.pop_back();
+                        type = types[name];
+                    }
+                }
+                Token* token = new Token(type, check, i.first, j);
                 tokens.push_back(token);
                 continue;
             }
 
         }
     }
+    Token* endOfString = new Token("$","$", tokens.back()->getLine(), tokens.back()->getLinePos()+1);
+    tokens.push_back(endOfString);
     return tokens;
-
 }

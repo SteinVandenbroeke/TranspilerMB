@@ -5,7 +5,7 @@
 #ifndef TRANSPILER_ASTNODE_H
 #define TRANSPILER_ASTNODE_H
 #include <vector>
-#include "Token.h"
+#include "tokenizer/Token.h"
 #include <string>
 #include "SymbolTable.h"
 #include <iostream>

@@ -4,7 +4,7 @@
 
 #ifndef TRANSPILER_CSTNODE_H
 #define TRANSPILER_CSTNODE_H
-#include "Token.h"
+#include "tokenizer/Token.h"
 #include <vector>
 #include "json.hpp"
 #include <fstream>

@@ -1,8 +1,8 @@
 #include <iostream>
 #include "filesystem"
 #include "AstNode.h"
-#include "ENFA.h"
-#include "Tokenizer.h"
+#include "tokenizer/ENFA.h"
+#include "tokenizer/Tokenizer.h"
 
 #include "CSTNode.h"
 
@@ -21,8 +21,8 @@ int main() {
     //Tokenizer testing
     Tokenizer t = Tokenizer();
     std::vector<Token*> tokens = t.convert("inputs/STaalCode.txt");
-    for(auto t : tokens){
-        t->print();
+    for(auto token : tokens){
+        token->print();
     }
 
     //ENFA testing

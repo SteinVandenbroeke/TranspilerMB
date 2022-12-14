@@ -13,7 +13,7 @@
 #include <iomanip>
 #include <map>
 
-#include "json.hpp"
+#include "../json.hpp"
 
 
 class ENFA_State {
@@ -81,6 +81,8 @@ public:
     std::vector<ENFA_State*> closure(ENFA_State* state) const;
 
     bool accepts(const std::string& input);
+
+    std::pair<bool, std::vector<ENFA_State*>> acceptsHelper(const std::string& input);
 
     const std::vector<char> &getAlfabet() const;
     void setAlfabet(const std::vector<char> &alfabet);
