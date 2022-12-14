@@ -16,8 +16,9 @@ int lineNum;
 int linePos;
 
 public:
-    Token(std::string type);
-    Token(std::string type, std::string text);
+    Token(std::string type); //testing only
+    Token(std::string type, int lineNum, int linePos);
+    Token(std::string type, std::string text); //testing only
     Token(std::string type, std::string text, int lineNum, int linePos);
 
     std::string getText();
