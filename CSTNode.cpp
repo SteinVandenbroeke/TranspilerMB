@@ -4,58 +4,62 @@
 
 #include "CSTNode.h"
 
-CSTNode::CSTNode(Token *token) : token{token} {}
+LeafNode::LeafNode(Token *token) : token{token} {}
 
 CST::CST(const std::vector<Token *> &tokens, const std::string &parseTable){
-    root = new CSTNode(new Token("", ""));
+    root = new InternalNode("");
     std::ifstream input(parseTable);
     json j;
     input >> j;
     std::vector<int> stack = {0};
-    int index = 0;
-    bool accepts = false;
-    while (true){
-        bool changed = false;
-        Token* currToken = tokens[index];
-        for (auto entry : j["ActionTable"]){
-            if (entry["Input"] == currToken->getType() and entry["StateIndex"] == stack.back()){
-                changed = true;
-                if (entry["ActionType"] == "s"){
-                    root->addChild(new CSTNode(currToken));
-                    stack.push_back(entry["ActionArgument"]);
-                    index++;
-                }
-                else if (entry["ActionType"] == "r"){
-                    int productionIndex = entry["ActionArgument"];
-                    for (auto production : j["Productions"]){
-                        if (production["index"] == productionIndex){
-                            std::vector<CSTNode*> children;
-                            for (int i = 0; i < production["body"].size(); i++){
-                                stack.pop_back();
-                                children.push_back(root->removeChild(root->getChildren().back()));
-                            }
-                            for (auto gotoEntry : j["GotoTable"]){
-                                if (gotoEntry["Input"] == production["head"] and gotoEntry["StateIndex"] == stack.back()){
-                                    stack.push_back(gotoEntry["GotoIndex"]);
-                                    break;
-                                }
-                            }
-                            root->addChild(new CSTNode(new Token(production["head"])));
-                            for (auto child : children){
-                                root->getChildren().back()->addChild(child);
-                            }
-                        }
-                    }
-                }
-                else if (entry["ActionType"] == "acc"){
-                    accepts = true;
-                }
-                break; //Go to next token
-            }
+    std::map<std::pair<int, std::string>, std::pair<int, std::string>> actionTable;
+    std::map<std::pair<int, std::string>, int> gotoTable;
+    std::vector<std::pair<std::string, std::string>> productions(j["NumberOfProductions"], {"", ""});
+    for (auto entry : j["ActionTable"]){
+        int actionArgument;
+        if (entry["ActionType"] != "acc"){
+            actionArgument = entry["ActionArgument"];
+        } else{
+            actionArgument = -1;
         }
-        if (accepts){
-            break;
-        } else if (!changed){
+        actionTable[{entry["StateIndex"], entry["Input"]}] = {actionArgument, entry["ActionType"]};
+    }
+    for (auto entry : j["GotoTable"]){
+        gotoTable[{entry["StateIndex"], entry["Input"]}] = entry["GotoIndex"];
+    }
+    for (auto entry : j["Productions"]){
+        std::string rightSide;
+        for (const auto& character : entry["body"]){
+            rightSide += character;
+        }
+        productions[entry["index"]] = {entry["head"], rightSide};
+    }
+    int index = 0;
+    while (true){
+        Token* currToken = tokens[index];
+        if (actionTable.find({stack.back(), currToken->getType()}) != actionTable.end()){
+            std::pair<int, std::string> actionPair = actionTable[{stack.back(), currToken->getType()}];
+            if (actionPair.second == "s"){
+                root->addChild(new LeafNode(currToken));
+                stack.push_back(actionPair.first);
+                index++;
+            }
+            else if (actionPair.second == "r"){
+                std::vector<CSTNode*> children;
+                for (int i = 0; i < productions[actionPair.first].second.size(); i++){
+                    stack.pop_back();
+                    children.push_back(root->removeChild(root->getChildren().back()));
+                }
+                stack.push_back(gotoTable[{stack.back(), productions[actionPair.first].first}]);
+                root->addChild(new InternalNode(productions[actionPair.first].first));
+                for (auto child : children){
+                    root->getChildren().back()->addChild(child);
+                }
+            }
+            else if (actionPair.second == "acc"){
+                break;
+            }
+        } else {
             throw (std::runtime_error("LR(1) parsing error!")); //Parsing is unresolved / has failed
         }
     }
@@ -75,7 +79,7 @@ const std::vector<CSTNode *> &CSTNode::getChildren() const {
     return children;
 }
 
-Token *CSTNode::getToken() const {
+Token *LeafNode::getToken() const {
     return token;
 }
 
@@ -98,4 +102,12 @@ CSTNode::~CSTNode() {
     for (auto child : children){
         delete child;
     }
+}
+
+const std::string &InternalNode::getValue() const {
+    return value;
+}
+
+InternalNode::InternalNode(const std::string& value) : value{value}{
+
 }

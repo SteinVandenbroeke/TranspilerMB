@@ -8,20 +8,35 @@
 #include <vector>
 #include "json.hpp"
 #include <fstream>
-#include "iostream"
+#include <iostream>
+#include <algorithm>
+#include <map>
 using nlohmann::json;
 
 class CSTNode {
 public:
     ~CSTNode();
-    CSTNode(Token* token);
     const std::vector<CSTNode *> &getChildren() const;
-    Token *getToken() const;
     CSTNode* removeChild(CSTNode* node);
     void addChild(CSTNode* node);
 private:
     std::vector<CSTNode*> children;
+};
+
+class LeafNode : public CSTNode {
+public:
+    LeafNode(Token* token);
+    Token *getToken() const;
+private:
     Token* token;
+};
+
+class InternalNode : public CSTNode{
+public:
+    const std::string &getValue() const;
+    InternalNode(const std::string& value);
+private:
+    std::string value;
 };
 
 class CST{
