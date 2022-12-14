@@ -15,7 +15,7 @@ using nlohmann::json;
 
 class CSTNode {
 public:
-    ~CSTNode();
+    virtual ~CSTNode();
     CSTNode();
     virtual std::string getValue() = 0;
     const std::vector<CSTNode *> &getChildren() const;
