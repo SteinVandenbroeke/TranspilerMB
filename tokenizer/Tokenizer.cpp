@@ -11,6 +11,22 @@ Tokenizer::Tokenizer(){
     types["char"] = "[CHARTOKEN]";
 }
 
+std::pair<int, std::string> Tokenizer::findSeparator(std::vector<std::string> lines, int lineNum, int linePos) {
+    std::string separator;
+    int p = linePos;
+    for(p = linePos; p < lines[lineNum].size(); p++){
+        separator+= lines[lineNum][p];
+        if(std::count(separators.begin(), separators.end(), separator) == 0){
+            separator.pop_back();
+            p--;
+            break;
+        }
+    }
+    std::pair<int, std::string> pair;
+    pair.first = p; pair.second = separator;
+    return pair;
+}
+
 std::vector<Token*> Tokenizer::convert(const std::string& file) {
     std::vector<std::string> lines;
     std::map<int, std::vector<std::string>> split;
@@ -27,31 +43,27 @@ std::vector<Token*> Tokenizer::convert(const std::string& file) {
 
     for(int i = 0; i < lines.size(); i++){
         std::string word;
-        bool separator = false;
+        int linePos = 0;
+        int newLinePos = 0;
         for(auto s : lines[i]){
+            if(linePos <= newLinePos){
+                linePos++;
+                continue;
+            }
             std::string temp;
             temp = s;
-            if(std::count(separators.begin(), separators.end(), temp) > 0 && !separator){
+
+            if(std::count(separators.begin(), separators.end(), temp) > 0){
                 if(!word.empty()){ split[i].push_back(word);}
                 word = "";
-                if( s == ' '){ continue;}
-                word += s;
-                separator = true;
-                continue;
-            }if(separator){
-                if(std::count(separators.begin(), separators.end(), temp) >= 1 && s != ' '){
-                    word += s;
+                if( s == ' '){
+                    linePos++;
                     continue;
                 }
-                split[i].push_back(word);
-                word = "";
-                separator = false;
-                if(s == ' '){
-                    continue;
-                }
-                word += s;
-                split[i].push_back(word);
-                word = "";
+                std::pair<int, std::string> pair = findSeparator(lines, i, linePos);
+                split[i].push_back(pair.second);
+                newLinePos = pair.first;
+                linePos++;
                 continue;
             }
             word += s;
@@ -59,6 +71,7 @@ std::vector<Token*> Tokenizer::convert(const std::string& file) {
                 split[i].push_back(word);
                 word = "";
             }
+            linePos++;
         }
     }
 

@@ -23,6 +23,8 @@ private:
 public:
     Tokenizer();
 
+    std::pair<int, std::string> findSeparator(std::vector<std::string> lines, int lineNum, int linePos);
+
     std::vector<Token*> convert(const std::string& file);
 };
 
