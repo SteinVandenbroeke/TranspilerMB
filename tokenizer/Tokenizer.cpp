@@ -44,7 +44,7 @@ std::vector<Token*> Tokenizer::convert(const std::string& file) {
     for(int i = 0; i < lines.size(); i++){
         std::string word;
         int linePos = 0;
-        int newLinePos = 0;
+        int newLinePos = -1;
         for(auto s : lines[i]){
             if(linePos <= newLinePos){
                 linePos++;
