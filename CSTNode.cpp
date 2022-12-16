@@ -108,7 +108,7 @@ void CST::assignNodes(std::string &s, CSTNode *node) const {
     }
 }
 
-AstProgram* CST::toAst() {
+AstProgram* CST::toAst() const {
     AstProgram* program = new AstProgram();
     root->toAst(program);
     return program;
@@ -122,11 +122,11 @@ Token *LeafNode::getToken() const {
     return token;
 }
 
-std::string LeafNode::getValue() {
+std::string LeafNode::getValue() const {
     return token->getText();
 }
 
-AstNode *LeafNode::toAst(AstProgram *program) {
+AstNode *LeafNode::toAst(AstProgram *program) const {
     if(token->getType() == "[VARNAMETOKEN]"){
         return new AstVar(this->token);
     }
@@ -165,7 +165,7 @@ CSTNode::CSTNode() : identifier(id){
     id++;
 }
 
-AstNode *CSTNode::toAst(AstProgram *program) {
+AstNode *CSTNode::toAst(AstProgram *program) const {
     if(this->getValue() == "ProgramLine"){
         program->addLine(this->getChildren()[0]->toAst(program));
         return nullptr;
@@ -230,13 +230,9 @@ Token *CSTNode::getToken() const {
     return nullptr;
 }
 
-const std::string &InternalNode::getValue() const {
-    return value;
-}
-
 InternalNode::InternalNode(const std::string& value) : value{value} {}
 
-std::string InternalNode::getValue() {
+std::string InternalNode::getValue() const {
     return value;
 }
 

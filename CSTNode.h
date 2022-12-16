@@ -18,13 +18,13 @@ class CSTNode {
 public:
     virtual ~CSTNode();
     CSTNode();
-    virtual std::string getValue() = 0;
+    virtual std::string getValue() const = 0;
     virtual Token* getToken() const;
     const std::vector<CSTNode *> &getChildren() const;
     CSTNode* removeChild(CSTNode* node);
     void addChild(CSTNode* node);
     int getIdentifier() const;
-    virtual AstNode* toAst(AstProgram* program);
+    virtual AstNode* toAst(AstProgram* program) const;
 private:
     int identifier;
     std::vector<CSTNode*> children;
@@ -33,17 +33,16 @@ private:
 class LeafNode : public CSTNode {
 public:
     LeafNode(Token* token);
-    virtual std::string getValue() override;
+    virtual std::string getValue() const override;
     Token *getToken() const override;
-    AstNode* toAst(AstProgram* program = nullptr) override;
+    AstNode* toAst(AstProgram* program = nullptr) const override;
 private:
     Token* token;
 };
 
 class InternalNode : public CSTNode{
 public:
-    const std::string &getValue() const;
-    virtual std::string getValue() override;
+    virtual std::string getValue() const override;
     InternalNode(const std::string& value);
 private:
     std::string value;
@@ -56,7 +55,7 @@ public:
     void assignNodes(std::string& s, CSTNode* node) const;
     ~CST();
     CST(const std::vector<Token*>& tokens, const std::string& parseTable);
-    AstProgram* toAst();
+    AstProgram* toAst() const;
 private:
     CSTNode* root;
 };
