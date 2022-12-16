@@ -19,6 +19,7 @@ public:
     SymbolTable* removeScope();
     bool IsVarInCurrentScope(std::string varName, std::string varType);
     bool IsVarDeclared(std::string varName, std::string varType);
+    bool IsVarDeclared(std::string varName);
     bool checkVarType();
     void newVar(std::string varName, std::string varType);
 };

@@ -22,9 +22,11 @@ int main() {
     Tokenizer t = Tokenizer();
     std::vector<Token*> tokens = t.convert("inputs/STaalCode.txt");
     CST cst = CST(tokens,"LR1ParserGenerator/test_grammar_0.json_PARSETABLE.json");
-    std::cout << cst.generateDOT() << std::endl;
+   // std::cout << cst.generateDOT() << std::endl;
     AstProgram* program = cst.toAst();
-    std::cout << program->generateDOT() << std::endl << std::endl;
+
+    program->checkTypes();
+   // std::cout << program->generateDOT() << std::endl << std::endl;
     std::cout << program->getJsCode() << std::endl;
     //Tokenizer testing
 /*

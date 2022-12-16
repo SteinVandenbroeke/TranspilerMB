@@ -122,6 +122,7 @@ public:
     std::vector<AstNode*> getChilderen() const override;
     std::string getJsCode() const override;
     astNodeType getType() const override;
+    bool checkTypes(SymbolTable& table) const override;
 };
 
 class AstPrint: public AstNode{
@@ -200,6 +201,7 @@ class AstBody:public AstProgram{
 public:
     std::string getJsCode() const override;
     astNodeType getType() const override;
+    bool checkTypes(SymbolTable& table) const override;
 };
 
 /**

@@ -135,8 +135,8 @@ astNodeType AstDeclartion::getType() const {
 }
 
 bool AstDeclartion::checkTypes(SymbolTable &table) const {
-    if(table.IsVarDeclared(this->var->getTokenText(), this->getTokenText())){
-        std::cout << "error on line: " << token->getLine() << " [" << "Variable " << this->var->getTokenText() << " is declared multiple times" << "]" << std::endl;
+    if(table.IsVarDeclared(this->var->getTokenText())){
+        std::cout << "error on line: " << token->getLine() << " [" << "Variable " << this->var->getTokenText() << " is declared multiple times in the same scope" << "]" << std::endl;
         return false;
     }
     table.newVar(this->var->getTokenText(), this->getTokenText());
@@ -175,6 +175,14 @@ std::string AstIntalisation::getJsCode() const {
 
 astNodeType AstIntalisation::getType() const {
     return AstIntalisationsC;
+}
+
+bool AstIntalisation::checkTypes(SymbolTable &table) const {
+    if(!table.IsVarDeclared(this->var->getTokenText())){
+        std::cout << "error on line: " << token->getLine() << " [" << "Variable " << this->var->getTokenText() << " is not declared" << "]" << std::endl;
+        return false;
+    }
+    return true;
 }
 
 AstConditionBody::AstConditionBody(Token* token): AstNode(token){
@@ -233,6 +241,10 @@ std::string AstBody::getJsCode() const {
 
 astNodeType AstBody::getType() const {
     return AstBodyC;
+}
+
+bool AstBody::checkTypes(SymbolTable &table) const {
+    table.newScope();
 }
 
 AstCondition::AstCondition(Token *token) : AstNode(token) {
@@ -306,8 +318,8 @@ astNodeType AstVar::getType() const {
 }
 
 bool AstVar::checkTypes(SymbolTable &table) const {
-    if(!table.IsVarDeclared(this->getTokenText(), "/")){
-        std::cout << "error on line: " << token->getLine() << " [" << "Variable " << this->getTokenText() << " is not initialized." << "]" << std::endl;
+    if(!table.IsVarDeclared(this->getTokenText())){
+        std::cout << "error on line: " << token->getLine() << " [" << "Variable " << this->getTokenText() << " is not declared." << "]" << std::endl;
         return false;
     }
     return true;

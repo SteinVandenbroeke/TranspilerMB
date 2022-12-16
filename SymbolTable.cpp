@@ -48,3 +48,7 @@ bool SymbolTable::checkVarType() {
 
     return false;
 }
+
+bool SymbolTable::IsVarDeclared(std::string varName) {
+    return table.find(varName) != table.end();
+}

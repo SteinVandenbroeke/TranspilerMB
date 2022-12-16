@@ -75,6 +75,7 @@ std::vector<Token*> Tokenizer::convert(const std::string& file) {
         }
     }
 
+    /*TODO weg gecommend
     for(const auto& i : split){
         std::cout << i.first << ": ";
         for(const auto& j : i.second){
@@ -82,6 +83,7 @@ std::vector<Token*> Tokenizer::convert(const std::string& file) {
         }
         std::cout << std::endl;
     }
+     */
 
     ENFA symbols = ENFA(keywords);
     ENFA var = ENFA("inputs/var.json");
