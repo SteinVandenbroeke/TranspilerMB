@@ -18,21 +18,23 @@ void cstConstructionTest() {
 }
 
 int main() {
-    /*
+
     Tokenizer t = Tokenizer();
     std::vector<Token*> tokens = t.convert("inputs/STaalCode.txt");
     CST cst = CST(tokens,"LR1ParserGenerator/test_grammar_0.json_PARSETABLE.json");
     std::cout << cst.generateDOT() << std::endl;
-    */
+    AstProgram* program = cst.toAst();
+    std::cout << program->generateDOT() << std::endl << std::endl;
+    std::cout << program->getJsCode() << std::endl;
     //Tokenizer testing
-
+/*
     Tokenizer t0 = Tokenizer();
     std::vector<Token*> tokens0 = t0.convert("inputs/STaalCode.txt");
 
     for(auto token : tokens0){
         token->print();
     }
-
+*/
     //ENFA testing
     /*
     ENFA e = ENFA("inputs/input1.json");
@@ -55,11 +57,11 @@ int main() {
 
     Token* number = new Token("[NUMBERTOKEN]", "10");
     AstValue* value = new AstValue(number);
-*/
+
 //    std::vector<Token *> tokenList{new Token("int"),new Token("[VARNAMETOKEN]","i"),new Token("="),new Token("[NUMBERTOKEN]", "10"),new Token(";"),new Token("while"),new Token("("),new Token("[VARNAMETOKEN]","i"), new Token("<"), new Token("[NUMBERTOKEN]","11"),new Token(")"),new Token("{"), new Token("int"),new Token("[VARNAMETOKEN]","a"),new Token("="),new Token("[NUMBERTOKEN]", "10"),new Token(";"),new Token("}"), new Token("$")};
 //    CST cst = CST(tokenList,"LR1ParserGenerator/test_grammar_0.json_PARSETABLE.json");
 //    cst.generateDOT();
-/*
+
     AstDeclartion* declartionI = new AstDeclartion(tokenDeclarationI, varI, value);
     AstDeclartion* declartionA = new AstDeclartion(tokenDeclarationA, varA, value);
 
@@ -75,8 +77,8 @@ int main() {
     program.addLine(intalisation);
     program.checkTypes();
     std::cout << program.getJsCode();
-
-*/
+    std::cout << program.generateDOT();
+    */
    // cstConstructionTest();
 
     return 0;

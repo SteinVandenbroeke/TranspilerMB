@@ -27,20 +27,28 @@ class AstChar;
 class AstProgram;
 class AstValue;
 class AstVarOrValue;
+class AstParentheses;
 ///forward declarations
 
 enum astNodeType {AstProgramC, AstDeclartionC, AstIntalisationsC, AstWhileC, AstIfC,AstBodyC,
         AstConditionC,AstBoolOperatorC,AstArithmeticOperationsC,AstVarC,AstNumberC,AstStringC,AstCharC,
-        AstValueC, AstVarOrValueC};
+        AstValueC, AstVarOrValueC, AstParenthesesC};
+
+static int identifierCounter = 0;
 
 class AstNode {
 protected:
     Token* token;
+    int identifier;
+    std::string generateDotInternal();
 public:
     AstNode(Token* token);
     AstNode();
     std::string getTokenType();
     std::string getTokenText();
+    virtual std::string getValue() const;
+    std::string getIdentifier() const;
+    std::string generateDOT();
     virtual std::string getJsCode() = 0;
     virtual astNodeType getType() = 0;
     virtual bool checkTypes(SymbolTable& table);
@@ -53,7 +61,9 @@ public:
     void addLine(AstNode* programLine);
     std::string getJsCode() override;
     astNodeType getType() override;
+    std::vector<AstNode*> getChilderen() override;
     bool checkTypes();
+    std::string getValue() const;
 };
 
 /**
@@ -71,14 +81,14 @@ public:
  */
 class AstDeclartion:public AstNode{
     AstVar* var = nullptr;
-    AstValue* value = nullptr;
+    AstNode* value = nullptr;
 public:
     AstDeclartion(Token* token);
-    AstDeclartion(Token* token, AstVar* var, AstValue* value);
+    AstDeclartion(Token* token, AstVar* var, AstNode* value);
     void setAstVar(AstVar* var);
-    void setAstValue(AstValue* value);
+    void setAstValue(AstNode* value);
     AstVar * getAstVar();
-    AstValue* getAstValue();
+    AstNode* getAstValue();
     std::vector<AstNode*> getChilderen() override;
     std::string getJsCode() override;
     astNodeType getType() override;
@@ -108,6 +118,7 @@ public:
     void setAstValue(AstValue* value);
     AstVar* getAstVar();
     AstNode* getAstValue();
+    std::string getValue() const override;
     std::vector<AstNode*> getChilderen() override;
     std::string getJsCode() override;
     astNodeType getType() override;
@@ -147,6 +158,7 @@ public:
     AstWhile(AstCondition *condition, AstBody *body);
     std::string getJsCode() override;
     astNodeType getType() override;
+    std::string getValue() const override;
 };
 
 /**
@@ -165,7 +177,7 @@ public:
 class AstIf:public AstConditionBody{
 public:
     AstIf(AstCondition *condition, AstBody *body);
-
+    std::string getValue() const override;
     std::string getJsCode() override;
     astNodeType getType() override;
 };
@@ -220,9 +232,20 @@ public:
     astNodeType getType() override;
 };
 
+class AstParentheses:public AstNode{
+    AstNode* innerNode;
+public:
+    AstParentheses(Token* token, AstNode* innerNode);
+    std::vector<AstNode*> getChilderen() override;
+    std::string getJsCode() override;
+    astNodeType getType() override;
+    std::string getValue() const override;
+};
+
 class AstVarOrValue:public AstNode{
 public:
     AstVarOrValue(Token* token);
+    virtual std::string getJsCode() override = 0;
 };
 
 class AstVar:public AstVarOrValue{

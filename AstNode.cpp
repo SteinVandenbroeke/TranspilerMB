@@ -4,9 +4,15 @@
 
 #include "AstNode.h"
 
-AstNode::AstNode(Token *token): token(token) {}
+AstNode::AstNode(Token *token): token(token) {
+    this->identifier = identifierCounter;
+    identifierCounter++;
+}
 
-AstNode::AstNode() {}
+AstNode::AstNode() {
+    this->identifier = identifierCounter;
+    identifierCounter++;
+}
 
 std::string AstNode::getTokenType() {
     return token->getType();
@@ -25,6 +31,39 @@ bool AstNode::checkTypes(SymbolTable &table) {
 
 std::vector<AstNode *> AstNode::getChilderen() {
     return std::vector<AstNode *>{};
+}
+
+std::string AstNode::generateDotInternal() {
+    std::string dot = "";
+
+    std::string value = this->getValue();
+    if(value[0] == '"' && value[value.length() - 1] == '"'){
+        value.erase(value.begin());
+        value.pop_back();
+        value = "\\\"" + value + "\\\"";
+    }
+    dot += "\"" + this->getIdentifier() + "\"" + " [label=\"" + value + "\"];\n";
+    for (auto child : this->getChilderen()){
+        dot += child->generateDotInternal();
+        dot += "\"" + this->getIdentifier() + "\"" + " -> " +  "\"" + child->getIdentifier() + "\"" + "\n";
+    }
+    return dot;
+}
+
+std::string AstNode::getIdentifier() const {
+    std::string objectName = typeid(this).name();
+    return objectName + " [" + std::to_string(this->identifier) + "]";
+}
+
+std::string AstNode::generateDOT() {
+    std::string dot  = "digraph G {\n";
+    dot += this->generateDotInternal();
+    dot += "\n}";
+    return dot;
+}
+
+std::string AstNode::getValue() const {
+    return this->token->getText();
 }
 
 void AstProgram::addLine(AstNode *programLine) {
@@ -51,11 +90,19 @@ bool AstProgram::checkTypes() {
     return true;
 }
 
+std::vector<AstNode *> AstProgram::getChilderen() {
+    return this->lines;
+}
+
+std::string AstProgram::getValue() const {
+    return "Program";
+}
+
 AstDeclartion::AstDeclartion(Token *token) : AstNode(token) {
 
 }
 
-AstDeclartion::AstDeclartion(Token *token, AstVar *var, AstValue *value): AstNode(token), var(var), value(value) {
+AstDeclartion::AstDeclartion(Token *token, AstVar *var, AstNode *value): AstNode(token), var(var), value(value) {
 
 }
 
@@ -63,7 +110,7 @@ void AstDeclartion::setAstVar(AstVar *var) {
     this->var = var;
 }
 
-void AstDeclartion::setAstValue(AstValue *value) {
+void AstDeclartion::setAstValue(AstNode *value) {
     this->value = value;
 }
 
@@ -71,7 +118,7 @@ AstVar *AstDeclartion::getAstVar() {
     return var;
 }
 
-AstValue *AstDeclartion::getAstValue() {
+AstNode *AstDeclartion::getAstValue() {
     return value;
 }
 
@@ -80,7 +127,7 @@ std::vector<AstNode *> AstDeclartion::getChilderen() {
 }
 
 std::string AstDeclartion::getJsCode() {
-    return "let " + var->getTokenText() + " = " + value->getTokenText() + ";";
+    return "let " + var->getTokenText() + " = " + value->getJsCode() + ";";
 }
 
 astNodeType AstDeclartion::getType() {
@@ -123,11 +170,15 @@ std::vector<AstNode *> AstIntalisation::getChilderen() {
 }
 
 std::string AstIntalisation::getJsCode() {
-    return var->getTokenText() + " = " + value->getTokenText() + ";";
+    return var->getTokenText() + " = " + value->getJsCode() + ";";
 }
 
 astNodeType AstIntalisation::getType() {
     return AstIntalisationsC;
+}
+
+std::string AstIntalisation::getValue() const {
+    return "=";
 }
 
 AstConditionBody::AstConditionBody() {
@@ -166,6 +217,10 @@ astNodeType AstWhile::getType() {
 
 AstWhile::AstWhile(AstCondition *condition, AstBody *body) : AstConditionBody(condition, body) {}
 
+std::string AstWhile::getValue() const {
+    return "while";
+}
+
 std::string AstIf::getJsCode() {
     return "if(" + condition->getJsCode() + ")" + body->getJsCode();
 }
@@ -175,6 +230,10 @@ astNodeType AstIf::getType() {
 }
 
 AstIf::AstIf(AstCondition *condition, AstBody *body) : AstConditionBody(condition, body) {}
+
+std::string AstIf::getValue() const {
+    return "if";
+}
 
 std::string AstBody::getJsCode() {
     return "{\n" + token->getText() + "\n}";
@@ -235,7 +294,7 @@ std::vector<AstNode *> AstArithmeticOperations::getChilderen() {
 }
 
 std::string AstArithmeticOperations::getJsCode() {
-    return "(" + val1->getJsCode() + this->getTokenText() + val2->getJsCode() + ")";
+    return val1->getJsCode() + this->getTokenText() + val2->getJsCode();
 }
 
 astNodeType AstArithmeticOperations::getType() {
@@ -270,4 +329,24 @@ std::string AstValue::getJsCode() {
 
 astNodeType AstValue::getType() {
     return AstValueC;
+}
+
+AstParentheses::AstParentheses(Token *token, AstNode *innerNode): AstNode(token), innerNode(innerNode) {
+
+}
+
+std::vector<AstNode *> AstParentheses::getChilderen() {
+    return std::vector<AstNode *>{innerNode};
+}
+
+std::string AstParentheses::getJsCode() {
+    return "(" + this->innerNode->getJsCode() + ")";
+}
+
+astNodeType AstParentheses::getType() {
+    return AstParenthesesC;
+}
+
+std::string AstParentheses::getValue() const {
+    return "()";
 }

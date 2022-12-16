@@ -7,6 +7,7 @@
 #include "tokenizer/Token.h"
 #include <vector>
 #include "json.hpp"
+#include "AstNode.h"
 #include <fstream>
 #include <iostream>
 #include <algorithm>
@@ -18,10 +19,12 @@ public:
     virtual ~CSTNode();
     CSTNode();
     virtual std::string getValue() = 0;
+    virtual Token* getToken() const;
     const std::vector<CSTNode *> &getChildren() const;
     CSTNode* removeChild(CSTNode* node);
     void addChild(CSTNode* node);
     int getIdentifier() const;
+    virtual AstNode* toAst(AstProgram* program);
 private:
     int identifier;
     std::vector<CSTNode*> children;
@@ -31,7 +34,8 @@ class LeafNode : public CSTNode {
 public:
     LeafNode(Token* token);
     virtual std::string getValue() override;
-    Token *getToken() const;
+    Token *getToken() const override;
+    AstNode* toAst(AstProgram* program = nullptr) override;
 private:
     Token* token;
 };
@@ -52,6 +56,7 @@ public:
     void assignNodes(std::string& s, CSTNode* node) const;
     ~CST();
     CST(const std::vector<Token*>& tokens, const std::string& parseTable);
+    AstProgram* toAst();
 private:
     CSTNode* root;
 };

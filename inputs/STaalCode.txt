@@ -1,20 +1,7 @@
-//commentaar
-int a = 10;
-int b = 10;
-if(b + (99 + 10) + a == 10){
-    print(b);
-    while(10 < a){
-        print(b + a + (10 / 5));
-    }
-}
-
-int c = 18;
-string test = "test";
-
-if("test1" == "test"){
-    print("wtf");
-}
-
-print(a + b);
-print("test");
-print("test");
+int a = 10 + 11;
+int b = 10 + (a + 11)/10;
+int c = a;
+string test = "lala";
+c = 22;
+c = "lalala";
+c = (10 + 9) + a + c;

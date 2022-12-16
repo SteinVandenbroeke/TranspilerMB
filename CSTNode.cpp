@@ -108,6 +108,12 @@ void CST::assignNodes(std::string &s, CSTNode *node) const {
     }
 }
 
+AstProgram* CST::toAst() {
+    AstProgram* program = new AstProgram();
+    root->toAst(program);
+    return program;
+}
+
 const std::vector<CSTNode *> &CSTNode::getChildren() const {
     return children;
 }
@@ -118,6 +124,16 @@ Token *LeafNode::getToken() const {
 
 std::string LeafNode::getValue() {
     return token->getText();
+}
+
+AstNode *LeafNode::toAst(AstProgram *program) {
+    if(token->getType() == "[VARNAMETOKEN]"){
+        return new AstVar(this->token);
+    }
+    else if(token->getType() == "[NUMBERTOKEN]" || token->getType() == "[STRINGTOKEN]" || token->getType() == "[CHARTOKEN]"){
+        return new AstValue(this->token);
+    }
+    return nullptr;
 }
 
 CSTNode *CSTNode::removeChild(CSTNode *node) {
@@ -149,6 +165,52 @@ CSTNode::CSTNode() : identifier(id){
     id++;
 }
 
+AstNode *CSTNode::toAst(AstProgram *program) {
+    if(this->getValue() == "ProgramLine"){
+        program->addLine(this->getChildren()[0]->toAst(program));
+        return nullptr;
+    }
+    else if(this->getValue() == "S"){
+        this->getChildren()[0]->toAst(program);
+        if(this->getChildren().size() > 1) {
+            this->getChildren()[1]->toAst(program);
+        }
+        return program;
+    }
+    else if(this->getValue() == "VarName" || this->getValue() == "numberI" || this->getValue() == "stringI" || this->getValue() == "charI" || this->getValue() == "AnyType"){
+        return this->getChildren()[0]->toAst(program);
+    }
+    else if(this->getValue() == "Declatation"){
+        AstVar* astVar = dynamic_cast<AstVar *>(this->children[1]->toAst(program));
+        AstNode* astValue = this->children[3]->toAst(program);
+        return new AstDeclartion(this->children[0]->getToken(), astVar, astValue);
+    }
+    else if(this->getValue() == "Initalization"){
+        AstVar* astVar = dynamic_cast<AstVar *>(this->children[0]->toAst(program));
+        AstNode* astValue = this->children[2]->toAst(program);
+        return new AstIntalisation(astVar, astValue);
+    }
+    else if(this->getValue() == "ArithmeticOperations" || this->getValue() == "ArithmeticOperations1"){
+        if(this->children.size() == 1){
+            return this->children[0]->toAst(program);//dynamic_cast<AstValue *>(this->children[0]->getChildren()[0]->toAst());
+        }
+        else if(this->children.size() == 3 && this->children[0]->getValue() != "(" && this->children[2]->getValue() != ")"){
+            return new AstArithmeticOperations(this->children[1]->getToken(), this->children[0]->toAst(program), this->children[2]->toAst(program));
+        }
+        else if(this->children.size() == 3 && this->children[0]->getValue() == "(" && this->children[2]->getValue() == ")"){
+            return new AstParentheses(this->children[0]->getToken(), this->children[1]->toAst(program));
+        }
+        else{
+            throw (std::runtime_error("Wrong ArithmeticOperations node format"));
+        }
+    }
+    return nullptr;
+}
+
+Token *CSTNode::getToken() const {
+    return nullptr;
+}
+
 const std::string &InternalNode::getValue() const {
     return value;
 }
@@ -158,3 +220,4 @@ InternalNode::InternalNode(const std::string& value) : value{value} {}
 std::string InternalNode::getValue() {
     return value;
 }
+
