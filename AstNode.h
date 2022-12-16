@@ -41,28 +41,28 @@ class AstNode {
 protected:
     Token* token;
     int identifier;
-    std::string generateDotInternal();
+    std::string generateDotInternal() const;
 public:
     AstNode(Token* token);
     AstNode();
-    std::string getTokenType();
-    std::string getTokenText();
+    std::string getTokenType() const;
+    std::string getTokenText() const;
     virtual std::string getValue() const;
     std::string getIdentifier() const;
-    std::string generateDOT();
-    virtual std::string getJsCode() = 0;
-    virtual astNodeType getType() = 0;
-    virtual bool checkTypes(SymbolTable& table);
-    virtual std::vector<AstNode*> getChilderen();
+    std::string generateDOT() const;
+    virtual std::string getJsCode() const = 0;
+    virtual astNodeType getType() const = 0;
+    virtual bool checkTypes(SymbolTable& table) const;
+    virtual std::vector<AstNode*> getChilderen() const;
 };
 
 class AstProgram: public AstNode{
     std::vector<AstNode*> lines;
 public:
     void addLine(AstNode* programLine);
-    std::string getJsCode() override;
-    astNodeType getType() override;
-    std::vector<AstNode*> getChilderen() override;
+    std::string getJsCode() const override;
+    astNodeType getType() const override;
+    std::vector<AstNode*> getChilderen() const override;
     bool checkTypes();
     std::string getValue() const;
 };
@@ -90,10 +90,10 @@ public:
     void setAstValue(AstNode* value);
     AstVar * getAstVar();
     AstNode* getAstValue();
-    std::vector<AstNode*> getChilderen() override;
-    std::string getJsCode() override;
-    astNodeType getType() override;
-    bool checkTypes(SymbolTable& table) override;
+    std::vector<AstNode*> getChilderen() const override;
+    std::string getJsCode() const override;
+    astNodeType getType() const override;
+    bool checkTypes(SymbolTable& table) const override;
 };
 
 /**
@@ -119,9 +119,9 @@ public:
     void setAstValue(AstValue* value);
     AstVar* getAstVar();
     AstNode* getAstValue();
-    std::vector<AstNode*> getChilderen() override;
-    std::string getJsCode() override;
-    astNodeType getType() override;
+    std::vector<AstNode*> getChilderen() const override;
+    std::string getJsCode() const override;
+    astNodeType getType() const override;
 };
 
 class AstPrint: public AstNode{
@@ -129,9 +129,9 @@ class AstPrint: public AstNode{
 public:
     AstPrint(Token* token);
     AstPrint(Token* token, AstNode *value);
-    std::vector<AstNode*> getChilderen() override;
-    std::string getJsCode() override;
-    astNodeType getType() override;
+    std::vector<AstNode*> getChilderen() const override;
+    std::string getJsCode() const override;
+    astNodeType getType() const override;
 };
 
 class AstConditionBody: public AstNode{
@@ -145,9 +145,9 @@ public:
     void setAstBody(AstBody* body);
     AstCondition* getAstCondition();
     AstBody* getAstBody();
-    std::vector<AstNode*> getChilderen() override;
-    virtual std::string getJsCode() = 0;
-    virtual astNodeType getType() = 0;
+    std::vector<AstNode*> getChilderen() const override;
+    virtual std::string getJsCode() const override = 0;
+    virtual astNodeType getType() const override = 0;
 };
 
 /**
@@ -166,8 +166,8 @@ public:
 class AstWhile: public AstConditionBody{
 public:
     AstWhile(Token* token,AstCondition *condition, AstBody *body);
-    std::string getJsCode() override;
-    astNodeType getType() override;
+    std::string getJsCode() const override;
+    astNodeType getType() const override;
     std::string getValue() const override;
 };
 
@@ -187,8 +187,8 @@ public:
 class AstIf:public AstConditionBody{
 public:
     AstIf(Token* token, AstCondition *condition, AstBody *body);
-    std::string getJsCode() override;
-    astNodeType getType() override;
+    std::string getJsCode() const override;
+    astNodeType getType() const override;
 };
 
 /**
@@ -198,8 +198,8 @@ public:
  */
 class AstBody:public AstProgram{
 public:
-    std::string getJsCode() override;
-    astNodeType getType() override;
+    std::string getJsCode() const override;
+    astNodeType getType() const override;
 };
 
 /**
@@ -223,9 +223,9 @@ public:
     AstCondition(Token* token, AstNode* var1, AstNode* var2);
     void setVar1(AstNode* valOrValue);
     void setVar2(AstNode* valOrValue);
-    std::vector<AstNode*> getChilderen() override;
-    std::string getJsCode() override;
-    astNodeType getType() override;
+    std::vector<AstNode*> getChilderen() const override;
+    std::string getJsCode() const override;
+    astNodeType getType() const override;
 };
 
 class AstArithmeticOperations:public AstNode{
@@ -236,39 +236,39 @@ public:
     AstArithmeticOperations(Token* token, AstNode* val1, AstNode* val2);
     void setVal1(AstNode* valOrValue);
     void setVal2(AstNode* valOrValue);
-    std::vector<AstNode*> getChilderen() override;
-    std::string getJsCode() override;
-    astNodeType getType() override;
+    std::vector<AstNode*> getChilderen() const override;
+    std::string getJsCode() const override;
+    astNodeType getType() const override;
 };
 
 class AstParentheses:public AstNode{
     AstNode* innerNode;
 public:
     AstParentheses(Token* token, AstNode* innerNode);
-    std::vector<AstNode*> getChilderen() override;
-    std::string getJsCode() override;
-    astNodeType getType() override;
+    std::vector<AstNode*> getChilderen() const override;
+    std::string getJsCode() const override;
+    astNodeType getType() const override;
     std::string getValue() const override;
 };
 
 class AstVarOrValue:public AstNode{
 public:
     AstVarOrValue(Token* token);
-    virtual std::string getJsCode() override = 0;
+    virtual std::string getJsCode() const override = 0;
 };
 
 class AstVar:public AstVarOrValue{
 public:
     AstVar(Token* token);
-    std::string getJsCode() override;
-    astNodeType getType() override;
-    bool checkTypes(SymbolTable& table) override;
+    std::string getJsCode() const override;
+    astNodeType getType() const override;
+    bool checkTypes(SymbolTable& table) const override;
 };
 
 class AstValue:public AstVarOrValue{
 public:
     AstValue(Token* token);
-    std::string getJsCode() override;
-    astNodeType getType() override;
+    std::string getJsCode() const override;
+    astNodeType getType() const override;
 };
 #endif //TRANSPILER_ASTNODE_H
