@@ -28,11 +28,12 @@ class AstProgram;
 class AstValue;
 class AstVarOrValue;
 class AstParentheses;
+class AstPrint;
 ///forward declarations
 
 enum astNodeType {AstProgramC, AstDeclartionC, AstIntalisationsC, AstWhileC, AstIfC,AstBodyC,
         AstConditionC,AstBoolOperatorC,AstArithmeticOperationsC,AstVarC,AstNumberC,AstStringC,AstCharC,
-        AstValueC, AstVarOrValueC, AstParenthesesC};
+        AstValueC, AstVarOrValueC, AstParenthesesC, AstPrintC};
 
 static int identifierCounter = 0;
 
@@ -124,13 +125,23 @@ public:
     astNodeType getType() override;
 };
 
+class AstPrint: public AstNode{
+    AstNode* value = nullptr;
+public:
+    AstPrint(Token* token);
+    AstPrint(Token* token, AstNode *value);
+    std::vector<AstNode*> getChilderen() override;
+    std::string getJsCode() override;
+    astNodeType getType() override;
+};
+
 class AstConditionBody: public AstNode{
 protected:
     AstCondition* condition = nullptr;
     AstBody* body = nullptr;
 public:
-    AstConditionBody();
-    AstConditionBody(AstCondition* condition, AstBody* body);
+    AstConditionBody(Token* token);
+    AstConditionBody(Token* token,AstCondition* condition, AstBody* body);
     void setAstCondition(AstCondition* condition);
     void setAstBody(AstBody* body);
     AstCondition* getAstCondition();
@@ -155,7 +166,7 @@ public:
  */
 class AstWhile: public AstConditionBody{
 public:
-    AstWhile(AstCondition *condition, AstBody *body);
+    AstWhile(Token* token,AstCondition *condition, AstBody *body);
     std::string getJsCode() override;
     astNodeType getType() override;
     std::string getValue() const override;
@@ -176,8 +187,7 @@ public:
  */
 class AstIf:public AstConditionBody{
 public:
-    AstIf(AstCondition *condition, AstBody *body);
-    std::string getValue() const override;
+    AstIf(Token* token, AstCondition *condition, AstBody *body);
     std::string getJsCode() override;
     astNodeType getType() override;
 };

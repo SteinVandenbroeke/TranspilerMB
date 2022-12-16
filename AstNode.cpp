@@ -181,11 +181,11 @@ std::string AstIntalisation::getValue() const {
     return "=";
 }
 
-AstConditionBody::AstConditionBody() {
+AstConditionBody::AstConditionBody(Token* token): AstNode(token){
 
 }
 
-AstConditionBody::AstConditionBody(AstCondition *condition, AstBody *body): condition(condition), body(body) {}
+AstConditionBody::AstConditionBody(Token* token, AstCondition *condition, AstBody *body): AstNode(token), condition(condition), body(body) {}
 
 void AstConditionBody::setAstCondition(AstCondition *condition) {
     this->condition = condition;
@@ -208,35 +208,31 @@ std::vector<AstNode *> AstConditionBody::getChilderen() {
 }
 
 std::string AstWhile::getJsCode() {
-    return "while(" + condition->getJsCode() + ")" + body->getJsCode();
+    return "while" + condition->getJsCode() + "" + body->getJsCode();
 }
 
 astNodeType AstWhile::getType() {
     return AstWhileC;
 }
 
-AstWhile::AstWhile(AstCondition *condition, AstBody *body) : AstConditionBody(condition, body) {}
+AstWhile::AstWhile(Token* token,AstCondition *condition, AstBody *body) : AstConditionBody(token,condition, body) {}
 
 std::string AstWhile::getValue() const {
     return "while";
 }
 
 std::string AstIf::getJsCode() {
-    return "if(" + condition->getJsCode() + ")" + body->getJsCode();
+    return "if" + condition->getJsCode() + "" + body->getJsCode();
 }
 
 astNodeType AstIf::getType() {
     return AstIfC;
 }
 
-AstIf::AstIf(AstCondition *condition, AstBody *body) : AstConditionBody(condition, body) {}
-
-std::string AstIf::getValue() const {
-    return "if";
-}
+AstIf::AstIf(Token* token,AstCondition *condition, AstBody *body) : AstConditionBody(token,condition, body) {}
 
 std::string AstBody::getJsCode() {
-    return "{\n" + token->getText() + "\n}";
+    return "{\n" + AstProgram::getJsCode() + "\n}";
 }
 
 astNodeType AstBody::getType() {
@@ -349,4 +345,24 @@ astNodeType AstParentheses::getType() {
 
 std::string AstParentheses::getValue() const {
     return "()";
+}
+
+AstPrint::AstPrint(Token *token) : AstNode(token) {
+
+}
+
+AstPrint::AstPrint(Token *token, AstNode *value): AstNode(token), value(value) {
+
+}
+
+std::vector<AstNode *> AstPrint::getChilderen() {
+    return std::vector<AstNode *>{value};
+}
+
+std::string AstPrint::getJsCode() {
+    return "console.log(" + this->value->getJsCode() + ");";
+}
+
+astNodeType AstPrint::getType() {
+    return AstIntalisationsC;
 }

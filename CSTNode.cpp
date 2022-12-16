@@ -204,6 +204,25 @@ AstNode *CSTNode::toAst(AstProgram *program) {
             throw (std::runtime_error("Wrong ArithmeticOperations node format"));
         }
     }
+    else if(this->getValue() == "Condition"){
+        return new AstCondition(this->children[1]->getChildren()[0]->getToken(), this->children[0]->toAst(program), this->children[2]->toAst(program));
+    }
+    else if(this->getValue() == "If"){
+        AstBody* astBody = new AstBody();
+        this->children[4]->getChildren()[1]->toAst(astBody);
+        AstCondition* astCondition = dynamic_cast<AstCondition *>(this->children[2]->toAst(program));
+        return new AstIf(this->children[0]->getToken(), astCondition, astBody);
+    }
+    else if(this->getValue() == "Loop"){
+        AstBody* astBody = new AstBody();
+        this->children[4]->getChildren()[1]->toAst(astBody);
+        AstCondition* astCondition = dynamic_cast<AstCondition *>(this->children[2]->toAst(program));
+        return new AstWhile(this->children[0]->getToken(), astCondition, astBody);
+    }
+    else if(this->getValue() == "Print"){
+        AstNode* astValue = this->children[2]->toAst(program);
+        return new AstPrint(this->children[0]->getToken(), astValue);
+    }
     return nullptr;
 }
 
