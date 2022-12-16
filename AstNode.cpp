@@ -143,11 +143,11 @@ bool AstDeclartion::checkTypes(SymbolTable &table) {
     return true;
 }
 
-AstIntalisation::AstIntalisation() {
+AstIntalisation::AstIntalisation(Token* token): AstNode(token) {
 
 }
 
-AstIntalisation::AstIntalisation(AstVar *var, AstNode *value): var(var), value(value) {}
+AstIntalisation::AstIntalisation(Token* token, AstVar *var, AstNode *value): AstNode(token), var(var), value(value) {}
 
 void AstIntalisation::setAstVar(AstVar *var) {
     this->var = var;
@@ -175,10 +175,6 @@ std::string AstIntalisation::getJsCode() {
 
 astNodeType AstIntalisation::getType() {
     return AstIntalisationsC;
-}
-
-std::string AstIntalisation::getValue() const {
-    return "=";
 }
 
 AstConditionBody::AstConditionBody(Token* token): AstNode(token){

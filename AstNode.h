@@ -113,13 +113,12 @@ class AstIntalisation: public AstNode{
     AstVar* var = nullptr;
     AstNode* value = nullptr;
 public:
-    AstIntalisation();
-    AstIntalisation(AstVar* var, AstNode* value);
+    AstIntalisation(Token* token);
+    AstIntalisation(Token* token, AstVar* var, AstNode* value);
     void setAstVar(AstVar* var);
     void setAstValue(AstValue* value);
     AstVar* getAstVar();
     AstNode* getAstValue();
-    std::string getValue() const override;
     std::vector<AstNode*> getChilderen() override;
     std::string getJsCode() override;
     astNodeType getType() override;

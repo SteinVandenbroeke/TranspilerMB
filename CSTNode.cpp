@@ -188,7 +188,7 @@ AstNode *CSTNode::toAst(AstProgram *program) {
     else if(this->getValue() == "Initalization"){
         AstVar* astVar = dynamic_cast<AstVar *>(this->children[0]->toAst(program));
         AstNode* astValue = this->children[2]->toAst(program);
-        return new AstIntalisation(astVar, astValue);
+        return new AstIntalisation(this->getChildren()[1]->getToken(), astVar, astValue);
     }
     else if(this->getValue() == "ArithmeticOperations" || this->getValue() == "ArithmeticOperations1"){
         if(this->children.size() == 1){
