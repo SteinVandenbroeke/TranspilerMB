@@ -20,7 +20,8 @@ public:
     bool IsVarInCurrentScope(std::string varName, std::string varType);
     bool IsVarDeclared(std::string varName, std::string varType);
     bool IsVarDeclared(std::string varName);
-    bool checkVarType();
+    bool IsAllowedType(std::string varName, std::string compaireType);
     void newVar(std::string varName, std::string varType);
+    std::string getVarType(std::string varName);
 };
 #endif //TRANSPILER_SYMBOLTABLE_H

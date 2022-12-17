@@ -25,9 +25,11 @@ int main() {
    // std::cout << cst.generateDOT() << std::endl;
     AstProgram* program = cst.toAst();
 
-    program->checkTypes();
+    if(program->checkTypes()){
+        std::cout << program->getJsCode() << std::endl;
+    }
    // std::cout << program->generateDOT() << std::endl << std::endl;
-    std::cout << program->getJsCode() << std::endl;
+
     //Tokenizer testing
 /*
     Tokenizer t0 = Tokenizer();
