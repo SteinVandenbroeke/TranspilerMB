@@ -1,1 +1,2 @@
-string test = "la la";
+string test = "la' la";
+char cringe = '"';

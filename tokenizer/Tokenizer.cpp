@@ -46,16 +46,12 @@ std::pair<int, std::string> Tokenizer::read(std::vector<std::string> lines, int 
     }
 
     for(p = linePos; p < lines[lineNum].size(); p++){
-        var+= lines[lineNum][p];
-        if((lines[lineNum][p] == '"' && p != linePos) && string){
+        char c = lines[lineNum][p];
+        var+= c;
+        if((c == '"' && p != linePos) && string){
             break;
         }
-        if((lines[lineNum][p] == '\'' && p != linePos) && !string){
-            break;
-        }
-        if((lines[lineNum][p] == '"' || lines[lineNum][p] == '\'') && p != linePos){
-            std::cerr << "Wrong string/character quotations ==> removed string/character" << std::endl;
-            var = "";
+        if((c == '\'' && p != linePos) && !string){
             break;
         }
     }
