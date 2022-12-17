@@ -18,7 +18,7 @@ void cstConstructionTest() {
 }
 
 int main() {
-
+/*
     Tokenizer t = Tokenizer();
     std::vector<Token*> tokens = t.convert("inputs/STaalCode.txt");
     CST cst = CST(tokens,"LR1ParserGenerator/test_grammar_0.json_PARSETABLE.json");
@@ -29,16 +29,16 @@ int main() {
         std::cout << program->getJsCode() << std::endl;
     }
    // std::cout << program->generateDOT() << std::endl << std::endl;
-
+*/
     //Tokenizer testing
-/*
+
     Tokenizer t0 = Tokenizer();
     std::vector<Token*> tokens0 = t0.convert("inputs/STaalCode.txt");
 
     for(auto token : tokens0){
         token->print();
     }
-*/
+
     //ENFA testing
     /*
     ENFA e = ENFA("inputs/input1.json");
