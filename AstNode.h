@@ -33,6 +33,7 @@ class AstPrint;
 ///forward declarations
 
 static int identifierCounter = 0;
+static std::stringstream compilerOutput;
 
 class AstNode {
 protected:
