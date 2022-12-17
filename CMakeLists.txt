@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 project(transpiler)
 
 set(CMAKE_CXX_STANDARD 17)
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 
 set(PARSERGENDIR LR1ParserGenerator)
 add_executable(parser_generator
@@ -23,5 +24,5 @@ add_executable(parser_generator
         )
 target_include_directories(parser_generator PUBLIC LR1ParserGenerator)
 
-add_executable(transpiler main.cpp AstNode.h AstNode.cpp tokenizer/Token.h tokenizer/Token.cpp SymbolTable.cpp SymbolTable.h tokenizer/ENFA.h tokenizer/ENFA.cpp tokenizer/Tokenizer.cpp tokenizer/Tokenizer.h CSTNode.h CSTNode.cpp)
+add_executable(transpiler main.cpp AstNode.h AstNode.cpp tokenizer/Token.h tokenizer/Token.cpp SymbolTable.cpp SymbolTable.h tokenizer/ENFA.h tokenizer/ENFA.cpp tokenizer/Tokenizer.cpp tokenizer/Tokenizer.h CSTNode.h CSTNode.cpp crow.h WebServer.cpp WebServer.h)
 file(COPY testEnv DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")

@@ -20,11 +20,14 @@
                     </div>
                     <br/><br/>
                     <div style="width: 100%; text-align: right;" onclick="">
-                        <a href="#" class="material-symbols-outlined" style="color: black" onclick='document.getElementById("javascriptCode").src = "https://dreampuf.github.io/GraphvizOnline/#digraph%20G%20%7B%0A%0A%20%20subgraph%20cluster_0%20%7B%0A%20%20%20%20style%3Dfilled%3B%0A%20%20%20%20color%3Dlightgrey%3B%0A%20%20%20%20node%20%5Bstyle%3Dfilled%2Ccolor%3Dwhite%5D%3B%0A%20%20%20%20a0%20-%3E%20a1%20-%3E%20a2%20-%3E%20a3%3B%0A%20%20%20%20label%20%3D%20%22process%20%231%22%3B%0A%20%20%7D%0A%0A%20%20subgraph%20cluster_1%20%7B%0A%20%20%20%20node%20%5Bstyle%3Dfilled%5D%3B%0A%20%20%20%20b0%20-%3E%20b1%20-%3E%20b2%20-%3E%20b3%3B%0A%20%20%20%20label%20%3D%20%22process%20%232%22%3B%0A%20%20%20%20color%3Dblue%0A%20%20%7D%0A%20%20start%20-%3E%20a0%3B%0A%20%20start%20-%3E%20b0%3B%0A%20%20a1%20-%3E%20b3%3B%0A%20%20b2%20-%3E%20a3%3B%0A%20%20a3%20-%3E%20a0%3B%0A%20%20a3%20-%3E%20end%3B%0A%20%20b3%20-%3E%20end%3B%0A%0A%20%20start%20%5Bshape%3DMdiamond%5D%3B%0A%20%20end%20%5Bshape%3DMsquare%5D%3B%0A%7D";'> account_tree </a>
-                        <a href="#" class="material-symbols-outlined" style="color: black" onclick='document.getElementById("javascriptCode").src = "runScript.js";'> Javascript </a>
-                        <a href="#" class="material-symbols-outlined" style="color: black" onclick='document.getElementById("javascriptCode").src = "runScript.c4";'> code </a>
-
-                        <iframe style="width: 100%; height: 80vh" id="javascriptCode" src="runScript.js"></iframe>
+                        <a href="#" class="material-symbols-outlined" style="color: black" onclick='document.getElementById("javascriptCodeContainer").style.display = "none"; document.getElementById("staalCode").style.display = "none"; document.getElementById("tree0").style.display = "none"; document.getElementById("tree1").style.display = "block";'> account_tree </a>
+                        <a href="#" class="material-symbols-outlined" style="color: black" onclick='document.getElementById("javascriptCodeContainer").style.display = "none"; document.getElementById("staalCode").style.display = "none"; document.getElementById("tree0").style.display = "block"; document.getElementById("tree1").style.display = "none";'> account_tree </a>
+                        <a href="#" class="material-symbols-outlined" style="color: black" onclick='document.getElementById("javascriptCodeContainer").style.display = "block"; document.getElementById("staalCode").style.display = "none"; document.getElementById("tree0").style.display = "none"; document.getElementById("tree1").style.display = "none";'> Javascript </a>
+                        <a href="#" class="material-symbols-outlined" style="color: black" onclick='document.getElementById("javascriptCodeContainer").style.display = "none"; document.getElementById("staalCode").style.display = "block"; document.getElementById("tree0").style.display = "none"; document.getElementById("tree1").style.display = "none";'> code </a>
+                        <iframe style="width: 100%; height: 80vh; display: none" id="tree0" src=""></iframe>
+                        <iframe style="width: 100%; height: 80vh; display: none" id="tree1" src=""></iframe>
+                        <pre style="width: 100%; height: 80vh; display: none" id="javascriptCodeContainer"><code class="language-javascript" id="javascriptCode"></code></pre>
+                        <textarea style="width: 100%; height: 80vh; display: none" name="Text1" id="staalCode"></textarea>
                     </div>
                 </div>
             </div>
@@ -54,27 +57,51 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-javascript.min.js" integrity="sha512-yvw5BDA/GQu8umskpIOBhX2pDLrdOiriaK4kVxtD28QEGLV5rscmCfDjkrx52tIgzLgwzs1FsALV6eYDpGnEkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script>
+        /*
     let console = {};
     console.log = function(output){document.getElementById("javascriptOutputs").innerHTML += output + "\n";};
     console.warn = function(output){document.getElementById("javascriptWarnings").innerHTML += output + "\n";};
     console.error = function(output){document.getElementById("javascriptErrors").innerHTML += output + "\n";};
     window.onerror = function(msg, url, lineNo, columnNo, error){
         document.getElementById('javascriptErrors').innerHTML += "location(" + lineNo + "," + columnNo + "): " + msg + "\n";
-    }
+    }*/
     </script>
 
     <script type="text/javascript">
         let reRunButton = document.getElementById('reRunBtn');
         reRunButton.onclick = function(){
-            let script = document.createElement("script");
-            script.type = "text/javascript";
-            script.src = "runScript.js.";
-            script.innerHTML = "let console = {};\n" +
-                "    console.log = function(output){document.getElementById(\"javascriptOutputs\").innerHTML += output + \"\\n\";};\n" +
-                "    console.warn = function(output){document.getElementById(\"javascriptWarnings\").innerHTML += output + \"\\n\";};\n" +
-                "    console.error = function(output, items = {}){document.getElementById(\"javascriptErrors\").innerHTML += output + \"\\n\";};";
-            document.getElementsByTagName("head")[0].appendChild(script);
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "staalCode");
+            xhr.setRequestHeader("Accept", "application/json");
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    var requestReturn = JSON.parse(xhr.responseText);
+                    document.getElementById("javascriptCode").innerHTML = requestReturn["jscode"];
+                    document.getElementById("tree0").src = "http://dreampuf.github.io/GraphvizOnline/#" + requestReturn["cst"].replaceAll("\n","%0A");
+                    document.getElementById("tree1").src = "http://dreampuf.github.io/GraphvizOnline/#" + requestReturn["ast"].replaceAll("\n","%0A");
+                    let script = document.createElement("script");
+                    script.type = "text/javascript";
+                    script.innerHTML = "let console = {};\n" +
+                        "    console.log = function(output){document.getElementById(\"javascriptOutputs\").innerHTML += output + \"\\n\";};\n" +
+                        "    console.warn = function(output){document.getElementById(\"javascriptWarnings\").innerHTML += output + \"\\n\";};\n" +
+                        "    console.error = function(output, items = {}){document.getElementById(\"javascriptErrors\").innerHTML += output + \"\\n\";};" +
+                        requestReturn["jscode"];
+
+                    document.getElementsByTagName("head")[0].appendChild(script);
+                }};
+
+            let data = document.getElementById("staalCode").value;
+
+            xhr.send(data);
             return false;
+        }
+    </script>
+
+    <script>
+        function loadData(){
+
         }
     </script>
 </body>

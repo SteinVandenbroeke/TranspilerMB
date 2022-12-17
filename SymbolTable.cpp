@@ -14,7 +14,7 @@ SymbolTable::SymbolTable(SymbolTable *outerScope) {
 }
 
 SymbolTable *SymbolTable::newScope() {
-    return new SymbolTable(outerScope);
+    return new SymbolTable(this);
 }
 
 SymbolTable *SymbolTable::removeScope() {
@@ -46,7 +46,13 @@ void SymbolTable::newVar(std::string varName, std::string varType) {
 }
 
 bool SymbolTable::IsVarDeclared(std::string varName) {
-    return table.find(varName) != table.end();
+    if(table.find(varName) != table.end()){
+        return true;
+    }
+    else if(outerScope == nullptr){
+        return false;
+    }
+    return outerScope->IsVarDeclared(varName);
 }
 
 std::string SymbolTable::getVarType(std::string varName) {
@@ -59,13 +65,17 @@ std::string SymbolTable::getVarType(std::string varName) {
     return outerScope->getVarType(varName);
 }
 
-bool SymbolTable::IsAllowedType(std::string varName, std::string compaireType) {
-    if((this->getVarType(varName) == compaireType) || (this->getVarType(varName) == "double" && compaireType == "int") || (this->getVarType(varName) == "string" && compaireType == "char")){
+bool SymbolTable::IsAllowedType(std::string compaireType1, std::string compaireType2) {
+    if((compaireType1 == compaireType2) || (compaireType1 == "double" && compaireType2 == "int") || (compaireType1 == "string" && compaireType2 == "char") || (compaireType1 == "string" && compaireType2 == "int")){
         return true;
     }
-    else if(this->getVarType(varName) == "int" && compaireType == "double"){
-        std::cout << "implicit conversion double to int" << std::endl;
+    else if(compaireType1 == "int" && compaireType2 == "double"){
+        std::cout << "[Warning] implicit conversion found double to int" << std::endl;
         return true;
     }
     return false;
+}
+
+bool SymbolTable::IsVarInCurrentScope(std::string varName) {
+    return table.find(varName) != table.end();
 }

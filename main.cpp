@@ -3,8 +3,8 @@
 #include "AstNode.h"
 #include "tokenizer/ENFA.h"
 #include "tokenizer/Tokenizer.h"
-
 #include "CSTNode.h"
+#include "WebServer.h"
 
 
 void cstConstructionTest() {
@@ -18,6 +18,8 @@ void cstConstructionTest() {
 }
 
 int main() {
+    WebServer ws = WebServer();
+    ws.start();
 /*
     Tokenizer t = Tokenizer();
     std::vector<Token*> tokens = t.convert("inputs/STaalCode.txt");
@@ -29,13 +31,8 @@ int main() {
         std::cout << program->getJsCode() << std::endl;
     }
    // std::cout << program->generateDOT() << std::endl << std::endl;
-*/
-    //Tokenizer testing
 
-    Tokenizer t0 = Tokenizer();
-    std::vector<Token*> tokens0 = t0.convert("inputs/STaalCode.txt");
-    t0.displayWords();
-    t0.displayTokens();
+    //Tokenizer testing
 
     //ENFA testing
     /*

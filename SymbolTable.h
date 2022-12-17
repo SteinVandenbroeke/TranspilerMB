@@ -18,9 +18,10 @@ public:
     SymbolTable* newScope();
     SymbolTable* removeScope();
     bool IsVarInCurrentScope(std::string varName, std::string varType);
+    bool IsVarInCurrentScope(std::string varName);
     bool IsVarDeclared(std::string varName, std::string varType);
     bool IsVarDeclared(std::string varName);
-    bool IsAllowedType(std::string varName, std::string compaireType);
+    bool IsAllowedType(std::string compaireType1, std::string compaireType2);
     void newVar(std::string varName, std::string varType);
     std::string getVarType(std::string varName);
 };

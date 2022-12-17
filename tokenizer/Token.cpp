@@ -12,7 +12,7 @@ Token::Token(std::string type, std::string text): type(type), text(text) {
 
 }
 
-Token::Token(std::string type, std::string text, int lN, int lP): type(type), text(text), lineNum(lN), linePos(lP) {
+Token::Token(std::string type, std::string text, int lN, int lP): type(type), text(text), lineNum(lN + 1), linePos(lP + 1) {
 
 }
 

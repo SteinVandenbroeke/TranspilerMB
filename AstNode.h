@@ -46,7 +46,7 @@ public:
     virtual std::string getValue() const;
     std::string getIdentifier() const;
     std::string generateDOT() const;
-    virtual std::string getJsCode() const = 0;
+    virtual std::string getJsCode(int scopeCount) const = 0;
     virtual std::string getType(SymbolTable& table) const;
     virtual bool checkTypes(SymbolTable& table) const;
     virtual std::vector<AstNode*> getChilderen() const;
@@ -57,7 +57,7 @@ protected:
     std::vector<AstNode*> lines;
 public:
     void addLine(AstNode* programLine);
-    std::string getJsCode() const override;
+    std::string getJsCode(int scopeCount = 0) const override;
     std::vector<AstNode*> getChilderen() const override;
     bool checkTypes();
     std::string getValue() const;
@@ -87,7 +87,7 @@ public:
     AstVar * getAstVar();
     AstNode* getAstValue();
     std::vector<AstNode*> getChilderen() const override;
-    std::string getJsCode() const override;
+    std::string getJsCode(int scopeCount) const override;
     bool checkTypes(SymbolTable& table) const override;
 };
 
@@ -115,7 +115,7 @@ public:
     AstVar* getAstVar();
     AstNode* getAstValue();
     std::vector<AstNode*> getChilderen() const override;
-    std::string getJsCode() const override;
+    std::string getJsCode(int scopeCount) const override;
     bool checkTypes(SymbolTable& table) const override;
 };
 
@@ -125,7 +125,7 @@ public:
     AstPrint(Token* token);
     AstPrint(Token* token, AstNode *value);
     std::vector<AstNode*> getChilderen() const override;
-    std::string getJsCode() const override;
+    std::string getJsCode(int scopeCount) const override;
 };
 
 class AstConditionBody: public AstNode{
@@ -140,7 +140,7 @@ public:
     AstCondition* getAstCondition();
     AstBody* getAstBody();
     std::vector<AstNode*> getChilderen() const override;
-    virtual std::string getJsCode() const override = 0;
+    virtual std::string getJsCode(int scopeCount) const override = 0;
 };
 
 /**
@@ -159,7 +159,7 @@ public:
 class AstWhile: public AstConditionBody{
 public:
     AstWhile(Token* token,AstCondition *condition, AstBody *body);
-    std::string getJsCode() const override;
+    std::string getJsCode(int scopeCount) const override;
     std::string getValue() const override;
 };
 
@@ -179,7 +179,7 @@ public:
 class AstIf:public AstConditionBody{
 public:
     AstIf(Token* token, AstCondition *condition, AstBody *body);
-    std::string getJsCode() const override;
+    std::string getJsCode(int scopeCount) const override;
 };
 
 /**
@@ -189,7 +189,7 @@ public:
  */
 class AstBody:public AstProgram{
 public:
-    std::string getJsCode() const override;
+    std::string getJsCode(int scopeCount) const override;
     bool checkTypes(SymbolTable& table) const override;
 };
 
@@ -215,7 +215,8 @@ public:
     void setVar1(AstNode* valOrValue);
     void setVar2(AstNode* valOrValue);
     std::vector<AstNode*> getChilderen() const override;
-    std::string getJsCode() const override;
+    std::string getJsCode(int scopeCount) const override;
+    bool checkTypes(SymbolTable& table) const override;
 };
 
 class AstArithmeticOperations:public AstNode{
@@ -227,8 +228,9 @@ public:
     void setVal1(AstNode* valOrValue);
     void setVal2(AstNode* valOrValue);
     std::vector<AstNode*> getChilderen() const override;
-    std::string getJsCode() const override;
+    std::string getJsCode(int scopeCount) const override;
     std::string getType(SymbolTable& table) const override;
+    bool checkTypes(SymbolTable& table) const override;
 };
 
 class AstParentheses:public AstNode{
@@ -236,7 +238,7 @@ class AstParentheses:public AstNode{
 public:
     AstParentheses(Token* token, AstNode* innerNode);
     std::vector<AstNode*> getChilderen() const override;
-    std::string getJsCode() const override;
+    std::string getJsCode(int scopeCount) const override;
     std::string getType(SymbolTable& table) const override;
     std::string getValue() const override;
 };
@@ -244,14 +246,14 @@ public:
 class AstVarOrValue:public AstNode{
 public:
     AstVarOrValue(Token* token);
-    virtual std::string getJsCode() const override = 0;
+    virtual std::string getJsCode(int scopeCount) const override = 0;
     virtual std::string getType(SymbolTable& table) const override = 0;
 };
 
 class AstVar:public AstVarOrValue{
 public:
     AstVar(Token* token);
-    std::string getJsCode() const override;
+    std::string getJsCode(int scopeCount) const override;
     std::string getType(SymbolTable& table) const override;
     bool checkTypes(SymbolTable& table) const override;
 };
@@ -259,7 +261,7 @@ public:
 class AstValue:public AstVarOrValue{
 public:
     AstValue(Token* token);
-    std::string getJsCode() const override;
+    std::string getJsCode(int scopeCount) const override;
     std::string getType(SymbolTable& table) const override;
 };
 #endif //TRANSPILER_ASTNODE_H

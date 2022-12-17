@@ -29,7 +29,7 @@ bool AstNode::checkTypes(SymbolTable &table) const {
             typeOk = false;
         }
     }
-    return false;
+    return typeOk;
 }
 
 std::vector<AstNode *> AstNode::getChilderen() const {
@@ -77,11 +77,16 @@ void AstProgram::addLine(AstNode *programLine) {
     this->lines.push_back(programLine);
 }
 
-std::string AstProgram::getJsCode() const {
+std::string AstProgram::getJsCode(int scopeCount) const {
     std::string code = "";
-    for(AstNode* programLine: lines){
-        code += programLine->getJsCode() + "\n";
+    std::string tabs = "";
+    for(int i = 0; i < scopeCount; i++){
+        tabs += "\t";
     }
+    for(AstNode* programLine: lines){
+        code += tabs + programLine->getJsCode(scopeCount) + "\n";
+    }
+    code.resize(code.size() - 1);//remove last enter
     return code;
 }
 
@@ -132,17 +137,17 @@ std::vector<AstNode *> AstDeclartion::getChilderen() const {
     return std::vector<AstNode *>{var, value};
 }
 
-std::string AstDeclartion::getJsCode() const {
-    return "let " + var->getTokenText() + " = " + value->getJsCode() + ";";
+std::string AstDeclartion::getJsCode(int scopeCount) const {
+    return "let " + var->getTokenText() + " = " + value->getJsCode(scopeCount) + ";";
 }
 
 bool AstDeclartion::checkTypes(SymbolTable &table) const {
-    if(table.IsVarDeclared(this->var->getTokenText())){
+    if(table.IsVarInCurrentScope(this->var->getTokenText())){
         std::cout << "error on line: " << token->getLine() << " [" << "Variable " << this->var->getTokenText() << " is declared multiple times in the same scope" << "]" << std::endl;
         return false;
     }
     table.newVar(this->var->getTokenText(), this->getTokenText());
-    if(!table.IsAllowedType(this->var->getTokenText(), this->value->getType(table))){
+    if(!table.IsAllowedType(this->var->getType(table), this->value->getType(table))){
         std::cout << "error on line: " << token->getLine() << " [" << "Variable " << this->var->getTokenText() << " of type \"" + this->var->getType(table) + "\" does not accept a value of type \"" + this->value->getType(table)  << "\"]" << std::endl;
         return false;
     }
@@ -175,8 +180,8 @@ std::vector<AstNode *> AstIntalisation::getChilderen() const {
     return std::vector<AstNode *>{var, value};
 }
 
-std::string AstIntalisation::getJsCode() const {
-    return var->getTokenText() + " = " + value->getJsCode() + ";";
+std::string AstIntalisation::getJsCode(int scopeCount) const {
+    return var->getTokenText() + " = " + value->getJsCode(scopeCount) + ";";
 }
 
 bool AstIntalisation::checkTypes(SymbolTable &table) const {
@@ -184,7 +189,7 @@ bool AstIntalisation::checkTypes(SymbolTable &table) const {
         std::cout << "error on line: " << token->getLine() << " [" << "Variable " << this->var->getTokenText() << " is not declared" << "]" << std::endl;
         return false;
     }
-    else if(!table.IsAllowedType(this->var->getTokenText(), this->value->getType(table))){
+    else if(!table.IsAllowedType(this->var->getType(table), this->value->getType(table))){
         std::cout << "error on line: " << token->getLine() << " [" << "Variable " << this->var->getTokenText() << " of type \"" + this->var->getType(table) + "\" does not accept a value of type \"" + this->value->getType(table)  << "\"]" << std::endl;
         return false;
     }
@@ -217,8 +222,8 @@ std::vector<AstNode *> AstConditionBody::getChilderen() const {
     return std::vector<AstNode *>{condition, body};
 }
 
-std::string AstWhile::getJsCode() const {
-    return "while" + condition->getJsCode() + "" + body->getJsCode();
+std::string AstWhile::getJsCode(int scopeCount) const {
+    return "while" + condition->getJsCode(scopeCount) + "" + body->getJsCode(scopeCount);
 }
 
 AstWhile::AstWhile(Token* token,AstCondition *condition, AstBody *body) : AstConditionBody(token,condition, body) {}
@@ -227,21 +232,25 @@ std::string AstWhile::getValue() const {
     return "while";
 }
 
-std::string AstIf::getJsCode() const {
-    return "if" + condition->getJsCode() + "" + body->getJsCode();
+std::string AstIf::getJsCode(int scopeCount) const {
+    return "if" + condition->getJsCode(scopeCount) + "" + body->getJsCode(scopeCount);
 }
 
 AstIf::AstIf(Token* token,AstCondition *condition, AstBody *body) : AstConditionBody(token,condition, body) {}
 
-std::string AstBody::getJsCode() const {
-    return "{\n" + AstProgram::getJsCode() + "\n}";
+std::string AstBody::getJsCode(int scopeCount) const {
+    std::string tabs = "";
+    for(int i = 0; i < scopeCount; i++){
+        tabs += "\t";
+    }
+    return "{\n" + AstProgram::getJsCode(scopeCount + 1) + "\n" + tabs + "}";
 }
 
 bool AstBody::checkTypes(SymbolTable &table) const {
     bool typesOk = true;
-    table.newScope();
+    SymbolTable &table1 = *table.newScope();
     for(AstNode* programLine: this->lines){
-        if(!programLine->checkTypes(table)){
+        if(!programLine->checkTypes(table1)){
             typesOk = false;
         }
     }
@@ -268,8 +277,16 @@ std::vector<AstNode *> AstCondition::getChilderen() const {
     return std::vector<AstNode *>{val1, val2};
 }
 
-std::string AstCondition::getJsCode() const {
-    return "(" + val1->getJsCode() + this->getTokenText() + val2->getJsCode() + ")";
+std::string AstCondition::getJsCode(int scopeCount) const {
+    return "(" + val1->getJsCode(scopeCount) + " " + this->getTokenText() + " " + val2->getJsCode(scopeCount) + ")";
+}
+
+bool AstCondition::checkTypes(SymbolTable &table) const {
+    if(val1->getType(table) != val2->getType(table)){
+        std::cout << "error on line: " << token->getLine() << " [" << "Unable to compare type: \"" << this->val1->getType(table) << " to type " + this->val2->getType(table)  << "\"]" << std::endl;
+        return false;
+    }
+    return true;
 }
 
 AstArithmeticOperations::AstArithmeticOperations(Token *token) : AstNode(token) {
@@ -294,8 +311,8 @@ std::vector<AstNode *> AstArithmeticOperations::getChilderen() const {
     return std::vector<AstNode *>{val1, val2};
 }
 
-std::string AstArithmeticOperations::getJsCode() const {
-    return val1->getJsCode() + this->getTokenText() + val2->getJsCode();
+std::string AstArithmeticOperations::getJsCode(int scopeCount) const {
+    return val1->getJsCode(scopeCount) + this->getTokenText() + val2->getJsCode(scopeCount);
 }
 
 std::string AstArithmeticOperations::getType(SymbolTable &table) const {
@@ -305,17 +322,25 @@ std::string AstArithmeticOperations::getType(SymbolTable &table) const {
     else if(val1->getType(table) == "int" && val2->getType(table) == "int"){
         return "int";
     }
-    else if((val1->getType(table) == "string" && val2->getType(table) == "char") || (val1->getType(table) == "char" && val2->getType(table) == "string")){
+    else if(this->getTokenText() == "+" && val1->getType(table) != "undefined" && val2->getType(table) != "undefined"){
         return "string";
     }
     return "undefined";
+}
+
+bool AstArithmeticOperations::checkTypes(SymbolTable &table) const {
+    if(!table.IsAllowedType(val1->getType(table), val2->getType(table)) && !table.IsAllowedType(val2->getType(table), val1->getType(table))){
+        std::cout << "error on line: " << token->getLine() << " [" << "Arithmetic operations between two types not allowed: \"" << this->val1->getType(table) << "\" " + this->getTokenText() + " \"" + this->val2->getType(table)  << "\"]" << std::endl;
+        return false;
+    }
+    return true;
 }
 
 AstVarOrValue::AstVarOrValue(Token *token) : AstNode(token) {}
 
 AstVar::AstVar(Token *token) : AstVarOrValue(token) {}
 
-std::string AstVar::getJsCode() const {
+std::string AstVar::getJsCode(int scopeCount) const {
     return token->getText();
 }
 
@@ -333,7 +358,7 @@ bool AstVar::checkTypes(SymbolTable &table) const {
 
 AstValue::AstValue(Token *token) : AstVarOrValue(token) {}
 
-std::string AstValue::getJsCode() const {
+std::string AstValue::getJsCode(int scopeCount) const {
     return token->getText();
 }
 
@@ -359,8 +384,8 @@ std::vector<AstNode *> AstParentheses::getChilderen() const {
     return std::vector<AstNode *>{innerNode};
 }
 
-std::string AstParentheses::getJsCode() const {
-    return "(" + this->innerNode->getJsCode() + ")";
+std::string AstParentheses::getJsCode(int scopeCount) const {
+    return "(" + this->innerNode->getJsCode(scopeCount) + ")";
 }
 
 std::string AstParentheses::getType(SymbolTable& table) const {
@@ -383,6 +408,6 @@ std::vector<AstNode *> AstPrint::getChilderen() const {
     return std::vector<AstNode *>{value};
 }
 
-std::string AstPrint::getJsCode() const {
-    return "console.log(" + this->value->getJsCode() + ");";
+std::string AstPrint::getJsCode(int scopeCount) const {
+    return "console.log(" + this->value->getJsCode(scopeCount) + ");";
 }
