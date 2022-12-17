@@ -34,10 +34,8 @@ int main() {
 
     Tokenizer t0 = Tokenizer();
     std::vector<Token*> tokens0 = t0.convert("inputs/STaalCode.txt");
-
-    for(auto token : tokens0){
-        token->print();
-    }
+    t0.displayWords();
+    t0.displayTokens();
 
     //ENFA testing
     /*

@@ -9,6 +9,13 @@ Tokenizer::Tokenizer(){
     types["var"] = "[VARNAMETOKEN]";
     types["num"] = "[NUMBERTOKEN]";
     types["char"] = "[CHARTOKEN]";
+    symbols = new ENFA(keywords);
+    var = new ENFA("inputs/var.json");
+}
+
+Tokenizer::~Tokenizer() {
+    delete symbols;
+    delete var;
 }
 
 std::pair<int, std::string> Tokenizer::findSeparator(std::vector<std::string> lines, int lineNum, int linePos) {
@@ -27,12 +34,9 @@ std::pair<int, std::string> Tokenizer::findSeparator(std::vector<std::string> li
     return pair;
 }
 
-std::vector<Token*> Tokenizer::convert(const std::string& file) {
+void Tokenizer::readAndSplit(const std::string &file) {
+    split.clear();
     std::vector<std::string> lines;
-    std::map<int, std::vector<std::string>> split;
-
-    std::vector<Token*> tokens;
-
     std::ifstream code(file);
 
     std::string line;
@@ -74,28 +78,23 @@ std::vector<Token*> Tokenizer::convert(const std::string& file) {
             linePos++;
         }
     }
+}
 
-    /*TODO weg gecommend
-    for(const auto& i : split){
-        std::cout << i.first << ": ";
-        for(const auto& j : i.second){
-            std::cout << j << " | ";
-        }
-        std::cout << std::endl;
+void Tokenizer::constructTokens() {
+    if(split.empty()){
+        return;
     }
-     */
+    tokens.clear();
 
-    ENFA symbols = ENFA(keywords);
-    ENFA var = ENFA("inputs/var.json");
     for(const auto& i  : split){
         for(int j = 0; j < i.second.size(); j++){
             std::string check = i.second[j];
-            if(symbols.accepts(check)){
+            if(symbols->accepts(check)){
                 Token* token = new Token(check, "", i.first, j);
                 tokens.push_back(token);
                 continue;
             }
-            std::pair<bool, std::vector<ENFA_State*>> p = var.acceptsHelper(check);
+            std::pair<bool, std::vector<ENFA_State*>> p = var->acceptsHelper(check);
             if(p.first){
                 std::string type;
                 for(auto s : p.second){
@@ -115,5 +114,30 @@ std::vector<Token*> Tokenizer::convert(const std::string& file) {
     }
     Token* endOfString = new Token("$","$", tokens.back()->getLine(), tokens.back()->getLinePos()+1);
     tokens.push_back(endOfString);
+}
+
+std::vector<Token *> Tokenizer::getTokens() {
     return tokens;
+}
+
+std::vector<Token *> Tokenizer::convert(const std::string& file) {
+    readAndSplit(file);
+    constructTokens();
+    return getTokens();
+}
+
+void Tokenizer::displayWords() {
+    for(const auto& i : split){
+        std::cout << i.first << ": ";
+        for(const auto& j : i.second){
+            std::cout << j << " | ";
+        }
+        std::cout << std::endl;
+    }
+}
+
+void Tokenizer::displayTokens() {
+    for(auto token : tokens){
+        token->print();
+    }
 }
