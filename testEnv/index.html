@@ -13,10 +13,10 @@
         <div class="col-6">
             <div class="card shadow-lg p-3 mb-5 bg-body rounded">
                 <div class="card-body">
-                    <h1>Javascript code</h1>
+                    <h1>Transpiler</h1>
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-primary" id="reRunBtn"><span class="material-symbols-outlined">play_arrow</span></button>
-                        <button type="button" class="btn btn-primary" onclick="window.location.reload();"><span class="material-symbols-outlined">replay</span></button>
+                        <button type="button" class="btn btn-primary" id="resetBtn"><span class="material-symbols-outlined">replay</span></button>
                     </div>
                     <br/><br/>
                     <div style="width: 100%; text-align: right;" onclick="">
@@ -27,7 +27,7 @@
                         <iframe style="width: 100%; height: 80vh; display: none" id="tree0" src=""></iframe>
                         <iframe style="width: 100%; height: 80vh; display: none" id="tree1" src=""></iframe>
                         <pre style="width: 100%; height: 80vh; display: none" id="javascriptCodeContainer"><code class="language-javascript" id="javascriptCode"></code></pre>
-                        <textarea style="width: 100%; height: 80vh; display: none" name="Text1" id="staalCode"></textarea>
+                        <textarea style="width: 100%; height: 80vh; display: block" name="Text1" id="staalCode"></textarea>
                     </div>
                 </div>
             </div>
@@ -68,6 +68,7 @@
     </script>
 
     <script type="text/javascript">
+        var programCounter = 0;
         let reRunButton = document.getElementById('reRunBtn');
         reRunButton.onclick = function(){
             let xhr = new XMLHttpRequest();
@@ -83,11 +84,14 @@
                     document.getElementById("tree1").src = "http://dreampuf.github.io/GraphvizOnline/#" + requestReturn["ast"].replaceAll("\n","%0A");
                     let script = document.createElement("script");
                     script.type = "text/javascript";
-                    script.innerHTML = "let console = {};\n" +
+                    script.innerHTML = "function run" + programCounter + "() {" +
+                        "let console = {};\n" +
                         "    console.log = function(output){document.getElementById(\"javascriptOutputs\").innerHTML += output + \"\\n\";};\n" +
                         "    console.warn = function(output){document.getElementById(\"javascriptWarnings\").innerHTML += output + \"\\n\";};\n" +
                         "    console.error = function(output, items = {}){document.getElementById(\"javascriptErrors\").innerHTML += output + \"\\n\";};" +
-                        requestReturn["jscode"];
+                        requestReturn["jscode"]+
+                    "}" +
+                    "run" + programCounter + "()";
 
                     document.getElementsByTagName("head")[0].appendChild(script);
                 }};
@@ -100,8 +104,15 @@
     </script>
 
     <script>
-        function loadData(){
-
+        let resetBtn = document.getElementById('resetBtn');
+        resetBtn.onclick = function(){
+            document.getElementById("javascriptCode").innerHTML = "";
+            document.getElementById("tree0").src = "http://dreampuf.github.io/GraphvizOnline/#"
+            document.getElementById("tree1").src = "http://dreampuf.github.io/GraphvizOnline/#"
+            document.getElementById("javascriptOutputs").innerHTML = "";
+            document.getElementById("javascriptWarnings").innerHTML  = "";
+            document.getElementById("javascriptErrors").innerHTML = "";
+            return false;
         }
     </script>
 </body>

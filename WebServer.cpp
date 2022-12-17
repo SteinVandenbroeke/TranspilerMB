@@ -35,7 +35,11 @@ void WebServer::start() {
                 AstProgram* program = cst.toAst();
                 std::string astDot = program->generateDOT();
 
-                crow::json::wvalue returnValue({{"jscode", program->getJsCode()}, {"errors", ""}, {"cst", cstDot}, {"ast", astDot}});
+                std::string jsCode = "fout";
+                if(program->checkTypes()){
+                    jsCode = program->getJsCode();
+                }
+                crow::json::wvalue returnValue({{"jscode", jsCode}, {"errors", ""}, {"cst", cstDot}, {"ast", astDot}});
                 return returnValue;
             });
 

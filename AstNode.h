@@ -9,6 +9,7 @@
 #include <string>
 #include "SymbolTable.h"
 #include <iostream>
+#include <sstream>
 
 ///forward declarations
 class AstProgramLine;
