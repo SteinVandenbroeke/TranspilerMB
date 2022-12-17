@@ -41,6 +41,12 @@
             </div>
             <div class="card shadow-lg p-3 mb-5 bg-body rounded">
                 <div class="card-body">
+                    <h1>Compile errors</h1>
+                    <pre><code class="language-javascript" id="compileErrors"></code></pre>
+                </div>
+            </div>
+            <div class="card shadow-lg p-3 mb-5 bg-body rounded">
+                <div class="card-body">
                     <h1>Javascript errors</h1>
                     <pre><code class="language-javascript" id="javascriptErrors"></code></pre>
                 </div>
@@ -80,6 +86,7 @@
                 if (xhr.readyState === 4) {
                     var requestReturn = JSON.parse(xhr.responseText);
                     document.getElementById("javascriptCode").innerHTML = requestReturn["jscode"];
+                    document.getElementById("compileErrors").innerHTML += "---------\n" + requestReturn["errors"];
                     document.getElementById("tree0").src = "http://dreampuf.github.io/GraphvizOnline/#" + requestReturn["cst"].replaceAll("\n","%0A");
                     document.getElementById("tree1").src = "http://dreampuf.github.io/GraphvizOnline/#" + requestReturn["ast"].replaceAll("\n","%0A");
                     let script = document.createElement("script");
@@ -106,6 +113,7 @@
     <script>
         let resetBtn = document.getElementById('resetBtn');
         resetBtn.onclick = function(){
+            document.getElementById("compileErrors").innerHTML = "";
             document.getElementById("javascriptCode").innerHTML = "";
             document.getElementById("tree0").src = "http://dreampuf.github.io/GraphvizOnline/#"
             document.getElementById("tree1").src = "http://dreampuf.github.io/GraphvizOnline/#"
