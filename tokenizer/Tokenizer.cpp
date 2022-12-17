@@ -34,6 +34,36 @@ std::pair<int, std::string> Tokenizer::findSeparator(std::vector<std::string> li
     return pair;
 }
 
+std::pair<int, std::string> Tokenizer::read(std::vector<std::string> lines, int lineNum, int linePos){
+    std::pair<int, std::string> pair;
+    std::string var;
+    int p = linePos;
+    bool string;
+    if(lines[lineNum][p] == '\''){
+        string = false;
+    }else if(lines[lineNum][p] == '"'){
+        string = true;
+    }
+
+    for(p = linePos; p < lines[lineNum].size(); p++){
+        var+= lines[lineNum][p];
+        if((lines[lineNum][p] == '"' && p != linePos) && string){
+            break;
+        }
+        if((lines[lineNum][p] == '\'' && p != linePos) && !string){
+            break;
+        }
+        if((lines[lineNum][p] == '"' || lines[lineNum][p] == '\'') && p != linePos){
+            std::cerr << "Wrong string/character quotations ==> removed string/character" << std::endl;
+            var = "";
+            break;
+        }
+    }
+    pair.first = p; pair.second = var;
+    return pair;
+
+}
+
 void Tokenizer::readAndSplit(const std::string &file) {
     split.clear();
     std::vector<std::string> lines;
@@ -56,7 +86,13 @@ void Tokenizer::readAndSplit(const std::string &file) {
             }
             std::string temp;
             temp = s;
-
+            if(s == '"' || s == '\''){
+                std::pair<int, std::string> pair = read(lines, i, linePos);
+                split[i].push_back(pair.second);
+                newLinePos = pair.first;
+                linePos++;
+                continue;
+            }
             if(std::count(separators.begin(), separators.end(), temp) > 0){
                 if(!word.empty()){ split[i].push_back(word);}
                 word = "";

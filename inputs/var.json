@@ -7,7 +7,8 @@
     "v1",
     ".",
     "'",
-    "\""
+    "\"",
+    " "
   ],
   "states": [
     {
@@ -75,7 +76,7 @@
     {
       "from": "string0",
       "to": "string0",
-      "input": ["v0", "v1"]
+      "input": ["v0", "v1", " "]
     },
     {
       "from": "string0",
@@ -90,7 +91,7 @@
     {
       "from": "char0",
       "to": "char1",
-      "input": ["v0", "v1", ""]
+      "input": ["v0", "v1", " ", ""]
     },
     {
       "from": "char1",

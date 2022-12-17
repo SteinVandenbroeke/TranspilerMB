@@ -1,7 +1,1 @@
-int a = 10 + 11;
-int b = 10 + (a + 11)/10;
-int c = a;
-string test = "lala";
-c = 22;
-c = "lalala";
-c = (10 + 9) + a + c;
+string test = "la la";

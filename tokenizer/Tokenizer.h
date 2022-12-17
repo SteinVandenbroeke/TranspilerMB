@@ -31,6 +31,8 @@ public:
 
     std::pair<int, std::string> findSeparator(std::vector<std::string> lines, int lineNum, int linePos);
 
+    std::pair<int, std::string> read(std::vector<std::string> lines, int lineNum, int linePos);
+
     void readAndSplit(const std::string& file);
 
     void constructTokens();
