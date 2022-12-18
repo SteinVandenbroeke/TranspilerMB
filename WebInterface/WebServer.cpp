@@ -24,7 +24,7 @@ void WebServer::start() {
 
     CROW_ROUTE(app, "/staalCode")
             .methods("GET"_method, "POST"_method)([](const crow::request& req) {
-                Tokenizer t = Tokenizer();
+                Tokenizer t = Tokenizer("inputs/tokenizer.json");
                 std::ofstream myfile ("staalWebInt.c4");
                 myfile << req.body;
                 myfile.close();
