@@ -5,6 +5,7 @@
 #ifndef TRANSPILER_ENFA_H
 #define TRANSPILER_ENFA_H
 
+#include <utility>
 #include <vector>
 #include <set>
 #include <iostream>
@@ -23,10 +24,10 @@ private:
     bool starting = false;
     bool accepting = false;
 public:
-    ENFA_State(){}
+    ENFA_State()= default;
 
-    ENFA_State(std::string n){
-        name = n;
+    explicit ENFA_State(std::string n){
+        name = std::move(n);
     }
 
     ENFA_State(bool starts, bool accepts){
@@ -34,14 +35,14 @@ public:
     }
 
     ENFA_State(std::string n, bool starts, bool accepts){
-        name = n; starting = starts; accepting = accepts;
+        name = std::move(n); starting = starts; accepting = accepts;
     }
 
     const std::string &getName() const;
     void setName(const std::string &name);
 
-    std::vector<ENFA_State*>getNextState(const char s);
-    void setNextState(const char s, ENFA_State *newState);
+    std::vector<ENFA_State*>getNextState(char s);
+    void setNextState(char s, ENFA_State *newState);
 
     bool isStarting() const;
     void setStarting(bool starting);
@@ -60,14 +61,14 @@ private:
     std::vector<ENFA_State*> finalStates;
     std::vector<ENFA_State*> currentStates;
 public:
-    ENFA(const std::string& jsonFile);
+    explicit ENFA(const std::string& jsonFile);
 
-    ENFA(const std::vector<std::string>& words);
+    explicit ENFA(const std::vector<std::string>& words);
 
-    ENFA() {}
+    ENFA() = default;
 
     ~ENFA(){
-        for(auto i : states){ // ga door alle states van de enfa en verwijder ze
+        for(const auto& i : states){ // ga door alle states van de enfa en verwijder ze
             delete i.second;
         }
     }

@@ -17,7 +17,7 @@ Token::Token(std::string type, std::string text, int lN, int lP): type(type), te
 }
 
 std::string Token::getText() {
-    if(text == ""){
+    if(text.empty()){
         return type;
     }
     return text;
@@ -27,11 +27,11 @@ std::string Token::getType() {
     return type;
 }
 
-int Token::getLine() {
+int Token::getLine() const {
     return lineNum;
 }
 
-int Token::getLinePos(){
+int Token::getLinePos() const{
     return linePos;
 }
 

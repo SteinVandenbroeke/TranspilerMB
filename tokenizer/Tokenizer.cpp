@@ -4,20 +4,20 @@
 
 #include "Tokenizer.h"
 
-Tokenizer::Tokenizer(){}
+#include <utility>
 
-Tokenizer::Tokenizer(std::string json) {
+Tokenizer::Tokenizer(const std::string& json) {
     std::ifstream input(json); // lees de inputfile
     nlohmann::json j;
     input >> j;
     if(j["object"] != "TOKENIZER"){ // check of het een TOKENIZER is
         return;
     }
-    std::string varENFA = j["varENFA"].get<std::string>();
-    for(auto s : j["separators"]){
+    auto varENFA = j["varENFA"].get<std::string>();
+    for(const auto& s : j["separators"]){
         separators.push_back(s.get<std::string>());
     }
-    for(auto k : j["keywords"]){
+    for(const auto& k : j["keywords"]){
         keywords.push_back(k.get<std::string>());
     }
     for(auto t : j["types"]){
@@ -29,12 +29,8 @@ Tokenizer::Tokenizer(std::string json) {
 }
 
 Tokenizer::~Tokenizer() {
-    if(symbols != nullptr){
-        delete symbols;
-    }
-    if(var != nullptr){
-        delete var;
-    }
+    delete symbols;
+    delete var;
 }
 
 std::pair<int, std::string> Tokenizer::findSeparator(std::vector<std::string> lines, int lineNum, int linePos) {
@@ -55,7 +51,7 @@ std::pair<int, std::string> Tokenizer::findSeparator(std::vector<std::string> li
 
 std::pair<int, std::string> Tokenizer::read(std::vector<std::string> lines, int lineNum, int linePos){
     std::pair<int, std::string> pair;
-    std::string var;
+    std::string variabele;
     int p = linePos;
     bool string;
     if(lines[lineNum][p] == '\''){
@@ -66,7 +62,7 @@ std::pair<int, std::string> Tokenizer::read(std::vector<std::string> lines, int 
 
     for(p = linePos; p < lines[lineNum].size(); p++){
         char c = lines[lineNum][p];
-        var+= c;
+        variabele+= c;
         if((c == '"' && p != linePos) && string){
             break;
         }
@@ -74,7 +70,7 @@ std::pair<int, std::string> Tokenizer::read(std::vector<std::string> lines, int 
             break;
         }
     }
-    pair.first = p; pair.second = var;
+    pair.first = p; pair.second = variabele;
     return pair;
 
 }
@@ -141,7 +137,7 @@ void Tokenizer::constructTokens() {
         for(int j = 0; j < i.second.size(); j++){
             std::string check = i.second[j];
             if(symbols->accepts(check)){
-                Token* token = new Token(check, "", i.first, j);
+                auto* token = new Token(check, "", i.first, j);
                 tokens.push_back(token);
                 continue;
             }
@@ -156,14 +152,14 @@ void Tokenizer::constructTokens() {
                         break;
                     }
                 }
-                Token* token = new Token(type, check, i.first, j);
+                auto* token = new Token(type, check, i.first, j);
                 tokens.push_back(token);
                 continue;
             }
 
         }
     }
-    Token* endOfString = new Token("$","$", tokens.back()->getLine(), 0);
+    auto* endOfString = new Token("$","$", tokens.back()->getLine(), 0);
     tokens.push_back(endOfString);
 }
 
@@ -196,28 +192,24 @@ void Tokenizer::displayTokens() {
 const std::vector<std::string> &Tokenizer::getSeparators() const {
     return separators;
 }
-void Tokenizer::setSeparators(const std::vector<std::string> &separators) {
-    Tokenizer::separators = separators;
+void Tokenizer::setSeparators(const std::vector<std::string> &sep) {
+    Tokenizer::separators = sep;
 }
 
 const std::vector<std::string> &Tokenizer::getKeywords() const {
     return keywords;
 }
-void Tokenizer::setKeywords(const std::vector<std::string> &keywords) {
-    Tokenizer::keywords = keywords;
-    if(symbols != nullptr){
-        delete symbols;
-    }
+void Tokenizer::setKeywords(const std::vector<std::string> &keys) {
+    Tokenizer::keywords = keys;
+    delete symbols;
     symbols = new ENFA(keywords);
 }
 
-void Tokenizer::addType(std::string typeIdentifier, std::string type) {
-    types[typeIdentifier] = type;
+void Tokenizer::addType(const std::string& typeIdentifier, std::string type) {
+    types[typeIdentifier] = std::move(type);
 }
 
-void Tokenizer::constructVar(std::string json) {
-    if(var != nullptr){
-        delete var;
-    }
+void Tokenizer::constructVar(const std::string& json) {
+    delete var;
     var = new ENFA(json);
 }

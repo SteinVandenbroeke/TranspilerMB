@@ -25,13 +25,13 @@ private:
     std::map<int, std::vector<std::string>> split;
     std::vector<Token*> tokens;
 public:
-    Tokenizer();
+    Tokenizer() = default;
 
     /**
      * construct tokenizer from json file
      * @param json location of json file
      */
-    Tokenizer(std::string json);
+    explicit Tokenizer(const std::string& json);
 
     ~Tokenizer();
 
@@ -100,9 +100,9 @@ public:
     const std::vector<std::string> &getKeywords() const;
     void setKeywords(const std::vector<std::string> &keywords);
 
-    void addType(std::string typeIdentifier, std::string type);
+    void addType(const std::string& typeIdentifier, std::string type);
 
-    void constructVar(std::string json);
+    void constructVar(const std::string& json);
 };
 
 

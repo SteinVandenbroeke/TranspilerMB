@@ -9,8 +9,8 @@ const std::string &ENFA_State::getName() const {
     return name;
 }
 
-void ENFA_State::setName(const std::string &name) {
-    ENFA_State::name = name;
+void ENFA_State::setName(const std::string &naam) {
+    ENFA_State::name = naam;
 }
 
 std::vector<ENFA_State *> ENFA_State::getNextState(const char s){
@@ -28,16 +28,16 @@ bool ENFA_State::isStarting() const {
     return starting;
 }
 
-void ENFA_State::setStarting(bool starting) {
-    ENFA_State::starting = starting;
+void ENFA_State::setStarting(bool starts) {
+    ENFA_State::starting = starts;
 }
 
 bool ENFA_State::isAccepting() const {
     return accepting;
 }
 
-void ENFA_State::setAccepting(bool accepting) {
-    ENFA_State::accepting = accepting;
+void ENFA_State::setAccepting(bool accepts) {
+    ENFA_State::accepting = accepts;
 }
 
 //ENFA
@@ -72,7 +72,7 @@ ENFA::ENFA(const std::string& jsonFile) {
     while(j.contains(vector)){
         std::vector<char> temp;
         for(const auto& i : j[vector]){
-            std::string t = i.get<std::string>();
+            auto t = i.get<std::string>();
             temp.push_back(t[0]);
         }
         vectors.push_back(temp);
@@ -81,7 +81,7 @@ ENFA::ENFA(const std::string& jsonFile) {
     }
 
     for(const auto& i : j["alphabet"]){ // ga naar het segment alphabet in de json file en ga doorheen de elementen
-        std::string temp = i.get<std::string>(); // convert het element naar een string
+        auto temp = i.get<std::string>(); // convert het element naar een string
         if(temp.size() > 1){
             temp.erase(temp.begin());
             for(auto c : vectors[std::stoi(temp)]){
@@ -205,7 +205,7 @@ std::vector<ENFA_State*> ENFA::closure(ENFA_State* state) const{
             result.insert(temp.begin(), temp.end());
         }
     }
-    return std::vector(result.begin(), result.end());
+    return {result.begin(), result.end()};
 
 }
 
@@ -263,38 +263,38 @@ const std::vector<char> &ENFA::getAlfabet() const {
     return alfabet;
 }
 
-void ENFA::setAlfabet(const std::vector<char> &alfabet) {
-    ENFA::alfabet = alfabet;
+void ENFA::setAlfabet(const std::vector<char> &alfa) {
+    ENFA::alfabet = alfa;
 }
 
 ENFA_State *ENFA::getStartState() const {
     return startState;
 }
 
-void ENFA::setStartState(ENFA_State *startState) {
-    ENFA::startState = startState;
+void ENFA::setStartState(ENFA_State *startingState) {
+    ENFA::startState = startingState;
 }
 
 const std::map<std::string, ENFA_State *> &ENFA::getStates() const {
     return states;
 }
 
-void ENFA::setStates(const std::map<std::string, ENFA_State *> &states) {
-    ENFA::states = states;
+void ENFA::setStates(const std::map<std::string, ENFA_State *> &staten) {
+    ENFA::states = staten;
 }
 
 const std::vector<ENFA_State *> &ENFA::getFinalStates() const {
     return finalStates;
 }
 
-void ENFA::setFinalStates(const std::vector<ENFA_State *> &finalStates) {
-    ENFA::finalStates = finalStates;
+void ENFA::setFinalStates(const std::vector<ENFA_State *> &eindStaten) {
+    ENFA::finalStates = eindStaten;
 }
 
 const std::vector<ENFA_State *> &ENFA::getCurrentStates() const {
     return currentStates;
 }
 
-void ENFA::setCurrentStates(const std::vector<ENFA_State *> &currentStates) {
-    ENFA::currentStates = currentStates;
+void ENFA::setCurrentStates(const std::vector<ENFA_State *> &huidigeStaten) {
+    ENFA::currentStates = huidigeStaten;
 }
