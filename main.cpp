@@ -7,8 +7,6 @@
 #include "WebInterface/WebServer.h"
 
 int main(int argc, char *argv[]) {
-    //tokenizerTest();
-
     if(argc == 3){
         Tokenizer t = Tokenizer("inputs/tokenizer.json");
         std::vector<Token*> tokens = t.convert(argv[1]);
