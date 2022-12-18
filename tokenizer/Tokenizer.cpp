@@ -31,6 +31,9 @@ Tokenizer::Tokenizer(const std::string& json) {
 Tokenizer::~Tokenizer() {
     delete symbols;
     delete var;
+    for (Token* token : tokens){
+        delete token;
+    }
 }
 
 std::pair<int, std::string> Tokenizer::findSeparator(std::vector<std::string> lines, int lineNum, int linePos) {

@@ -73,6 +73,12 @@ std::string AstNode::getType(SymbolTable &table) const {
     return "identifier";
 }
 
+AstNode::~AstNode() {
+    for (AstNode* child : this->getChilderen()){
+        delete child;
+    }
+}
+
 void AstProgram::addLine(AstNode *programLine) {
     this->lines.push_back(programLine);
 }
@@ -107,6 +113,12 @@ std::vector<AstNode *> AstProgram::getChilderen() const {
 
 std::string AstProgram::getValue() const {
     return "Program";
+}
+
+AstProgram::~AstProgram() {
+    for (AstNode* child : this->lines){
+        delete child;
+    }
 }
 
 AstDeclartion::AstDeclartion(Token *token) : AstNode(token) {
@@ -154,6 +166,11 @@ bool AstDeclartion::checkTypes(SymbolTable &table, std::stringstream& errorStrea
     return true;
 }
 
+AstDeclartion::~AstDeclartion() {
+    delete var;
+    delete value;
+}
+
 AstIntalisation::AstIntalisation(Token* token): AstNode(token) {
 
 }
@@ -196,6 +213,11 @@ bool AstIntalisation::checkTypes(SymbolTable &table, std::stringstream& errorStr
     return true;
 }
 
+AstIntalisation::~AstIntalisation() {
+    delete var;
+    delete value;
+}
+
 AstConditionBody::AstConditionBody(Token* token): AstNode(token){
 
 }
@@ -220,6 +242,11 @@ AstBody *AstConditionBody::getAstBody() {
 
 std::vector<AstNode *> AstConditionBody::getChilderen() const {
     return std::vector<AstNode *>{condition, body};
+}
+
+AstConditionBody::~AstConditionBody() {
+    delete condition;
+    delete body;
 }
 
 std::string AstWhile::getJsCode(int scopeCount) const {
@@ -248,12 +275,14 @@ std::string AstBody::getJsCode(int scopeCount) const {
 
 bool AstBody::checkTypes(SymbolTable &table, std::stringstream& errorStream) const {
     bool typesOk = true;
-    SymbolTable &table1 = *table.newScope();
+    SymbolTable* scopeTable = table.newScope();
+    SymbolTable &table1 = *scopeTable;
     for(AstNode* programLine: this->lines){
         if(!programLine->checkTypes(table1, errorStream)){
             typesOk = false;
         }
     }
+    scopeTable->removeScope();
     return typesOk;
 }
 
@@ -287,6 +316,11 @@ bool AstCondition::checkTypes(SymbolTable &table, std::stringstream& errorStream
         return false;
     }
     return true;
+}
+
+AstCondition::~AstCondition() {
+    delete val1;
+    delete val2;
 }
 
 AstArithmeticOperations::AstArithmeticOperations(Token *token) : AstNode(token) {
@@ -334,6 +368,11 @@ bool AstArithmeticOperations::checkTypes(SymbolTable &table, std::stringstream& 
         return false;
     }
     return true;
+}
+
+AstArithmeticOperations::~AstArithmeticOperations() {
+    delete val1;
+    delete val2;
 }
 
 AstVarOrValue::AstVarOrValue(Token *token) : AstNode(token) {}
@@ -396,6 +435,10 @@ std::string AstParentheses::getValue() const {
     return "()";
 }
 
+AstParentheses::~AstParentheses() {
+    delete innerNode;
+}
+
 AstPrint::AstPrint(Token *token) : AstNode(token) {
 
 }
@@ -410,4 +453,8 @@ std::vector<AstNode *> AstPrint::getChilderen() const {
 
 std::string AstPrint::getJsCode(int scopeCount) const {
     return "console.log(" + this->value->getJsCode(scopeCount) + ");";
+}
+
+AstPrint::~AstPrint() {
+    delete value;
 }

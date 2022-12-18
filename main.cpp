@@ -42,6 +42,7 @@ int main(int argc, char *argv[]) {
             myfile.close();
             std::cout << "transpiling done" << std::endl;
         }
+        delete program;
     }
     else{
         std::cout << "Wrong parameter count" << std::endl;

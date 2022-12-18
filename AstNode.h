@@ -36,12 +36,13 @@ static int identifierCounter = 0;
 
 class AstNode {
 protected:
-    Token* token;
+    Token* token = nullptr;
     int identifier;
     std::string generateDotInternal() const;
 public:
     AstNode(Token* token);
     AstNode();
+    virtual ~AstNode();
     std::string getTokenType() const;
     std::string getTokenText() const;
     virtual std::string getValue() const;
@@ -57,6 +58,7 @@ class AstProgram: public AstNode{
 protected:
     std::vector<AstNode*> lines;
 public:
+    virtual ~AstProgram() override;
     void addLine(AstNode* programLine);
     std::string getJsCode(int scopeCount = 0) const override;
     std::vector<AstNode*> getChilderen() const override;
@@ -83,6 +85,7 @@ class AstDeclartion:public AstNode{
 public:
     AstDeclartion(Token* token);
     AstDeclartion(Token* token, AstVar* var, AstNode* value);
+    virtual ~AstDeclartion() override;
     void setAstVar(AstVar* var);
     void setAstValue(AstNode* value);
     AstVar * getAstVar();
@@ -111,6 +114,7 @@ class AstIntalisation: public AstNode{
 public:
     AstIntalisation(Token* token);
     AstIntalisation(Token* token, AstVar* var, AstNode* value);
+    virtual ~AstIntalisation() override;
     void setAstVar(AstVar* var);
     void setAstValue(AstValue* value);
     AstVar* getAstVar();
@@ -125,6 +129,7 @@ class AstPrint: public AstNode{
 public:
     AstPrint(Token* token);
     AstPrint(Token* token, AstNode *value);
+    virtual ~AstPrint() override;
     std::vector<AstNode*> getChilderen() const override;
     std::string getJsCode(int scopeCount) const override;
 };
@@ -136,6 +141,7 @@ protected:
 public:
     AstConditionBody(Token* token);
     AstConditionBody(Token* token,AstCondition* condition, AstBody* body);
+    virtual ~AstConditionBody() override;
     void setAstCondition(AstCondition* condition);
     void setAstBody(AstBody* body);
     AstCondition* getAstCondition();
@@ -213,6 +219,7 @@ class AstCondition:public AstNode{
 public:
     AstCondition(Token* token);
     AstCondition(Token* token, AstNode* var1, AstNode* var2);
+    virtual ~AstCondition() override;
     void setVar1(AstNode* valOrValue);
     void setVar2(AstNode* valOrValue);
     std::vector<AstNode*> getChilderen() const override;
@@ -226,6 +233,7 @@ class AstArithmeticOperations:public AstNode{
 public:
     AstArithmeticOperations(Token* token);
     AstArithmeticOperations(Token* token, AstNode* val1, AstNode* val2);
+    virtual ~AstArithmeticOperations() override;
     void setVal1(AstNode* valOrValue);
     void setVal2(AstNode* valOrValue);
     std::vector<AstNode*> getChilderen() const override;
@@ -238,6 +246,7 @@ class AstParentheses:public AstNode{
     AstNode* innerNode;
 public:
     AstParentheses(Token* token, AstNode* innerNode);
+    virtual ~AstParentheses() override;
     std::vector<AstNode*> getChilderen() const override;
     std::string getJsCode(int scopeCount) const override;
     std::string getType(SymbolTable& table) const override;
