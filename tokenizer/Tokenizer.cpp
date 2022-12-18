@@ -29,8 +29,12 @@ Tokenizer::Tokenizer(std::string json) {
 }
 
 Tokenizer::~Tokenizer() {
-    delete symbols;
-    delete var;
+    if(symbols != nullptr){
+        delete symbols;
+    }
+    if(var != nullptr){
+        delete var;
+    }
 }
 
 std::pair<int, std::string> Tokenizer::findSeparator(std::vector<std::string> lines, int lineNum, int linePos) {
@@ -187,4 +191,33 @@ void Tokenizer::displayTokens() {
     for(auto token : tokens){
         token->print();
     }
+}
+
+const std::vector<std::string> &Tokenizer::getSeparators() const {
+    return separators;
+}
+void Tokenizer::setSeparators(const std::vector<std::string> &separators) {
+    Tokenizer::separators = separators;
+}
+
+const std::vector<std::string> &Tokenizer::getKeywords() const {
+    return keywords;
+}
+void Tokenizer::setKeywords(const std::vector<std::string> &keywords) {
+    Tokenizer::keywords = keywords;
+    if(symbols != nullptr){
+        delete symbols;
+    }
+    symbols = new ENFA(keywords);
+}
+
+void Tokenizer::addType(std::string typeIdentifier, std::string type) {
+    types[typeIdentifier] = type;
+}
+
+void Tokenizer::constructVar(std::string json) {
+    if(var != nullptr){
+        delete var;
+    }
+    var = new ENFA(json);
 }
