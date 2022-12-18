@@ -17,13 +17,22 @@ void cstConstructionTest() {
     }
 }
 
+void tokenizerTest(){
+    Tokenizer t = Tokenizer("inputs/tokenizer.json");
+    t.convert("inputs/STaalCode.txt");
+    t.displayWords();
+    t.displayTokens();
+}
+
 int main(int argc, char *argv[]) {
+    //tokenizerTest();
+
     if(argc == 1 || argv[1] == "-webInterface"){
         WebServer ws = WebServer();
         ws.start();
     }
     else if(argc == 2){
-        Tokenizer t = Tokenizer();
+        Tokenizer t = Tokenizer("inputs/tokenizer.json");
         std::vector<Token*> tokens = t.convert(argv[1]);
         CST cst = CST(tokens,"LR1ParserGenerator/test_grammar_0.json_PARSETABLE.json");
         // std::cout << cst.generateDOT() << std::endl;

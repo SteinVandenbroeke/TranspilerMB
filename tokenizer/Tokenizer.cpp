@@ -4,13 +4,28 @@
 
 #include "Tokenizer.h"
 
-Tokenizer::Tokenizer(){
-    types["string"] = "[STRINGTOKEN]";
-    types["var"] = "[VARNAMETOKEN]";
-    types["num"] = "[NUMBERTOKEN]";
-    types["char"] = "[CHARTOKEN]";
+Tokenizer::Tokenizer(){}
+
+Tokenizer::Tokenizer(std::string json) {
+    std::ifstream input(json); // lees de inputfile
+    nlohmann::json j;
+    input >> j;
+    if(j["object"] != "TOKENIZER"){ // check of het een TOKENIZER is
+        return;
+    }
+    std::string varENFA = j["varENFA"].get<std::string>();
+    for(auto s : j["separators"]){
+        separators.push_back(s.get<std::string>());
+    }
+    for(auto k : j["keywords"]){
+        keywords.push_back(k.get<std::string>());
+    }
+    for(auto t : j["types"]){
+        types[t["name"].get<std::string>()] = t["type"].get<std::string>();
+    }
     symbols = new ENFA(keywords);
-    var = new ENFA("inputs/var.json");
+    var = new ENFA(varENFA);
+
 }
 
 Tokenizer::~Tokenizer() {
@@ -144,7 +159,7 @@ void Tokenizer::constructTokens() {
 
         }
     }
-    Token* endOfString = new Token("$","$", tokens.back()->getLine(), tokens.back()->getLinePos()+1);
+    Token* endOfString = new Token("$","$", tokens.back()->getLine(), 0);
     tokens.push_back(endOfString);
 }
 

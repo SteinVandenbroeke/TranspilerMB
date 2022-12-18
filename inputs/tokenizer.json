@@ -1,0 +1,20 @@
+{
+  "object": "TOKENIZER",
+  "varENFA": "inputs/var.json",
+  "separators": [" ", ";", "(", ")", "=", "!=", "<=", ">=", "<", ">", "==", "{", "}", "+", "-", "*", "/"],
+  "keywords": [";", "print", "int", "double", "char", "string", "=", "while", "if", "(", ")", "<=", ">=", "<", ">", "==", "{", "}", "+", "-", "*", "/"],
+  "types": [
+    {"name": "string",
+      "type": "[STRINGTOKEN]"
+    },
+    {"name": "char",
+      "type": "[CHARTOKEN]"
+    },
+    {"name": "num",
+      "type": "[NUMBERTOKEN]"
+    },
+    {"name": "var",
+      "type": "[VARNAMETOKEN]"
+    }
+  ]
+}

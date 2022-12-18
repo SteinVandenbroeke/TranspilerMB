@@ -27,6 +27,8 @@ private:
 public:
     Tokenizer();
 
+    Tokenizer(std::string json);
+
     ~Tokenizer();
 
     std::pair<int, std::string> findSeparator(std::vector<std::string> lines, int lineNum, int linePos);
