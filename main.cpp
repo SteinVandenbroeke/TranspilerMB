@@ -6,24 +6,6 @@
 #include "CSTNode.h"
 #include "WebInterface/WebServer.h"
 
-/*TODO nog nodig?
-void cstConstructionTest() {
-    std::vector<Token> tokens {Token{"c"}, Token{"c"}, Token{"d"}, Token{"d"}, Token{"$"}};
-    std::vector<Token*> tokenptrs = {&tokens[0],&tokens[1],&tokens[2], &tokens[3], &tokens[4]};
-    try{
-        CST cst{tokenptrs, "docs/test_grammar_0_PARSETABLE.json"};
-    } catch (const std::runtime_error& e){
-        std::cerr << e.what() << std::endl;
-    }
-}
-*/
-void tokenizerTest(){
-    Tokenizer t = Tokenizer("inputs/tokenizer.json");
-    t.convert("inputs/STaalCode.txt");
-    t.displayWords();
-    t.displayTokens();
-}
-
 int main(int argc, char *argv[]) {
     //tokenizerTest();
 
