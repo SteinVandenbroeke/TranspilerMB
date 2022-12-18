@@ -14,3 +14,15 @@ project MB 2022 a c like language to js
 Can be found in
 ./docs/taal.cfg
 ./docs/taal.json
+
+##Als crow.h niet werkt omdat:
+```
+#include <boost/algorithm/string/predicate.hpp>
+#include <boost/functional/hash.hpp>
+```
+niet zijn geinstaleerd
+install deze dan met:
+```
+sudo apt-get install libboost-all-dev
+```
+
