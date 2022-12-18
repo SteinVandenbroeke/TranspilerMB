@@ -15,7 +15,7 @@ Can be found in
 ./docs/taal.cfg
 ./docs/taal.json
 
-##Als crow.h niet werkt omdat:
+## Als crow.h niet werkt omdat:
 ```
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/functional/hash.hpp>
