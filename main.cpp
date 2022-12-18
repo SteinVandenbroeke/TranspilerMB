@@ -28,9 +28,13 @@ int main(int argc, char *argv[]) {
         CST cst = CST(tokens,"LR1ParserGenerator/test_grammar_0.json_PARSETABLE.json");
         // std::cout << cst.generateDOT() << std::endl;
         AstProgram* program = cst.toAst();
-
-        if(program->checkTypes()){
+        std::stringstream errorStream = std::stringstream();
+        if(program->checkTypes(errorStream)){
+            std::cout << errorStream.str();
             std::cout << program->getJsCode() << std::endl;
+        }
+        else{
+            std::cout << errorStream.str();
         }
     }
     return 0;

@@ -33,7 +33,6 @@ class AstPrint;
 ///forward declarations
 
 static int identifierCounter = 0;
-static std::stringstream compilerOutput;
 
 class AstNode {
 protected:
@@ -50,7 +49,7 @@ public:
     std::string generateDOT() const;
     virtual std::string getJsCode(int scopeCount) const = 0;
     virtual std::string getType(SymbolTable& table) const;
-    virtual bool checkTypes(SymbolTable& table) const;
+    virtual bool checkTypes(SymbolTable& table, std::stringstream& errorStream) const;
     virtual std::vector<AstNode*> getChilderen() const;
 };
 
@@ -61,7 +60,7 @@ public:
     void addLine(AstNode* programLine);
     std::string getJsCode(int scopeCount = 0) const override;
     std::vector<AstNode*> getChilderen() const override;
-    bool checkTypes();
+    bool checkTypes(std::stringstream& errorStream);
     std::string getValue() const;
 };
 
@@ -90,7 +89,7 @@ public:
     AstNode* getAstValue();
     std::vector<AstNode*> getChilderen() const override;
     std::string getJsCode(int scopeCount) const override;
-    bool checkTypes(SymbolTable& table) const override;
+    bool checkTypes(SymbolTable& table, std::stringstream& errorStream) const override;
 };
 
 /**
@@ -118,7 +117,7 @@ public:
     AstNode* getAstValue();
     std::vector<AstNode*> getChilderen() const override;
     std::string getJsCode(int scopeCount) const override;
-    bool checkTypes(SymbolTable& table) const override;
+    bool checkTypes(SymbolTable& table, std::stringstream& errorStream) const override;
 };
 
 class AstPrint: public AstNode{
@@ -192,7 +191,7 @@ public:
 class AstBody:public AstProgram{
 public:
     std::string getJsCode(int scopeCount) const override;
-    bool checkTypes(SymbolTable& table) const override;
+    bool checkTypes(SymbolTable& table, std::stringstream& errorStream) const override;
 };
 
 /**
@@ -218,7 +217,7 @@ public:
     void setVar2(AstNode* valOrValue);
     std::vector<AstNode*> getChilderen() const override;
     std::string getJsCode(int scopeCount) const override;
-    bool checkTypes(SymbolTable& table) const override;
+    bool checkTypes(SymbolTable& table, std::stringstream& errorStream) const override;
 };
 
 class AstArithmeticOperations:public AstNode{
@@ -232,7 +231,7 @@ public:
     std::vector<AstNode*> getChilderen() const override;
     std::string getJsCode(int scopeCount) const override;
     std::string getType(SymbolTable& table) const override;
-    bool checkTypes(SymbolTable& table) const override;
+    bool checkTypes(SymbolTable& table, std::stringstream& errorStream) const override;
 };
 
 class AstParentheses:public AstNode{
@@ -257,7 +256,7 @@ public:
     AstVar(Token* token);
     std::string getJsCode(int scopeCount) const override;
     std::string getType(SymbolTable& table) const override;
-    bool checkTypes(SymbolTable& table) const override;
+    bool checkTypes(SymbolTable& table, std::stringstream& errorStream) const override;
 };
 
 class AstValue:public AstVarOrValue{

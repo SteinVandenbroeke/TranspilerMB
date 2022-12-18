@@ -22,10 +22,10 @@ std::string AstNode::getTokenText() const {
     return token->getText();
 }
 
-bool AstNode::checkTypes(SymbolTable &table) const {
+bool AstNode::checkTypes(SymbolTable &table, std::stringstream& errorStream) const {
     bool typeOk = true;
     for(AstNode* item: this->getChilderen()){
-        if(!item->checkTypes(table)){
+        if(!item->checkTypes(table, errorStream)){
             typeOk = false;
         }
     }
@@ -90,11 +90,11 @@ std::string AstProgram::getJsCode(int scopeCount) const {
     return code;
 }
 
-bool AstProgram::checkTypes() {
+bool AstProgram::checkTypes(std::stringstream& errorStream) {
     bool typesOk = true;
     SymbolTable symbolTable = SymbolTable();
     for(AstNode* programLine: lines){
-        if(!programLine->checkTypes(symbolTable)){
+        if(!programLine->checkTypes(symbolTable, errorStream)){
             typesOk = false;
         }
     }
@@ -141,14 +141,14 @@ std::string AstDeclartion::getJsCode(int scopeCount) const {
     return "let " + var->getTokenText() + " = " + value->getJsCode(scopeCount) + ";";
 }
 
-bool AstDeclartion::checkTypes(SymbolTable &table) const {
+bool AstDeclartion::checkTypes(SymbolTable &table, std::stringstream& errorStream) const {
     if(table.IsVarInCurrentScope(this->var->getTokenText())){
-        compilerOutput << "error on line: " << token->getLine() << " [" << "Variable " << this->var->getTokenText() << " is declared multiple times in the same scope" << "]" << std::endl;
+        errorStream << "error on line: " << token->getLine() << " [" << "Variable " << this->var->getTokenText() << " is declared multiple times in the same scope" << "]" << std::endl;
         return false;
     }
     table.newVar(this->var->getTokenText(), this->getTokenText());
     if(!table.IsAllowedType(this->var->getType(table), this->value->getType(table))){
-        compilerOutput << "error on line: " << token->getLine() << " [" << "Variable " << this->var->getTokenText() << " of type \"" + this->var->getType(table) + "\" does not accept a value of type \"" + this->value->getType(table)  << "\"]" << std::endl;
+        errorStream << "error on line: " << token->getLine() << " [" << "Variable " << this->var->getTokenText() << " of type \"" + this->var->getType(table) + "\" does not accept a value of type \"" + this->value->getType(table)  << "\"]" << std::endl;
         return false;
     }
     return true;
@@ -184,13 +184,13 @@ std::string AstIntalisation::getJsCode(int scopeCount) const {
     return var->getTokenText() + " = " + value->getJsCode(scopeCount) + ";";
 }
 
-bool AstIntalisation::checkTypes(SymbolTable &table) const {
+bool AstIntalisation::checkTypes(SymbolTable &table, std::stringstream& errorStream) const {
     if(!table.IsVarDeclared(this->var->getTokenText())){
-        compilerOutput << "error on line: " << token->getLine() << " [" << "Variable " << this->var->getTokenText() << " is not declared" << "]" << std::endl;
+        errorStream << "error on line: " << token->getLine() << " [" << "Variable " << this->var->getTokenText() << " is not declared" << "]" << std::endl;
         return false;
     }
     else if(!table.IsAllowedType(this->var->getType(table), this->value->getType(table))){
-        compilerOutput << "error on line: " << token->getLine() << " [" << "Variable " << this->var->getTokenText() << " of type \"" + this->var->getType(table) + "\" does not accept a value of type \"" + this->value->getType(table)  << "\"]" << std::endl;
+        errorStream << "error on line: " << token->getLine() << " [" << "Variable " << this->var->getTokenText() << " of type \"" + this->var->getType(table) + "\" does not accept a value of type \"" + this->value->getType(table)  << "\"]" << std::endl;
         return false;
     }
     return true;
@@ -246,11 +246,11 @@ std::string AstBody::getJsCode(int scopeCount) const {
     return "{\n" + AstProgram::getJsCode(scopeCount + 1) + "\n" + tabs + "}";
 }
 
-bool AstBody::checkTypes(SymbolTable &table) const {
+bool AstBody::checkTypes(SymbolTable &table, std::stringstream& errorStream) const {
     bool typesOk = true;
     SymbolTable &table1 = *table.newScope();
     for(AstNode* programLine: this->lines){
-        if(!programLine->checkTypes(table1)){
+        if(!programLine->checkTypes(table1, errorStream)){
             typesOk = false;
         }
     }
@@ -281,9 +281,9 @@ std::string AstCondition::getJsCode(int scopeCount) const {
     return "(" + val1->getJsCode(scopeCount) + " " + this->getTokenText() + " " + val2->getJsCode(scopeCount) + ")";
 }
 
-bool AstCondition::checkTypes(SymbolTable &table) const {
+bool AstCondition::checkTypes(SymbolTable &table, std::stringstream& errorStream) const {
     if(val1->getType(table) != val2->getType(table)){
-        compilerOutput << "error on line: " << token->getLine() << " [" << "Unable to compare type: \"" << this->val1->getType(table) << " to type " + this->val2->getType(table)  << "\"]" << std::endl;
+        errorStream << "error on line: " << token->getLine() << " [" << "Unable to compare type: \"" << this->val1->getType(table) << " to type " + this->val2->getType(table)  << "\"]" << std::endl;
         return false;
     }
     return true;
@@ -328,9 +328,9 @@ std::string AstArithmeticOperations::getType(SymbolTable &table) const {
     return "undefined";
 }
 
-bool AstArithmeticOperations::checkTypes(SymbolTable &table) const {
+bool AstArithmeticOperations::checkTypes(SymbolTable &table, std::stringstream& errorStream) const {
     if(!table.IsAllowedType(val1->getType(table), val2->getType(table)) && !table.IsAllowedType(val2->getType(table), val1->getType(table))){
-        compilerOutput << "error on line: " << token->getLine() << " [" << "Arithmetic operations between two types not allowed: \"" << this->val1->getType(table) << "\" " + this->getTokenText() + " \"" + this->val2->getType(table)  << "\"]" << std::endl;
+        errorStream << "error on line: " << token->getLine() << " [" << "Arithmetic operations between two types not allowed: \"" << this->val1->getType(table) << "\" " + this->getTokenText() + " \"" + this->val2->getType(table)  << "\"]" << std::endl;
         return false;
     }
     return true;
@@ -348,9 +348,9 @@ std::string AstVar::getType(SymbolTable& table) const {
     return table.getVarType(this->token->getText());
 }
 
-bool AstVar::checkTypes(SymbolTable &table) const {
+bool AstVar::checkTypes(SymbolTable &table, std::stringstream& errorStream) const {
     if(!table.IsVarDeclared(this->getTokenText())){
-        compilerOutput << "error on line: " << token->getLine() << " [" << "Variable " << this->getTokenText() << " is not declared." << "]" << std::endl;
+        errorStream << "error on line: " << token->getLine() << " [" << "Variable " << this->getTokenText() << " is not declared." << "]" << std::endl;
         return false;
     }
     return true;
