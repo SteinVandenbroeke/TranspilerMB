@@ -4,6 +4,12 @@ project(transpiler)
 set(CMAKE_CXX_STANDARD 17)
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 
+# Set include dir
+include_directories(gtest/include)
+
+# Set Library dir
+link_directories(gtest/lib)
+
 set(PARSERGENDIR LR1ParserGenerator)
 add_executable(parser_generator
         ${PARSERGENDIR}/main.cpp
@@ -23,6 +29,7 @@ add_executable(parser_generator
         ${PARSERGENDIR}/LR1ParseTableGenerator.h
         )
 target_include_directories(parser_generator PUBLIC LR1ParserGenerator)
+
 
 add_executable(transpiler main.cpp AstNode.h AstNode.cpp tokenizer/Token.h tokenizer/Token.cpp SymbolTable.cpp SymbolTable.h tokenizer/ENFA.h tokenizer/ENFA.cpp tokenizer/Tokenizer.cpp tokenizer/Tokenizer.h CSTNode.h CSTNode.cpp)
 
