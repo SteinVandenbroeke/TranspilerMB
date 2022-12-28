@@ -81,19 +81,19 @@
     },
     {
       "head": "Declatation",
-      "body": ["int", "VarName", "=", "ArithmeticOperations"]
+      "body": ["int", "VarName", "=", "AnyType"]
     },
     {
       "head": "Declatation",
-      "body": ["double", "VarName", "=", "ArithmeticOperations"]
+      "body": ["double", "VarName", "=", "AnyType"]
     },
     {
       "head": "Declatation",
-      "body": ["char", "VarName", "=", "[CHARTOKEN]"]
+      "body": ["char", "VarName", "=", "AnyType"]
     },
     {
       "head": "Declatation",
-      "body": ["string", "VarName", "=", "[STRINGTOKEN]"]
+      "body": ["string", "VarName", "=", "AnyType"]
     },
     {
       "head": "Initalization",
@@ -149,7 +149,7 @@
     },
     {
       "head": "AnyBoolOperator",
-      "body": ["=", "="]
+      "body": ["=="]
     },
     {
       "head": "ArithmeticOperations",
@@ -180,12 +180,28 @@
       "body": ["VarName"]
     },
     {
+      "head": "ArithmeticOperations",
+      "body": ["stringI"]
+    },
+    {
+      "head": "ArithmeticOperations",
+      "body": ["charI"]
+    },
+    {
       "head": "ArithmeticOperations1",
       "body": ["numberI"]
     },
     {
       "head": "ArithmeticOperations1",
       "body": ["VarName"]
+    },
+    {
+      "head": "ArithmeticOperations1",
+      "body": ["stringI"]
+    },
+    {
+      "head": "ArithmeticOperations1",
+      "body": ["charI"]
     },
     {
       "head": "ArithmeticOperations1",
