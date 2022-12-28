@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
     if(argc == 3){
         Tokenizer t = Tokenizer("inputs/tokenizer.json");
         std::vector<Token*> tokens = t.convert(argv[1]);
-        CST cst = CST(tokens,"LR1ParserGenerator/test_grammar_0.json_PARSETABLE.json");
+        CST cst = CST(tokens,"inputs/test_grammar_0.json_PARSETABLE.json");
         // std::cout << cst.generateDOT() << std::endl;
         AstProgram* program = cst.toAst();
         std::stringstream errorStream = std::stringstream();

@@ -5,7 +5,7 @@
 
 
 int main() {
-    std::string pathToGrammarJson = "LR1ParserGenerator/test_grammar_0.json";
+    std::string pathToGrammarJson = "inputs/staal_fixed.json";
 
     std::ifstream input(pathToGrammarJson);
     if(!input) {

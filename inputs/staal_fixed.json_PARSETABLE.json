@@ -1,0 +1,5472 @@
+{
+    "ActionTable": [
+        {
+            "ActionArgument": 14,
+            "ActionType": "r",
+            "Input": "if",
+            "StateIndex": 150
+        },
+        {
+            "ActionArgument": 14,
+            "ActionType": "r",
+            "Input": "}",
+            "StateIndex": 150
+        },
+        {
+            "ActionArgument": 14,
+            "ActionType": "r",
+            "Input": "char",
+            "StateIndex": 150
+        },
+        {
+            "ActionArgument": 14,
+            "ActionType": "r",
+            "Input": "{",
+            "StateIndex": 150
+        },
+        {
+            "ActionArgument": 14,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 150
+        },
+        {
+            "ActionArgument": 14,
+            "ActionType": "r",
+            "Input": "int",
+            "StateIndex": 150
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "r",
+            "Input": "}",
+            "StateIndex": 149
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 149
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "r",
+            "Input": "char",
+            "StateIndex": 149
+        },
+        {
+            "ActionArgument": 14,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 146
+        },
+        {
+            "ActionArgument": 14,
+            "ActionType": "r",
+            "Input": "char",
+            "StateIndex": 146
+        },
+        {
+            "ActionArgument": 14,
+            "ActionType": "r",
+            "Input": "{",
+            "StateIndex": 146
+        },
+        {
+            "ActionArgument": 43,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 145
+        },
+        {
+            "ActionArgument": 29,
+            "ActionType": "r",
+            "Input": ")",
+            "StateIndex": 145
+        },
+        {
+            "ActionArgument": 43,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 145
+        },
+        {
+            "ActionArgument": 43,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 145
+        },
+        {
+            "ActionArgument": 27,
+            "ActionType": "r",
+            "Input": ")",
+            "StateIndex": 144
+        },
+        {
+            "ActionArgument": 28,
+            "ActionType": "r",
+            "Input": ")",
+            "StateIndex": 143
+        },
+        {
+            "ActionArgument": 26,
+            "ActionType": "r",
+            "Input": ")",
+            "StateIndex": 142
+        },
+        {
+            "ActionArgument": 25,
+            "ActionType": "r",
+            "Input": ")",
+            "StateIndex": 141
+        },
+        {
+            "ActionArgument": 43,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 140
+        },
+        {
+            "ActionArgument": 43,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 140
+        },
+        {
+            "ActionArgument": 43,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 140
+        },
+        {
+            "ActionArgument": 43,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 140
+        },
+        {
+            "ActionArgument": 27,
+            "ActionType": "r",
+            "Input": "<",
+            "StateIndex": 139
+        },
+        {
+            "ActionArgument": 27,
+            "ActionType": "r",
+            "Input": ">",
+            "StateIndex": 139
+        },
+        {
+            "ActionArgument": 27,
+            "ActionType": "r",
+            "Input": "==",
+            "StateIndex": 139
+        },
+        {
+            "ActionArgument": 28,
+            "ActionType": "r",
+            "Input": "<",
+            "StateIndex": 138
+        },
+        {
+            "ActionArgument": 26,
+            "ActionType": "r",
+            "Input": "==",
+            "StateIndex": 137
+        },
+        {
+            "ActionArgument": 26,
+            "ActionType": "r",
+            "Input": "<",
+            "StateIndex": 137
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 136
+        },
+        {
+            "ActionArgument": 33,
+            "ActionType": "r",
+            "Input": "<",
+            "StateIndex": 136
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 136
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 136
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 136
+        },
+        {
+            "ActionArgument": 33,
+            "ActionType": "r",
+            "Input": "==",
+            "StateIndex": 136
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 135
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 135
+        },
+        {
+            "ActionArgument": 32,
+            "ActionType": "r",
+            "Input": ">",
+            "StateIndex": 135
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 135
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 135
+        },
+        {
+            "ActionArgument": 32,
+            "ActionType": "r",
+            "Input": "<",
+            "StateIndex": 135
+        },
+        {
+            "ActionArgument": 32,
+            "ActionType": "r",
+            "Input": "==",
+            "StateIndex": 135
+        },
+        {
+            "ActionArgument": 25,
+            "ActionType": "r",
+            "Input": "<",
+            "StateIndex": 134
+        },
+        {
+            "ActionArgument": 25,
+            "ActionType": "r",
+            "Input": ">",
+            "StateIndex": 134
+        },
+        {
+            "ActionArgument": 25,
+            "ActionType": "r",
+            "Input": "==",
+            "StateIndex": 134
+        },
+        {
+            "ActionArgument": 20,
+            "ActionType": "r",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 133
+        },
+        {
+            "ActionArgument": 20,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 133
+        },
+        {
+            "ActionArgument": 21,
+            "ActionType": "r",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 132
+        },
+        {
+            "ActionArgument": 21,
+            "ActionType": "r",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 132
+        },
+        {
+            "ActionArgument": 21,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 132
+        },
+        {
+            "ActionArgument": 16,
+            "ActionType": "r",
+            "Input": ")",
+            "StateIndex": 131
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "r",
+            "Input": "int",
+            "StateIndex": 130
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "r",
+            "Input": "if",
+            "StateIndex": 130
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "r",
+            "Input": "while",
+            "StateIndex": 130
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "r",
+            "Input": "double",
+            "StateIndex": 130
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 130
+        },
+        {
+            "ActionArgument": 43,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 129
+        },
+        {
+            "ActionArgument": 43,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 129
+        },
+        {
+            "ActionArgument": 43,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 129
+        },
+        {
+            "ActionArgument": 43,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 129
+        },
+        {
+            "ActionArgument": 29,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 129
+        },
+        {
+            "ActionArgument": 27,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 128
+        },
+        {
+            "ActionArgument": 26,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 126
+        },
+        {
+            "ActionArgument": 33,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 125
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 125
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 125
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 125
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 125
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 124
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 124
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 124
+        },
+        {
+            "ActionArgument": 32,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 124
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "r",
+            "Input": "char",
+            "StateIndex": 130
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 124
+        },
+        {
+            "ActionArgument": 25,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 123
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "r",
+            "Input": "while",
+            "StateIndex": 122
+        },
+        {
+            "ActionArgument": 50,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 57
+        },
+        {
+            "ActionArgument": 52,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 57
+        },
+        {
+            "ActionArgument": 50,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 56
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "r",
+            "Input": "print",
+            "StateIndex": 84
+        },
+        {
+            "ActionArgument": 49,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 55
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "r",
+            "Input": "char",
+            "StateIndex": 122
+        },
+        {
+            "ActionArgument": 50,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 55
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "r",
+            "Input": "{",
+            "StateIndex": 122
+        },
+        {
+            "ActionArgument": 51,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 55
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "r",
+            "Input": "}",
+            "StateIndex": 122
+        },
+        {
+            "ActionArgument": 50,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 54
+        },
+        {
+            "ActionArgument": 53,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 54
+        },
+        {
+            "ActionArgument": 51,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 54
+        },
+        {
+            "ActionArgument": 37,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 53
+        },
+        {
+            "ActionArgument": 9,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 100
+        },
+        {
+            "ActionArgument": 37,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 53
+        },
+        {
+            "ActionArgument": 37,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 53
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "s",
+            "Input": "string",
+            "StateIndex": 17
+        },
+        {
+            "ActionArgument": 37,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 53
+        },
+        {
+            "ActionArgument": 36,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 52
+        },
+        {
+            "ActionArgument": 36,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 52
+        },
+        {
+            "ActionArgument": 36,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 52
+        },
+        {
+            "ActionArgument": 8,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 99
+        },
+        {
+            "ActionArgument": 36,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 52
+        },
+        {
+            "ActionArgument": 35,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 51
+        },
+        {
+            "ActionArgument": 35,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 51
+        },
+        {
+            "ActionArgument": 35,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 51
+        },
+        {
+            "ActionArgument": 34,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 50
+        },
+        {
+            "ActionArgument": 34,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 50
+        },
+        {
+            "ActionArgument": 67,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 111
+        },
+        {
+            "ActionArgument": 34,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 50
+        },
+        {
+            "ActionArgument": 66,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 28
+        },
+        {
+            "ActionArgument": 34,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 67
+        },
+        {
+            "ActionArgument": 37,
+            "ActionType": "r",
+            "Input": ">",
+            "StateIndex": 70
+        },
+        {
+            "ActionArgument": 37,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 53
+        },
+        {
+            "ActionArgument": 37,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 70
+        },
+        {
+            "ActionArgument": 29,
+            "ActionType": "r",
+            "Input": ">",
+            "StateIndex": 140
+        },
+        {
+            "ActionArgument": 80,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 49
+        },
+        {
+            "ActionArgument": 82,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 49
+        },
+        {
+            "ActionArgument": 29,
+            "ActionType": "r",
+            "Input": "<",
+            "StateIndex": 140
+        },
+        {
+            "ActionArgument": 81,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 49
+        },
+        {
+            "ActionArgument": 95,
+            "ActionType": "s",
+            "Input": "/",
+            "StateIndex": 48
+        },
+        {
+            "ActionArgument": 94,
+            "ActionType": "s",
+            "Input": "*",
+            "StateIndex": 48
+        },
+        {
+            "ActionArgument": 52,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 93
+        },
+        {
+            "ActionArgument": 14,
+            "ActionType": "r",
+            "Input": "if",
+            "StateIndex": 146
+        },
+        {
+            "ActionArgument": 52,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 92
+        },
+        {
+            "ActionArgument": 31,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 44
+        },
+        {
+            "ActionArgument": 17,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 43
+        },
+        {
+            "ActionArgument": 12,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 42
+        },
+        {
+            "ActionArgument": 34,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 50
+        },
+        {
+            "ActionArgument": 78,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 117
+        },
+        {
+            "ActionArgument": 69,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 111
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "s",
+            "Input": "string",
+            "StateIndex": 41
+        },
+        {
+            "ActionArgument": 18,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 41
+        },
+        {
+            "ActionArgument": 35,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 51
+        },
+        {
+            "ActionArgument": 12,
+            "ActionType": "s",
+            "Input": "char",
+            "StateIndex": 41
+        },
+        {
+            "ActionArgument": 39,
+            "ActionType": "s",
+            "Input": "while",
+            "StateIndex": 41
+        },
+        {
+            "ActionArgument": 39,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 45
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "r",
+            "Input": "if",
+            "StateIndex": 37
+        },
+        {
+            "ActionArgument": 28,
+            "ActionType": "r",
+            "Input": ">",
+            "StateIndex": 138
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "r",
+            "Input": "print",
+            "StateIndex": 37
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "r",
+            "Input": "double",
+            "StateIndex": 88
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 37
+        },
+        {
+            "ActionArgument": 5,
+            "ActionType": "r",
+            "Input": "double",
+            "StateIndex": 20
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "r",
+            "Input": "print",
+            "StateIndex": 130
+        },
+        {
+            "ActionArgument": 40,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 44
+        },
+        {
+            "ActionArgument": 26,
+            "ActionType": "r",
+            "Input": ">",
+            "StateIndex": 137
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "r",
+            "Input": "print",
+            "StateIndex": 36
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 75
+        },
+        {
+            "ActionArgument": 43,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 145
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "r",
+            "Input": "double",
+            "StateIndex": 87
+        },
+        {
+            "ActionArgument": 53,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 55
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 36
+        },
+        {
+            "ActionArgument": 17,
+            "ActionType": "s",
+            "Input": "{",
+            "StateIndex": 103
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 35
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "string",
+            "StateIndex": 35
+        },
+        {
+            "ActionArgument": 33,
+            "ActionType": "r",
+            "Input": ">",
+            "StateIndex": 136
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "print",
+            "StateIndex": 35
+        },
+        {
+            "ActionArgument": 5,
+            "ActionType": "r",
+            "Input": "double",
+            "StateIndex": 86
+        },
+        {
+            "ActionArgument": 49,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 54
+        },
+        {
+            "ActionArgument": 87,
+            "ActionType": "s",
+            "Input": ";",
+            "StateIndex": 34
+        },
+        {
+            "ActionArgument": 66,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 108
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "s",
+            "Input": "print",
+            "StateIndex": 32
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "s",
+            "Input": "string",
+            "StateIndex": 32
+        },
+        {
+            "ActionArgument": 18,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 13
+        },
+        {
+            "ActionArgument": 79,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 104
+        },
+        {
+            "ActionArgument": 34,
+            "ActionType": "r",
+            "Input": "<",
+            "StateIndex": 67
+        },
+        {
+            "ActionArgument": 5,
+            "ActionType": "r",
+            "Input": "int",
+            "StateIndex": 86
+        },
+        {
+            "ActionArgument": 0,
+            "ActionType": "r",
+            "Input": "}",
+            "StateIndex": 32
+        },
+        {
+            "ActionArgument": 35,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 80
+        },
+        {
+            "ActionArgument": 11,
+            "ActionType": "s",
+            "Input": "double",
+            "StateIndex": 32
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "r",
+            "Input": "}",
+            "StateIndex": 36
+        },
+        {
+            "ActionArgument": 12,
+            "ActionType": "s",
+            "Input": "char",
+            "StateIndex": 32
+        },
+        {
+            "ActionArgument": 39,
+            "ActionType": "s",
+            "Input": "while",
+            "StateIndex": 32
+        },
+        {
+            "ActionArgument": 40,
+            "ActionType": "s",
+            "Input": "if",
+            "StateIndex": 32
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "s",
+            "Input": "{",
+            "StateIndex": 41
+        },
+        {
+            "ActionArgument": 82,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 115
+        },
+        {
+            "ActionArgument": 68,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 28
+        },
+        {
+            "ActionArgument": 18,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 11
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "r",
+            "Input": "print",
+            "StateIndex": 7
+        },
+        {
+            "ActionArgument": 20,
+            "ActionType": "r",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 133
+        },
+        {
+            "ActionArgument": 88,
+            "ActionType": "s",
+            "Input": ";",
+            "StateIndex": 38
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "r",
+            "Input": "double",
+            "StateIndex": 7
+        },
+        {
+            "ActionArgument": 52,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 56
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "r",
+            "Input": "}",
+            "StateIndex": 37
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 23
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 6
+        },
+        {
+            "ActionArgument": 51,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 57
+        },
+        {
+            "ActionArgument": 78,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 49
+        },
+        {
+            "ActionArgument": 10,
+            "ActionType": "s",
+            "Input": "int",
+            "StateIndex": 2
+        },
+        {
+            "ActionArgument": 19,
+            "ActionType": "r",
+            "Input": ")",
+            "StateIndex": 76
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 7
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "r",
+            "Input": "string",
+            "StateIndex": 37
+        },
+        {
+            "ActionArgument": 14,
+            "ActionType": "r",
+            "Input": "print",
+            "StateIndex": 150
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "r",
+            "Input": "while",
+            "StateIndex": 6
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "r",
+            "Input": "print",
+            "StateIndex": 21
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "r",
+            "Input": "string",
+            "StateIndex": 7
+        },
+        {
+            "ActionArgument": 19,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 47
+        },
+        {
+            "ActionArgument": 70,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 30
+        },
+        {
+            "ActionArgument": 111,
+            "ActionType": "s",
+            "Input": "/",
+            "StateIndex": 65
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "r",
+            "Input": "int",
+            "StateIndex": 6
+        },
+        {
+            "ActionArgument": 51,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 56
+        },
+        {
+            "ActionArgument": 14,
+            "ActionType": "r",
+            "Input": "double",
+            "StateIndex": 150
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "s",
+            "Input": "{",
+            "StateIndex": 32
+        },
+        {
+            "ActionArgument": 18,
+            "ActionType": "r",
+            "Input": ")",
+            "StateIndex": 75
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "r",
+            "Input": "$",
+            "StateIndex": 6
+        },
+        {
+            "ActionArgument": 81,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 116
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 47
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "r",
+            "Input": "while",
+            "StateIndex": 21
+        },
+        {
+            "ActionArgument": 14,
+            "ActionType": "r",
+            "Input": "int",
+            "StateIndex": 146
+        },
+        {
+            "ActionArgument": 40,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 44
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "r",
+            "Input": "string",
+            "StateIndex": 36
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "r",
+            "Input": "char",
+            "StateIndex": 84
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "r",
+            "Input": "{",
+            "StateIndex": 87
+        },
+        {
+            "ActionArgument": 33,
+            "ActionType": "r",
+            "Input": ")",
+            "StateIndex": 98
+        },
+        {
+            "ActionArgument": 14,
+            "ActionType": "r",
+            "Input": "print",
+            "StateIndex": 146
+        },
+        {
+            "ActionArgument": 14,
+            "ActionType": "s",
+            "Input": "while",
+            "StateIndex": 2
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "r",
+            "Input": "int",
+            "StateIndex": 21
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "s",
+            "Input": "print",
+            "StateIndex": 17
+        },
+        {
+            "ActionArgument": 79,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 117
+        },
+        {
+            "ActionArgument": 40,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 44
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "r",
+            "Input": "while",
+            "StateIndex": 88
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "r",
+            "Input": "while",
+            "StateIndex": 36
+        },
+        {
+            "ActionArgument": 1,
+            "ActionType": "r",
+            "Input": "$",
+            "StateIndex": 19
+        },
+        {
+            "ActionArgument": 49,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 93
+        },
+        {
+            "ActionArgument": 51,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 22
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 47
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "r",
+            "Input": "char",
+            "StateIndex": 37
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 47
+        },
+        {
+            "ActionArgument": 30,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 45
+        },
+        {
+            "ActionArgument": 70,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 28
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "r",
+            "Input": "string",
+            "StateIndex": 6
+        },
+        {
+            "ActionArgument": 11,
+            "ActionType": "s",
+            "Input": "double",
+            "StateIndex": 17
+        },
+        {
+            "ActionArgument": 49,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 57
+        },
+        {
+            "ActionArgument": 81,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 29
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "r",
+            "Input": "char",
+            "StateIndex": 21
+        },
+        {
+            "ActionArgument": 10,
+            "ActionType": "s",
+            "Input": "int",
+            "StateIndex": 0
+        },
+        {
+            "ActionArgument": 28,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 127
+        },
+        {
+            "ActionArgument": 82,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 78
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "s",
+            "Input": "print",
+            "StateIndex": 41
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "r",
+            "Input": "double",
+            "StateIndex": 6
+        },
+        {
+            "ActionArgument": 92,
+            "ActionType": "s",
+            "Input": "+",
+            "StateIndex": 48
+        },
+        {
+            "ActionArgument": 67,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 109
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "while",
+            "StateIndex": 35
+        },
+        {
+            "ActionArgument": 52,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 55
+        },
+        {
+            "ActionArgument": 50,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 22
+        },
+        {
+            "ActionArgument": 0,
+            "ActionType": "r",
+            "Input": "$",
+            "StateIndex": 2
+        },
+        {
+            "ActionArgument": 39,
+            "ActionType": "s",
+            "Input": "while",
+            "StateIndex": 17
+        },
+        {
+            "ActionArgument": 66,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 30
+        },
+        {
+            "ActionArgument": 36,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 52
+        },
+        {
+            "ActionArgument": 36,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 69
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "r",
+            "Input": "double",
+            "StateIndex": 149
+        },
+        {
+            "ActionArgument": 30,
+            "ActionType": "r",
+            "Input": ")",
+            "StateIndex": 74
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "r",
+            "Input": "int",
+            "StateIndex": 37
+        },
+        {
+            "ActionArgument": 18,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 32
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "r",
+            "Input": "int",
+            "StateIndex": 7
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 46
+        },
+        {
+            "ActionArgument": 5,
+            "ActionType": "r",
+            "Input": "while",
+            "StateIndex": 20
+        },
+        {
+            "ActionArgument": 18,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 2
+        },
+        {
+            "ActionArgument": 14,
+            "ActionType": "r",
+            "Input": "while",
+            "StateIndex": 150
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "r",
+            "Input": "print",
+            "StateIndex": 6
+        },
+        {
+            "ActionArgument": 18,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 10
+        },
+        {
+            "ActionArgument": 19,
+            "ActionType": "r",
+            "Input": "<",
+            "StateIndex": 64
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 5
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "r",
+            "Input": "while",
+            "StateIndex": 23
+        },
+        {
+            "ActionArgument": 14,
+            "ActionType": "s",
+            "Input": "while",
+            "StateIndex": 0
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 64
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "r",
+            "Input": "double",
+            "StateIndex": 36
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 46
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "r",
+            "Input": "double",
+            "StateIndex": 122
+        },
+        {
+            "ActionArgument": 82,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 104
+        },
+        {
+            "ActionArgument": 17,
+            "ActionType": "s",
+            "Input": "{",
+            "StateIndex": 0
+        },
+        {
+            "ActionArgument": 16,
+            "ActionType": "s",
+            "Input": "if",
+            "StateIndex": 0
+        },
+        {
+            "ActionArgument": 70,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 110
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "s",
+            "Input": "{",
+            "StateIndex": 148
+        },
+        {
+            "ActionArgument": 29,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 15
+        },
+        {
+            "ActionArgument": 18,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 46
+        },
+        {
+            "ActionArgument": 82,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 29
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 64
+        },
+        {
+            "ActionArgument": 49,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 56
+        },
+        {
+            "ActionArgument": 69,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 28
+        },
+        {
+            "ActionArgument": 107,
+            "ActionType": "s",
+            "Input": "==",
+            "StateIndex": 59
+        },
+        {
+            "ActionArgument": 5,
+            "ActionType": "r",
+            "Input": "char",
+            "StateIndex": 20
+        },
+        {
+            "ActionArgument": 10,
+            "ActionType": "s",
+            "Input": "int",
+            "StateIndex": 41
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "{",
+            "StateIndex": 35
+        },
+        {
+            "ActionArgument": 119,
+            "ActionType": "s",
+            "Input": ")",
+            "StateIndex": 83
+        },
+        {
+            "ActionArgument": 70,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 109
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "s",
+            "Input": "{",
+            "StateIndex": 147
+        },
+        {
+            "ActionArgument": 28,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 14
+        },
+        {
+            "ActionArgument": 39,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 74
+        },
+        {
+            "ActionArgument": 11,
+            "ActionType": "s",
+            "Input": "double",
+            "StateIndex": 0
+        },
+        {
+            "ActionArgument": 18,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 17
+        },
+        {
+            "ActionArgument": 20,
+            "ActionType": "s",
+            "Input": ";",
+            "StateIndex": 3
+        },
+        {
+            "ActionArgument": 40,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 44
+        },
+        {
+            "ActionArgument": 80,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 29
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "if",
+            "StateIndex": 35
+        },
+        {
+            "ActionArgument": 12,
+            "ActionType": "s",
+            "Input": "char",
+            "StateIndex": 17
+        },
+        {
+            "ActionArgument": 53,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 56
+        },
+        {
+            "ActionArgument": 34,
+            "ActionType": "r",
+            "Input": "==",
+            "StateIndex": 67
+        },
+        {
+            "ActionArgument": 23,
+            "ActionType": "s",
+            "Input": ";",
+            "StateIndex": 9
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "r",
+            "Input": "{",
+            "StateIndex": 130
+        },
+        {
+            "ActionArgument": 78,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 29
+        },
+        {
+            "ActionArgument": 35,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 51
+        },
+        {
+            "ActionArgument": 35,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 68
+        },
+        {
+            "ActionArgument": 105,
+            "ActionType": "s",
+            "Input": "<",
+            "StateIndex": 59
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 46
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "r",
+            "Input": "char",
+            "StateIndex": 36
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "r",
+            "Input": "string",
+            "StateIndex": 84
+        },
+        {
+            "ActionArgument": 67,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 30
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 97
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "r",
+            "Input": "int",
+            "StateIndex": 149
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 47
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "r",
+            "Input": "double",
+            "StateIndex": 37
+        },
+        {
+            "ActionArgument": 21,
+            "ActionType": "s",
+            "Input": ";",
+            "StateIndex": 4
+        },
+        {
+            "ActionArgument": 78,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 78
+        },
+        {
+            "ActionArgument": 81,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 114
+        },
+        {
+            "ActionArgument": 18,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 0
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "int",
+            "StateIndex": 5
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "r",
+            "Input": "{",
+            "StateIndex": 36
+        },
+        {
+            "ActionArgument": 34,
+            "ActionType": "r",
+            "Input": ")",
+            "StateIndex": 79
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "if",
+            "StateIndex": 5
+        },
+        {
+            "ActionArgument": 52,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 54
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "}",
+            "StateIndex": 35
+        },
+        {
+            "ActionArgument": 20,
+            "ActionType": "r",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 133
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 21
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "r",
+            "Input": "$",
+            "StateIndex": 84
+        },
+        {
+            "ActionArgument": 35,
+            "ActionType": "r",
+            "Input": "==",
+            "StateIndex": 68
+        },
+        {
+            "ActionArgument": 53,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 57
+        },
+        {
+            "ActionArgument": 140,
+            "ActionType": "s",
+            "Input": ")",
+            "StateIndex": 112
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "r",
+            "Input": "{",
+            "StateIndex": 37
+        },
+        {
+            "ActionArgument": 70,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 111
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "r",
+            "Input": "{",
+            "StateIndex": 149
+        },
+        {
+            "ActionArgument": 30,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 16
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "r",
+            "Input": "int",
+            "StateIndex": 23
+        },
+        {
+            "ActionArgument": 86,
+            "ActionType": "s",
+            "Input": ";",
+            "StateIndex": 33
+        },
+        {
+            "ActionArgument": 24,
+            "ActionType": "r",
+            "Input": "(",
+            "StateIndex": 107
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 76
+        },
+        {
+            "ActionArgument": 11,
+            "ActionType": "s",
+            "Input": "double",
+            "StateIndex": 2
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "s",
+            "Input": "{",
+            "StateIndex": 17
+        },
+        {
+            "ActionArgument": 18,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 12
+        },
+        {
+            "ActionArgument": 84,
+            "ActionType": "s",
+            "Input": "}",
+            "StateIndex": 31
+        },
+        {
+            "ActionArgument": 10,
+            "ActionType": "s",
+            "Input": "int",
+            "StateIndex": 17
+        },
+        {
+            "ActionArgument": 53,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 95
+        },
+        {
+            "ActionType": "acc",
+            "Input": "$",
+            "StateIndex": 1
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "r",
+            "Input": "string",
+            "StateIndex": 130
+        },
+        {
+            "ActionArgument": 34,
+            "ActionType": "r",
+            "Input": "=",
+            "StateIndex": 18
+        },
+        {
+            "ActionArgument": 103,
+            "ActionType": "s",
+            "Input": ")",
+            "StateIndex": 58
+        },
+        {
+            "ActionArgument": 10,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 101
+        },
+        {
+            "ActionArgument": 39,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 45
+        },
+        {
+            "ActionArgument": 33,
+            "ActionType": "r",
+            "Input": "==",
+            "StateIndex": 64
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "r",
+            "Input": "while",
+            "StateIndex": 37
+        },
+        {
+            "ActionArgument": 5,
+            "ActionType": "r",
+            "Input": "$",
+            "StateIndex": 20
+        },
+        {
+            "ActionArgument": 49,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 94
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "r",
+            "Input": "if",
+            "StateIndex": 6
+        },
+        {
+            "ActionArgument": 106,
+            "ActionType": "s",
+            "Input": ">",
+            "StateIndex": 59
+        },
+        {
+            "ActionArgument": 89,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 39
+        },
+        {
+            "ActionArgument": 39,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 62
+        },
+        {
+            "ActionArgument": 21,
+            "ActionType": "r",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 132
+        },
+        {
+            "ActionArgument": 5,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 20
+        },
+        {
+            "ActionArgument": 5,
+            "ActionType": "r",
+            "Input": "int",
+            "StateIndex": 20
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 97
+        },
+        {
+            "ActionArgument": 5,
+            "ActionType": "r",
+            "Input": "string",
+            "StateIndex": 20
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 46
+        },
+        {
+            "ActionArgument": 52,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 22
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "r",
+            "Input": "$",
+            "StateIndex": 21
+        },
+        {
+            "ActionArgument": 49,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 95
+        },
+        {
+            "ActionArgument": 90,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 40
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 63
+        },
+        {
+            "ActionArgument": 51,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 92
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "r",
+            "Input": "double",
+            "StateIndex": 21
+        },
+        {
+            "ActionArgument": 16,
+            "ActionType": "s",
+            "Input": "if",
+            "StateIndex": 2
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "$",
+            "StateIndex": 5
+        },
+        {
+            "ActionArgument": 81,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 115
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "r",
+            "Input": "string",
+            "StateIndex": 21
+        },
+        {
+            "ActionArgument": 17,
+            "ActionType": "s",
+            "Input": "{",
+            "StateIndex": 2
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "int",
+            "StateIndex": 35
+        },
+        {
+            "ActionArgument": 17,
+            "ActionType": "r",
+            "Input": ")",
+            "StateIndex": 72
+        },
+        {
+            "ActionArgument": 53,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 22
+        },
+        {
+            "ActionArgument": 40,
+            "ActionType": "s",
+            "Input": "if",
+            "StateIndex": 41
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "r",
+            "Input": "char",
+            "StateIndex": 23
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "r",
+            "Input": "$",
+            "StateIndex": 7
+        },
+        {
+            "ActionArgument": 81,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 117
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "r",
+            "Input": "print",
+            "StateIndex": 23
+        },
+        {
+            "ActionArgument": 17,
+            "ActionType": "r",
+            "Input": "<",
+            "StateIndex": 60
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "r",
+            "Input": "if",
+            "StateIndex": 23
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "r",
+            "Input": "string",
+            "StateIndex": 122
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "r",
+            "Input": "while",
+            "StateIndex": 7
+        },
+        {
+            "ActionArgument": 79,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 49
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 98
+        },
+        {
+            "ActionArgument": 54,
+            "ActionType": "s",
+            "Input": "=",
+            "StateIndex": 24
+        },
+        {
+            "ActionArgument": 55,
+            "ActionType": "s",
+            "Input": "=",
+            "StateIndex": 25
+        },
+        {
+            "ActionArgument": 40,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 61
+        },
+        {
+            "ActionArgument": 56,
+            "ActionType": "s",
+            "Input": "=",
+            "StateIndex": 26
+        },
+        {
+            "ActionArgument": 39,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 62
+        },
+        {
+            "ActionArgument": 57,
+            "ActionType": "s",
+            "Input": "=",
+            "StateIndex": 27
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 63
+        },
+        {
+            "ActionArgument": 67,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 28
+        },
+        {
+            "ActionArgument": 28,
+            "ActionType": "r",
+            "Input": "==",
+            "StateIndex": 138
+        },
+        {
+            "ActionArgument": 10,
+            "ActionType": "s",
+            "Input": "int",
+            "StateIndex": 32
+        },
+        {
+            "ActionArgument": 36,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 81
+        },
+        {
+            "ActionArgument": 11,
+            "ActionType": "s",
+            "Input": "double",
+            "StateIndex": 41
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 122
+        },
+        {
+            "ActionArgument": 39,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 45
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "char",
+            "StateIndex": 35
+        },
+        {
+            "ActionArgument": 79,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 29
+        },
+        {
+            "ActionArgument": 39,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 45
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "double",
+            "StateIndex": 35
+        },
+        {
+            "ActionArgument": 79,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 116
+        },
+        {
+            "ActionArgument": 49,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 22
+        },
+        {
+            "ActionArgument": 33,
+            "ActionType": "r",
+            "Input": ">",
+            "StateIndex": 64
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "r",
+            "Input": "if",
+            "StateIndex": 36
+        },
+        {
+            "ActionArgument": 68,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 30
+        },
+        {
+            "ActionArgument": 109,
+            "ActionType": "s",
+            "Input": "-",
+            "StateIndex": 65
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "r",
+            "Input": "if",
+            "StateIndex": 122
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "r",
+            "Input": "if",
+            "StateIndex": 7
+        },
+        {
+            "ActionArgument": 17,
+            "ActionType": "r",
+            "Input": ">",
+            "StateIndex": 60
+        },
+        {
+            "ActionArgument": 40,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 73
+        },
+        {
+            "ActionArgument": 17,
+            "ActionType": "r",
+            "Input": "==",
+            "StateIndex": 60
+        },
+        {
+            "ActionArgument": 78,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 66
+        },
+        {
+            "ActionArgument": 93,
+            "ActionType": "s",
+            "Input": "-",
+            "StateIndex": 48
+        },
+        {
+            "ActionArgument": 5,
+            "ActionType": "r",
+            "Input": "string",
+            "StateIndex": 86
+        },
+        {
+            "ActionArgument": 40,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 61
+        },
+        {
+            "ActionArgument": 68,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 90
+        },
+        {
+            "ActionArgument": 12,
+            "ActionType": "s",
+            "Input": "char",
+            "StateIndex": 0
+        },
+        {
+            "ActionArgument": 39,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 74
+        },
+        {
+            "ActionArgument": 40,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 61
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "s",
+            "Input": "print",
+            "StateIndex": 0
+        },
+        {
+            "ActionArgument": 67,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 90
+        },
+        {
+            "ActionArgument": 40,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 61
+        },
+        {
+            "ActionArgument": 39,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 62
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "r",
+            "Input": "string",
+            "StateIndex": 87
+        },
+        {
+            "ActionArgument": 30,
+            "ActionType": "r",
+            "Input": ">",
+            "StateIndex": 62
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 75
+        },
+        {
+            "ActionArgument": 80,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 104
+        },
+        {
+            "ActionArgument": 39,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 62
+        },
+        {
+            "ActionArgument": 34,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 50
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "r",
+            "Input": "string",
+            "StateIndex": 88
+        },
+        {
+            "ActionArgument": 32,
+            "ActionType": "r",
+            "Input": ">",
+            "StateIndex": 63
+        },
+        {
+            "ActionArgument": 12,
+            "ActionType": "s",
+            "Input": "char",
+            "StateIndex": 2
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 76
+        },
+        {
+            "ActionArgument": 23,
+            "ActionType": "r",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 105
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 63
+        },
+        {
+            "ActionArgument": 14,
+            "ActionType": "r",
+            "Input": "while",
+            "StateIndex": 146
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "s",
+            "Input": "print",
+            "StateIndex": 2
+        },
+        {
+            "ActionArgument": 50,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 92
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "r",
+            "Input": "print",
+            "StateIndex": 149
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "while",
+            "StateIndex": 5
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 63
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 64
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 64
+        },
+        {
+            "ActionArgument": 34,
+            "ActionType": "r",
+            "Input": ">",
+            "StateIndex": 67
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "r",
+            "Input": "double",
+            "StateIndex": 23
+        },
+        {
+            "ActionArgument": 108,
+            "ActionType": "s",
+            "Input": "+",
+            "StateIndex": 65
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "r",
+            "Input": "string",
+            "StateIndex": 23
+        },
+        {
+            "ActionArgument": 110,
+            "ActionType": "s",
+            "Input": "*",
+            "StateIndex": 65
+        },
+        {
+            "ActionArgument": 69,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 89
+        },
+        {
+            "ActionArgument": 35,
+            "ActionType": "r",
+            "Input": ">",
+            "StateIndex": 68
+        },
+        {
+            "ActionArgument": 31,
+            "ActionType": "r",
+            "Input": ">",
+            "StateIndex": 61
+        },
+        {
+            "ActionArgument": 80,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 66
+        },
+        {
+            "ActionArgument": 81,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 66
+        },
+        {
+            "ActionArgument": 82,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 66
+        },
+        {
+            "ActionArgument": 79,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 66
+        },
+        {
+            "ActionArgument": 1,
+            "ActionType": "r",
+            "Input": "}",
+            "StateIndex": 85
+        },
+        {
+            "ActionArgument": 34,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 67
+        },
+        {
+            "ActionArgument": 34,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 67
+        },
+        {
+            "ActionArgument": 34,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 67
+        },
+        {
+            "ActionArgument": 37,
+            "ActionType": "r",
+            "Input": "==",
+            "StateIndex": 70
+        },
+        {
+            "ActionArgument": 35,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 68
+        },
+        {
+            "ActionArgument": 35,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 68
+        },
+        {
+            "ActionArgument": 35,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 68
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "r",
+            "Input": "$",
+            "StateIndex": 130
+        },
+        {
+            "ActionArgument": 23,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 105
+        },
+        {
+            "ActionArgument": 35,
+            "ActionType": "r",
+            "Input": "<",
+            "StateIndex": 68
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "r",
+            "Input": "int",
+            "StateIndex": 87
+        },
+        {
+            "ActionArgument": 36,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 81
+        },
+        {
+            "ActionArgument": 36,
+            "ActionType": "r",
+            "Input": "==",
+            "StateIndex": 69
+        },
+        {
+            "ActionArgument": 36,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 69
+        },
+        {
+            "ActionArgument": 36,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 69
+        },
+        {
+            "ActionArgument": 69,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 90
+        },
+        {
+            "ActionArgument": 36,
+            "ActionType": "r",
+            "Input": ">",
+            "StateIndex": 69
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "r",
+            "Input": "int",
+            "StateIndex": 88
+        },
+        {
+            "ActionArgument": 37,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 82
+        },
+        {
+            "ActionArgument": 36,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 69
+        },
+        {
+            "ActionArgument": 37,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 70
+        },
+        {
+            "ActionArgument": 37,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 70
+        },
+        {
+            "ActionArgument": 37,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 70
+        },
+        {
+            "ActionArgument": 14,
+            "ActionType": "r",
+            "Input": "double",
+            "StateIndex": 146
+        },
+        {
+            "ActionArgument": 29,
+            "ActionType": "r",
+            "Input": "==",
+            "StateIndex": 140
+        },
+        {
+            "ActionArgument": 113,
+            "ActionType": "s",
+            "Input": ")",
+            "StateIndex": 71
+        },
+        {
+            "ActionArgument": 40,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 73
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "r",
+            "Input": "int",
+            "StateIndex": 36
+        },
+        {
+            "ActionArgument": 31,
+            "ActionType": "r",
+            "Input": ")",
+            "StateIndex": 73
+        },
+        {
+            "ActionArgument": 40,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 73
+        },
+        {
+            "ActionArgument": 40,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 73
+        },
+        {
+            "ActionArgument": 39,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 74
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "s",
+            "Input": "string",
+            "StateIndex": 0
+        },
+        {
+            "ActionArgument": 39,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 74
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 75
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 75
+        },
+        {
+            "ActionArgument": 14,
+            "ActionType": "r",
+            "Input": "string",
+            "StateIndex": 146
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 76
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "s",
+            "Input": "string",
+            "StateIndex": 2
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 76
+        },
+        {
+            "ActionArgument": 115,
+            "ActionType": "s",
+            "Input": "-",
+            "StateIndex": 77
+        },
+        {
+            "ActionArgument": 22,
+            "ActionType": "r",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 106
+        },
+        {
+            "ActionArgument": 117,
+            "ActionType": "s",
+            "Input": "/",
+            "StateIndex": 77
+        },
+        {
+            "ActionArgument": 114,
+            "ActionType": "s",
+            "Input": "+",
+            "StateIndex": 77
+        },
+        {
+            "ActionArgument": 36,
+            "ActionType": "r",
+            "Input": "<",
+            "StateIndex": 69
+        },
+        {
+            "ActionArgument": 22,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 106
+        },
+        {
+            "ActionArgument": 116,
+            "ActionType": "s",
+            "Input": "*",
+            "StateIndex": 77
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "r",
+            "Input": "$",
+            "StateIndex": 23
+        },
+        {
+            "ActionArgument": 80,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 78
+        },
+        {
+            "ActionArgument": 81,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 78
+        },
+        {
+            "ActionArgument": 5,
+            "ActionType": "r",
+            "Input": "print",
+            "StateIndex": 20
+        },
+        {
+            "ActionArgument": 79,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 78
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "string",
+            "StateIndex": 5
+        },
+        {
+            "ActionArgument": 34,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 79
+        },
+        {
+            "ActionArgument": 31,
+            "ActionType": "r",
+            "Input": "==",
+            "StateIndex": 61
+        },
+        {
+            "ActionArgument": 78,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 104
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "double",
+            "StateIndex": 5
+        },
+        {
+            "ActionArgument": 34,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 79
+        },
+        {
+            "ActionArgument": 67,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 108
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "char",
+            "StateIndex": 5
+        },
+        {
+            "ActionArgument": 34,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 79
+        },
+        {
+            "ActionArgument": 68,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 108
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "r",
+            "Input": "string",
+            "StateIndex": 149
+        },
+        {
+            "ActionArgument": 34,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 79
+        },
+        {
+            "ActionArgument": 22,
+            "ActionType": "r",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 106
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "{",
+            "StateIndex": 5
+        },
+        {
+            "ActionArgument": 35,
+            "ActionType": "r",
+            "Input": ")",
+            "StateIndex": 80
+        },
+        {
+            "ActionArgument": 14,
+            "ActionType": "r",
+            "Input": "string",
+            "StateIndex": 150
+        },
+        {
+            "ActionArgument": 35,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 80
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "r",
+            "Input": "char",
+            "StateIndex": 6
+        },
+        {
+            "ActionArgument": 35,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 80
+        },
+        {
+            "ActionArgument": 68,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 109
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "r",
+            "Input": "char",
+            "StateIndex": 7
+        },
+        {
+            "ActionArgument": 36,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 81
+        },
+        {
+            "ActionArgument": 21,
+            "ActionType": "r",
+            "Input": "(",
+            "StateIndex": 132
+        },
+        {
+            "ActionArgument": 5,
+            "ActionType": "r",
+            "Input": "if",
+            "StateIndex": 20
+        },
+        {
+            "ActionArgument": 68,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 110
+        },
+        {
+            "ActionArgument": 37,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 82
+        },
+        {
+            "ActionArgument": 20,
+            "ActionType": "r",
+            "Input": "(",
+            "StateIndex": 133
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "r",
+            "Input": "if",
+            "StateIndex": 21
+        },
+        {
+            "ActionArgument": 68,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 111
+        },
+        {
+            "ActionArgument": 22,
+            "ActionType": "s",
+            "Input": "=",
+            "StateIndex": 8
+        },
+        {
+            "ActionArgument": 37,
+            "ActionType": "r",
+            "Input": "/",
+            "StateIndex": 82
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "r",
+            "Input": "char",
+            "StateIndex": 88
+        },
+        {
+            "ActionArgument": 37,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 82
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "r",
+            "Input": "{",
+            "StateIndex": 84
+        },
+        {
+            "ActionArgument": 69,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 30
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "r",
+            "Input": "if",
+            "StateIndex": 84
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "r",
+            "Input": "while",
+            "StateIndex": 84
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "r",
+            "Input": "double",
+            "StateIndex": 84
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "r",
+            "Input": "int",
+            "StateIndex": 84
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "r",
+            "Input": "print",
+            "StateIndex": 122
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 84
+        },
+        {
+            "ActionArgument": 5,
+            "ActionType": "r",
+            "Input": "while",
+            "StateIndex": 86
+        },
+        {
+            "ActionArgument": 5,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 86
+        },
+        {
+            "ActionArgument": 5,
+            "ActionType": "r",
+            "Input": "print",
+            "StateIndex": 86
+        },
+        {
+            "ActionArgument": 32,
+            "ActionType": "r",
+            "Input": ")",
+            "StateIndex": 97
+        },
+        {
+            "ActionArgument": 5,
+            "ActionType": "r",
+            "Input": "{",
+            "StateIndex": 86
+        },
+        {
+            "ActionArgument": 5,
+            "ActionType": "r",
+            "Input": "}",
+            "StateIndex": 86
+        },
+        {
+            "ActionArgument": 35,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 80
+        },
+        {
+            "ActionArgument": 5,
+            "ActionType": "r",
+            "Input": "char",
+            "StateIndex": 86
+        },
+        {
+            "ActionArgument": 5,
+            "ActionType": "r",
+            "Input": "if",
+            "StateIndex": 86
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "r",
+            "Input": "}",
+            "StateIndex": 87
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "r",
+            "Input": "print",
+            "StateIndex": 87
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 87
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "r",
+            "Input": "if",
+            "StateIndex": 87
+        },
+        {
+            "ActionArgument": 36,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 81
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "r",
+            "Input": "char",
+            "StateIndex": 87
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "r",
+            "Input": "while",
+            "StateIndex": 87
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "r",
+            "Input": "}",
+            "StateIndex": 88
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "r",
+            "Input": "if",
+            "StateIndex": 88
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "r",
+            "Input": "{",
+            "StateIndex": 88
+        },
+        {
+            "ActionArgument": 79,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 114
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "r",
+            "Input": "print",
+            "StateIndex": 88
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 88
+        },
+        {
+            "ActionArgument": 14,
+            "ActionType": "r",
+            "Input": "$",
+            "StateIndex": 146
+        },
+        {
+            "ActionArgument": 67,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 89
+        },
+        {
+            "ActionArgument": 5,
+            "ActionType": "r",
+            "Input": "{",
+            "StateIndex": 20
+        },
+        {
+            "ActionArgument": 70,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 89
+        },
+        {
+            "ActionArgument": 68,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 89
+        },
+        {
+            "ActionArgument": 66,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 89
+        },
+        {
+            "ActionArgument": 4,
+            "ActionType": "r",
+            "Input": "{",
+            "StateIndex": 21
+        },
+        {
+            "ActionArgument": 70,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 90
+        },
+        {
+            "ActionArgument": 145,
+            "ActionType": "s",
+            "Input": ")",
+            "StateIndex": 118
+        },
+        {
+            "ActionArgument": 66,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 90
+        },
+        {
+            "ActionArgument": 122,
+            "ActionType": "s",
+            "Input": "}",
+            "StateIndex": 91
+        },
+        {
+            "ActionArgument": 6,
+            "ActionType": "r",
+            "Input": "{",
+            "StateIndex": 23
+        },
+        {
+            "ActionArgument": 53,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 92
+        },
+        {
+            "ActionArgument": 147,
+            "ActionType": "s",
+            "Input": ")",
+            "StateIndex": 120
+        },
+        {
+            "ActionArgument": 49,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 92
+        },
+        {
+            "ActionArgument": 53,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 93
+        },
+        {
+            "ActionArgument": 148,
+            "ActionType": "s",
+            "Input": ")",
+            "StateIndex": 121
+        },
+        {
+            "ActionArgument": 50,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 93
+        },
+        {
+            "ActionArgument": 51,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 93
+        },
+        {
+            "ActionArgument": 51,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 94
+        },
+        {
+            "ActionArgument": 50,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 94
+        },
+        {
+            "ActionArgument": 53,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 94
+        },
+        {
+            "ActionArgument": 52,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 94
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 97
+        },
+        {
+            "ActionArgument": 51,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 95
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "r",
+            "Input": "while",
+            "StateIndex": 149
+        },
+        {
+            "ActionArgument": 2,
+            "ActionType": "r",
+            "Input": "print",
+            "StateIndex": 5
+        },
+        {
+            "ActionArgument": 50,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 95
+        },
+        {
+            "ActionArgument": 13,
+            "ActionType": "r",
+            "Input": "if",
+            "StateIndex": 149
+        },
+        {
+            "ActionArgument": 52,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 95
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "*",
+            "StateIndex": 98
+        },
+        {
+            "ActionArgument": 129,
+            "ActionType": "s",
+            "Input": ")",
+            "StateIndex": 96
+        },
+        {
+            "ActionArgument": 41,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 97
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "+",
+            "StateIndex": 98
+        },
+        {
+            "ActionArgument": 42,
+            "ActionType": "r",
+            "Input": "-",
+            "StateIndex": 98
+        },
+        {
+            "ActionArgument": 11,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 102
+        },
+        {
+            "ActionArgument": 23,
+            "ActionType": "r",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 105
+        },
+        {
+            "ActionArgument": 132,
+            "ActionType": "s",
+            "Input": "=",
+            "StateIndex": 105
+        },
+        {
+            "ActionArgument": 30,
+            "ActionType": "r",
+            "Input": "==",
+            "StateIndex": 62
+        },
+        {
+            "ActionArgument": 23,
+            "ActionType": "r",
+            "Input": "(",
+            "StateIndex": 105
+        },
+        {
+            "ActionArgument": 133,
+            "ActionType": "s",
+            "Input": "=",
+            "StateIndex": 106
+        },
+        {
+            "ActionArgument": 22,
+            "ActionType": "r",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 106
+        },
+        {
+            "ActionArgument": 32,
+            "ActionType": "r",
+            "Input": "==",
+            "StateIndex": 63
+        },
+        {
+            "ActionArgument": 22,
+            "ActionType": "r",
+            "Input": "(",
+            "StateIndex": 106
+        },
+        {
+            "ActionArgument": 3,
+            "ActionType": "r",
+            "Input": "{",
+            "StateIndex": 6
+        },
+        {
+            "ActionArgument": 36,
+            "ActionType": "r",
+            "Input": ")",
+            "StateIndex": 81
+        },
+        {
+            "ActionArgument": 24,
+            "ActionType": "r",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 107
+        },
+        {
+            "ActionArgument": 37,
+            "ActionType": "r",
+            "Input": "<",
+            "StateIndex": 70
+        },
+        {
+            "ActionArgument": 24,
+            "ActionType": "r",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 107
+        },
+        {
+            "ActionArgument": 24,
+            "ActionType": "r",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 107
+        },
+        {
+            "ActionArgument": 40,
+            "ActionType": "s",
+            "Input": "if",
+            "StateIndex": 17
+        },
+        {
+            "ActionArgument": 24,
+            "ActionType": "r",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 107
+        },
+        {
+            "ActionArgument": 37,
+            "ActionType": "r",
+            "Input": ")",
+            "StateIndex": 82
+        },
+        {
+            "ActionArgument": 7,
+            "ActionType": "r",
+            "Input": "{",
+            "StateIndex": 7
+        },
+        {
+            "ActionArgument": 70,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 108
+        },
+        {
+            "ActionArgument": 66,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 109
+        },
+        {
+            "ActionArgument": 78,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 116
+        },
+        {
+            "ActionArgument": 69,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 110
+        },
+        {
+            "ActionArgument": 67,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 110
+        },
+        {
+            "ActionArgument": 81,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 104
+        },
+        {
+            "ActionArgument": 66,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 110
+        },
+        {
+            "ActionArgument": 23,
+            "ActionType": "r",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 105
+        },
+        {
+            "ActionArgument": 66,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 111
+        },
+        {
+            "ActionArgument": 38,
+            "ActionType": "r",
+            "Input": ";",
+            "StateIndex": 113
+        },
+        {
+            "ActionArgument": 31,
+            "ActionType": "r",
+            "Input": "<",
+            "StateIndex": 61
+        },
+        {
+            "ActionArgument": 80,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 114
+        },
+        {
+            "ActionArgument": 82,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 114
+        },
+        {
+            "ActionArgument": 69,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 108
+        },
+        {
+            "ActionArgument": 78,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 114
+        },
+        {
+            "ActionArgument": 30,
+            "ActionType": "r",
+            "Input": "<",
+            "StateIndex": 62
+        },
+        {
+            "ActionArgument": 80,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 115
+        },
+        {
+            "ActionArgument": 79,
+            "ActionType": "s",
+            "Input": "[VARNAMETOKEN]",
+            "StateIndex": 115
+        },
+        {
+            "ActionArgument": 69,
+            "ActionType": "s",
+            "Input": "[STRINGTOKEN]",
+            "StateIndex": 109
+        },
+        {
+            "ActionArgument": 78,
+            "ActionType": "s",
+            "Input": "(",
+            "StateIndex": 115
+        },
+        {
+            "ActionArgument": 32,
+            "ActionType": "r",
+            "Input": "<",
+            "StateIndex": 63
+        },
+        {
+            "ActionArgument": 80,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 116
+        },
+        {
+            "ActionArgument": 82,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 116
+        },
+        {
+            "ActionArgument": 80,
+            "ActionType": "s",
+            "Input": "[NUMBERTOKEN]",
+            "StateIndex": 117
+        },
+        {
+            "ActionArgument": 82,
+            "ActionType": "s",
+            "Input": "[CHARTOKEN]",
+            "StateIndex": 117
+        },
+        {
+            "ActionArgument": 17,
+            "ActionType": "s",
+            "Input": "{",
+            "StateIndex": 119
+        },
+        {
+            "ActionArgument": 15,
+            "ActionType": "r",
+            "Input": "int",
+            "StateIndex": 122
+        }
+    ],
+    "GotoTable": [
+        {
+            "GotoIndex": 97,
+            "Input": "stringI",
+            "StateIndex": 78
+        },
+        {
+            "GotoIndex": 8,
+            "Input": "VarName",
+            "StateIndex": 2
+        },
+        {
+            "GotoIndex": 34,
+            "Input": "Initalization",
+            "StateIndex": 32
+        },
+        {
+            "GotoIndex": 33,
+            "Input": "Declatation",
+            "StateIndex": 32
+        },
+        {
+            "GotoIndex": 43,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 56
+        },
+        {
+            "GotoIndex": 98,
+            "Input": "charI",
+            "StateIndex": 66
+        },
+        {
+            "GotoIndex": 73,
+            "Input": "VarName",
+            "StateIndex": 66
+        },
+        {
+            "GotoIndex": 112,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 66
+        },
+        {
+            "GotoIndex": 47,
+            "Input": "charI",
+            "StateIndex": 22
+        },
+        {
+            "GotoIndex": 48,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 56
+        },
+        {
+            "GotoIndex": 47,
+            "Input": "charI",
+            "StateIndex": 56
+        },
+        {
+            "GotoIndex": 45,
+            "Input": "numberI",
+            "StateIndex": 56
+        },
+        {
+            "GotoIndex": 101,
+            "Input": "AnyType",
+            "StateIndex": 56
+        },
+        {
+            "GotoIndex": 47,
+            "Input": "charI",
+            "StateIndex": 55
+        },
+        {
+            "GotoIndex": 46,
+            "Input": "stringI",
+            "StateIndex": 55
+        },
+        {
+            "GotoIndex": 45,
+            "Input": "numberI",
+            "StateIndex": 55
+        },
+        {
+            "GotoIndex": 43,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 55
+        },
+        {
+            "GotoIndex": 60,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 30
+        },
+        {
+            "GotoIndex": 44,
+            "Input": "VarName",
+            "StateIndex": 55
+        },
+        {
+            "GotoIndex": 47,
+            "Input": "charI",
+            "StateIndex": 54
+        },
+        {
+            "GotoIndex": 45,
+            "Input": "numberI",
+            "StateIndex": 54
+        },
+        {
+            "GotoIndex": 99,
+            "Input": "AnyType",
+            "StateIndex": 54
+        },
+        {
+            "GotoIndex": 98,
+            "Input": "charI",
+            "StateIndex": 49
+        },
+        {
+            "GotoIndex": 97,
+            "Input": "stringI",
+            "StateIndex": 49
+        },
+        {
+            "GotoIndex": 73,
+            "Input": "VarName",
+            "StateIndex": 49
+        },
+        {
+            "GotoIndex": 97,
+            "Input": "stringI",
+            "StateIndex": 66
+        },
+        {
+            "GotoIndex": 48,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 55
+        },
+        {
+            "GotoIndex": 8,
+            "Input": "VarName",
+            "StateIndex": 41
+        },
+        {
+            "GotoIndex": 73,
+            "Input": "VarName",
+            "StateIndex": 115
+        },
+        {
+            "GotoIndex": 46,
+            "Input": "stringI",
+            "StateIndex": 56
+        },
+        {
+            "GotoIndex": 91,
+            "Input": "S",
+            "StateIndex": 41
+        },
+        {
+            "GotoIndex": 48,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 94
+        },
+        {
+            "GotoIndex": 74,
+            "Input": "numberI",
+            "StateIndex": 49
+        },
+        {
+            "GotoIndex": 64,
+            "Input": "charI",
+            "StateIndex": 30
+        },
+        {
+            "GotoIndex": 8,
+            "Input": "VarName",
+            "StateIndex": 32
+        },
+        {
+            "GotoIndex": 104,
+            "Input": "AnyBoolOperator",
+            "StateIndex": 59
+        },
+        {
+            "GotoIndex": 75,
+            "Input": "stringI",
+            "StateIndex": 29
+        },
+        {
+            "GotoIndex": 37,
+            "Input": "Body",
+            "StateIndex": 41
+        },
+        {
+            "GotoIndex": 135,
+            "Input": "stringI",
+            "StateIndex": 110
+        },
+        {
+            "GotoIndex": 27,
+            "Input": "VarName",
+            "StateIndex": 13
+        },
+        {
+            "GotoIndex": 59,
+            "Input": "AnyType",
+            "StateIndex": 90
+        },
+        {
+            "GotoIndex": 61,
+            "Input": "VarName",
+            "StateIndex": 28
+        },
+        {
+            "GotoIndex": 65,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 30
+        },
+        {
+            "GotoIndex": 135,
+            "Input": "stringI",
+            "StateIndex": 109
+        },
+        {
+            "GotoIndex": 26,
+            "Input": "VarName",
+            "StateIndex": 12
+        },
+        {
+            "GotoIndex": 77,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 49
+        },
+        {
+            "GotoIndex": 135,
+            "Input": "stringI",
+            "StateIndex": 108
+        },
+        {
+            "GotoIndex": 25,
+            "Input": "VarName",
+            "StateIndex": 11
+        },
+        {
+            "GotoIndex": 73,
+            "Input": "VarName",
+            "StateIndex": 78
+        },
+        {
+            "GotoIndex": 85,
+            "Input": "S",
+            "StateIndex": 32
+        },
+        {
+            "GotoIndex": 72,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 29
+        },
+        {
+            "GotoIndex": 60,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 28
+        },
+        {
+            "GotoIndex": 44,
+            "Input": "VarName",
+            "StateIndex": 22
+        },
+        {
+            "GotoIndex": 102,
+            "Input": "AnyType",
+            "StateIndex": 57
+        },
+        {
+            "GotoIndex": 63,
+            "Input": "stringI",
+            "StateIndex": 28
+        },
+        {
+            "GotoIndex": 48,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 22
+        },
+        {
+            "GotoIndex": 118,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 78
+        },
+        {
+            "GotoIndex": 45,
+            "Input": "numberI",
+            "StateIndex": 95
+        },
+        {
+            "GotoIndex": 1,
+            "Input": "S",
+            "StateIndex": 0
+        },
+        {
+            "GotoIndex": 24,
+            "Input": "VarName",
+            "StateIndex": 10
+        },
+        {
+            "GotoIndex": 130,
+            "Input": "Body",
+            "StateIndex": 103
+        },
+        {
+            "GotoIndex": 4,
+            "Input": "Initalization",
+            "StateIndex": 0
+        },
+        {
+            "GotoIndex": 9,
+            "Input": "Print",
+            "StateIndex": 2
+        },
+        {
+            "GotoIndex": 98,
+            "Input": "charI",
+            "StateIndex": 114
+        },
+        {
+            "GotoIndex": 8,
+            "Input": "VarName",
+            "StateIndex": 0
+        },
+        {
+            "GotoIndex": 63,
+            "Input": "stringI",
+            "StateIndex": 30
+        },
+        {
+            "GotoIndex": 7,
+            "Input": "Body",
+            "StateIndex": 0
+        },
+        {
+            "GotoIndex": 37,
+            "Input": "Body",
+            "StateIndex": 17
+        },
+        {
+            "GotoIndex": 73,
+            "Input": "VarName",
+            "StateIndex": 116
+        },
+        {
+            "GotoIndex": 59,
+            "Input": "AnyType",
+            "StateIndex": 30
+        },
+        {
+            "GotoIndex": 123,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 92
+        },
+        {
+            "GotoIndex": 44,
+            "Input": "VarName",
+            "StateIndex": 56
+        },
+        {
+            "GotoIndex": 63,
+            "Input": "stringI",
+            "StateIndex": 89
+        },
+        {
+            "GotoIndex": 76,
+            "Input": "charI",
+            "StateIndex": 104
+        },
+        {
+            "GotoIndex": 125,
+            "Input": "charI",
+            "StateIndex": 92
+        },
+        {
+            "GotoIndex": 74,
+            "Input": "numberI",
+            "StateIndex": 78
+        },
+        {
+            "GotoIndex": 36,
+            "Input": "If",
+            "StateIndex": 41
+        },
+        {
+            "GotoIndex": 126,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 93
+        },
+        {
+            "GotoIndex": 44,
+            "Input": "VarName",
+            "StateIndex": 57
+        },
+        {
+            "GotoIndex": 63,
+            "Input": "stringI",
+            "StateIndex": 90
+        },
+        {
+            "GotoIndex": 44,
+            "Input": "VarName",
+            "StateIndex": 93
+        },
+        {
+            "GotoIndex": 77,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 78
+        },
+        {
+            "GotoIndex": 125,
+            "Input": "charI",
+            "StateIndex": 93
+        },
+        {
+            "GotoIndex": 77,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 116
+        },
+        {
+            "GotoIndex": 127,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 94
+        },
+        {
+            "GotoIndex": 72,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 104
+        },
+        {
+            "GotoIndex": 48,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 92
+        },
+        {
+            "GotoIndex": 44,
+            "Input": "VarName",
+            "StateIndex": 92
+        },
+        {
+            "GotoIndex": 7,
+            "Input": "Body",
+            "StateIndex": 2
+        },
+        {
+            "GotoIndex": 124,
+            "Input": "stringI",
+            "StateIndex": 94
+        },
+        {
+            "GotoIndex": 65,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 90
+        },
+        {
+            "GotoIndex": 146,
+            "Input": "Body",
+            "StateIndex": 119
+        },
+        {
+            "GotoIndex": 33,
+            "Input": "Declatation",
+            "StateIndex": 41
+        },
+        {
+            "GotoIndex": 135,
+            "Input": "stringI",
+            "StateIndex": 111
+        },
+        {
+            "GotoIndex": 141,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 114
+        },
+        {
+            "GotoIndex": 124,
+            "Input": "stringI",
+            "StateIndex": 92
+        },
+        {
+            "GotoIndex": 97,
+            "Input": "stringI",
+            "StateIndex": 116
+        },
+        {
+            "GotoIndex": 35,
+            "Input": "Loop",
+            "StateIndex": 17
+        },
+        {
+            "GotoIndex": 3,
+            "Input": "Declatation",
+            "StateIndex": 0
+        },
+        {
+            "GotoIndex": 71,
+            "Input": "AnyType",
+            "StateIndex": 29
+        },
+        {
+            "GotoIndex": 44,
+            "Input": "VarName",
+            "StateIndex": 95
+        },
+        {
+            "GotoIndex": 74,
+            "Input": "numberI",
+            "StateIndex": 114
+        },
+        {
+            "GotoIndex": 131,
+            "Input": "AnyType",
+            "StateIndex": 104
+        },
+        {
+            "GotoIndex": 73,
+            "Input": "VarName",
+            "StateIndex": 114
+        },
+        {
+            "GotoIndex": 128,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 95
+        },
+        {
+            "GotoIndex": 31,
+            "Input": "S",
+            "StateIndex": 17
+        },
+        {
+            "GotoIndex": 65,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 111
+        },
+        {
+            "GotoIndex": 58,
+            "Input": "Condition",
+            "StateIndex": 28
+        },
+        {
+            "GotoIndex": 77,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 66
+        },
+        {
+            "GotoIndex": 138,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 110
+        },
+        {
+            "GotoIndex": 74,
+            "Input": "numberI",
+            "StateIndex": 66
+        },
+        {
+            "GotoIndex": 98,
+            "Input": "charI",
+            "StateIndex": 116
+        },
+        {
+            "GotoIndex": 4,
+            "Input": "Initalization",
+            "StateIndex": 2
+        },
+        {
+            "GotoIndex": 37,
+            "Input": "Body",
+            "StateIndex": 32
+        },
+        {
+            "GotoIndex": 144,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 117
+        },
+        {
+            "GotoIndex": 8,
+            "Input": "VarName",
+            "StateIndex": 17
+        },
+        {
+            "GotoIndex": 97,
+            "Input": "stringI",
+            "StateIndex": 114
+        },
+        {
+            "GotoIndex": 48,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 93
+        },
+        {
+            "GotoIndex": 124,
+            "Input": "stringI",
+            "StateIndex": 93
+        },
+        {
+            "GotoIndex": 35,
+            "Input": "Loop",
+            "StateIndex": 32
+        },
+        {
+            "GotoIndex": 97,
+            "Input": "stringI",
+            "StateIndex": 117
+        },
+        {
+            "GotoIndex": 62,
+            "Input": "numberI",
+            "StateIndex": 110
+        },
+        {
+            "GotoIndex": 34,
+            "Input": "Initalization",
+            "StateIndex": 41
+        },
+        {
+            "GotoIndex": 61,
+            "Input": "VarName",
+            "StateIndex": 109
+        },
+        {
+            "GotoIndex": 150,
+            "Input": "Body",
+            "StateIndex": 148
+        },
+        {
+            "GotoIndex": 61,
+            "Input": "VarName",
+            "StateIndex": 111
+        },
+        {
+            "GotoIndex": 62,
+            "Input": "numberI",
+            "StateIndex": 30
+        },
+        {
+            "GotoIndex": 61,
+            "Input": "VarName",
+            "StateIndex": 108
+        },
+        {
+            "GotoIndex": 97,
+            "Input": "stringI",
+            "StateIndex": 115
+        },
+        {
+            "GotoIndex": 59,
+            "Input": "AnyType",
+            "StateIndex": 89
+        },
+        {
+            "GotoIndex": 125,
+            "Input": "charI",
+            "StateIndex": 95
+        },
+        {
+            "GotoIndex": 62,
+            "Input": "numberI",
+            "StateIndex": 109
+        },
+        {
+            "GotoIndex": 61,
+            "Input": "VarName",
+            "StateIndex": 30
+        },
+        {
+            "GotoIndex": 139,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 111
+        },
+        {
+            "GotoIndex": 60,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 90
+        },
+        {
+            "GotoIndex": 65,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 110
+        },
+        {
+            "GotoIndex": 38,
+            "Input": "Print",
+            "StateIndex": 32
+        },
+        {
+            "GotoIndex": 137,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 109
+        },
+        {
+            "GotoIndex": 45,
+            "Input": "numberI",
+            "StateIndex": 92
+        },
+        {
+            "GotoIndex": 136,
+            "Input": "charI",
+            "StateIndex": 110
+        },
+        {
+            "GotoIndex": 2,
+            "Input": "ProgramLine",
+            "StateIndex": 0
+        },
+        {
+            "GotoIndex": 74,
+            "Input": "numberI",
+            "StateIndex": 115
+        },
+        {
+            "GotoIndex": 98,
+            "Input": "charI",
+            "StateIndex": 78
+        },
+        {
+            "GotoIndex": 48,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 95
+        },
+        {
+            "GotoIndex": 120,
+            "Input": "Condition",
+            "StateIndex": 89
+        },
+        {
+            "GotoIndex": 60,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 89
+        },
+        {
+            "GotoIndex": 65,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 109
+        },
+        {
+            "GotoIndex": 136,
+            "Input": "charI",
+            "StateIndex": 109
+        },
+        {
+            "GotoIndex": 73,
+            "Input": "VarName",
+            "StateIndex": 104
+        },
+        {
+            "GotoIndex": 62,
+            "Input": "numberI",
+            "StateIndex": 90
+        },
+        {
+            "GotoIndex": 136,
+            "Input": "charI",
+            "StateIndex": 108
+        },
+        {
+            "GotoIndex": 45,
+            "Input": "numberI",
+            "StateIndex": 93
+        },
+        {
+            "GotoIndex": 136,
+            "Input": "charI",
+            "StateIndex": 111
+        },
+        {
+            "GotoIndex": 125,
+            "Input": "charI",
+            "StateIndex": 94
+        },
+        {
+            "GotoIndex": 62,
+            "Input": "numberI",
+            "StateIndex": 108
+        },
+        {
+            "GotoIndex": 35,
+            "Input": "Loop",
+            "StateIndex": 41
+        },
+        {
+            "GotoIndex": 73,
+            "Input": "VarName",
+            "StateIndex": 29
+        },
+        {
+            "GotoIndex": 61,
+            "Input": "VarName",
+            "StateIndex": 90
+        },
+        {
+            "GotoIndex": 134,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 108
+        },
+        {
+            "GotoIndex": 121,
+            "Input": "Condition",
+            "StateIndex": 90
+        },
+        {
+            "GotoIndex": 74,
+            "Input": "numberI",
+            "StateIndex": 116
+        },
+        {
+            "GotoIndex": 61,
+            "Input": "VarName",
+            "StateIndex": 89
+        },
+        {
+            "GotoIndex": 65,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 108
+        },
+        {
+            "GotoIndex": 77,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 29
+        },
+        {
+            "GotoIndex": 76,
+            "Input": "charI",
+            "StateIndex": 29
+        },
+        {
+            "GotoIndex": 75,
+            "Input": "stringI",
+            "StateIndex": 104
+        },
+        {
+            "GotoIndex": 74,
+            "Input": "numberI",
+            "StateIndex": 29
+        },
+        {
+            "GotoIndex": 61,
+            "Input": "VarName",
+            "StateIndex": 110
+        },
+        {
+            "GotoIndex": 65,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 28
+        },
+        {
+            "GotoIndex": 45,
+            "Input": "numberI",
+            "StateIndex": 57
+        },
+        {
+            "GotoIndex": 44,
+            "Input": "VarName",
+            "StateIndex": 94
+        },
+        {
+            "GotoIndex": 59,
+            "Input": "AnyType",
+            "StateIndex": 28
+        },
+        {
+            "GotoIndex": 34,
+            "Input": "Initalization",
+            "StateIndex": 17
+        },
+        {
+            "GotoIndex": 46,
+            "Input": "stringI",
+            "StateIndex": 54
+        },
+        {
+            "GotoIndex": 77,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 115
+        },
+        {
+            "GotoIndex": 62,
+            "Input": "numberI",
+            "StateIndex": 89
+        },
+        {
+            "GotoIndex": 5,
+            "Input": "Loop",
+            "StateIndex": 0
+        },
+        {
+            "GotoIndex": 43,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 54
+        },
+        {
+            "GotoIndex": 45,
+            "Input": "numberI",
+            "StateIndex": 22
+        },
+        {
+            "GotoIndex": 48,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 57
+        },
+        {
+            "GotoIndex": 62,
+            "Input": "numberI",
+            "StateIndex": 28
+        },
+        {
+            "GotoIndex": 32,
+            "Input": "ProgramLine",
+            "StateIndex": 41
+        },
+        {
+            "GotoIndex": 124,
+            "Input": "stringI",
+            "StateIndex": 95
+        },
+        {
+            "GotoIndex": 149,
+            "Input": "Body",
+            "StateIndex": 147
+        },
+        {
+            "GotoIndex": 43,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 22
+        },
+        {
+            "GotoIndex": 47,
+            "Input": "charI",
+            "StateIndex": 57
+        },
+        {
+            "GotoIndex": 42,
+            "Input": "AnyType",
+            "StateIndex": 22
+        },
+        {
+            "GotoIndex": 46,
+            "Input": "stringI",
+            "StateIndex": 57
+        },
+        {
+            "GotoIndex": 74,
+            "Input": "numberI",
+            "StateIndex": 117
+        },
+        {
+            "GotoIndex": 2,
+            "Input": "ProgramLine",
+            "StateIndex": 2
+        },
+        {
+            "GotoIndex": 43,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 57
+        },
+        {
+            "GotoIndex": 64,
+            "Input": "charI",
+            "StateIndex": 28
+        },
+        {
+            "GotoIndex": 96,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 49
+        },
+        {
+            "GotoIndex": 77,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 104
+        },
+        {
+            "GotoIndex": 36,
+            "Input": "If",
+            "StateIndex": 32
+        },
+        {
+            "GotoIndex": 5,
+            "Input": "Loop",
+            "StateIndex": 2
+        },
+        {
+            "GotoIndex": 44,
+            "Input": "VarName",
+            "StateIndex": 54
+        },
+        {
+            "GotoIndex": 33,
+            "Input": "Declatation",
+            "StateIndex": 17
+        },
+        {
+            "GotoIndex": 38,
+            "Input": "Print",
+            "StateIndex": 41
+        },
+        {
+            "GotoIndex": 64,
+            "Input": "charI",
+            "StateIndex": 89
+        },
+        {
+            "GotoIndex": 6,
+            "Input": "If",
+            "StateIndex": 2
+        },
+        {
+            "GotoIndex": 3,
+            "Input": "Declatation",
+            "StateIndex": 2
+        },
+        {
+            "GotoIndex": 77,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 114
+        },
+        {
+            "GotoIndex": 62,
+            "Input": "numberI",
+            "StateIndex": 111
+        },
+        {
+            "GotoIndex": 38,
+            "Input": "Print",
+            "StateIndex": 17
+        },
+        {
+            "GotoIndex": 142,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 115
+        },
+        {
+            "GotoIndex": 32,
+            "Input": "ProgramLine",
+            "StateIndex": 17
+        },
+        {
+            "GotoIndex": 100,
+            "Input": "AnyType",
+            "StateIndex": 55
+        },
+        {
+            "GotoIndex": 48,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 54
+        },
+        {
+            "GotoIndex": 32,
+            "Input": "ProgramLine",
+            "StateIndex": 32
+        },
+        {
+            "GotoIndex": 98,
+            "Input": "charI",
+            "StateIndex": 117
+        },
+        {
+            "GotoIndex": 64,
+            "Input": "charI",
+            "StateIndex": 90
+        },
+        {
+            "GotoIndex": 74,
+            "Input": "numberI",
+            "StateIndex": 104
+        },
+        {
+            "GotoIndex": 45,
+            "Input": "numberI",
+            "StateIndex": 94
+        },
+        {
+            "GotoIndex": 9,
+            "Input": "Print",
+            "StateIndex": 0
+        },
+        {
+            "GotoIndex": 77,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 117
+        },
+        {
+            "GotoIndex": 83,
+            "Input": "Condition",
+            "StateIndex": 30
+        },
+        {
+            "GotoIndex": 143,
+            "Input": "ArithmeticOperations",
+            "StateIndex": 116
+        },
+        {
+            "GotoIndex": 6,
+            "Input": "If",
+            "StateIndex": 0
+        },
+        {
+            "GotoIndex": 98,
+            "Input": "charI",
+            "StateIndex": 115
+        },
+        {
+            "GotoIndex": 19,
+            "Input": "S",
+            "StateIndex": 2
+        },
+        {
+            "GotoIndex": 73,
+            "Input": "VarName",
+            "StateIndex": 117
+        },
+        {
+            "GotoIndex": 46,
+            "Input": "stringI",
+            "StateIndex": 22
+        },
+        {
+            "GotoIndex": 65,
+            "Input": "ArithmeticOperations1",
+            "StateIndex": 89
+        },
+        {
+            "GotoIndex": 36,
+            "Input": "If",
+            "StateIndex": 17
+        }
+    ],
+    "NumberOfProductions": 44,
+    "Productions": [
+        {
+            "body": [
+                "ProgramLine"
+            ],
+            "head": "S",
+            "index": 0
+        },
+        {
+            "body": [
+                "ProgramLine",
+                "S"
+            ],
+            "head": "S",
+            "index": 1
+        },
+        {
+            "body": [
+                "Loop"
+            ],
+            "head": "ProgramLine",
+            "index": 2
+        },
+        {
+            "body": [
+                "If"
+            ],
+            "head": "ProgramLine",
+            "index": 3
+        },
+        {
+            "body": [
+                "Initalization",
+                ";"
+            ],
+            "head": "ProgramLine",
+            "index": 4
+        },
+        {
+            "body": [
+                "Declatation",
+                ";"
+            ],
+            "head": "ProgramLine",
+            "index": 5
+        },
+        {
+            "body": [
+                "Print",
+                ";"
+            ],
+            "head": "ProgramLine",
+            "index": 6
+        },
+        {
+            "body": [
+                "Body"
+            ],
+            "head": "ProgramLine",
+            "index": 7
+        },
+        {
+            "body": [
+                "int",
+                "VarName",
+                "=",
+                "AnyType"
+            ],
+            "head": "Declatation",
+            "index": 8
+        },
+        {
+            "body": [
+                "double",
+                "VarName",
+                "=",
+                "AnyType"
+            ],
+            "head": "Declatation",
+            "index": 9
+        },
+        {
+            "body": [
+                "char",
+                "VarName",
+                "=",
+                "AnyType"
+            ],
+            "head": "Declatation",
+            "index": 10
+        },
+        {
+            "body": [
+                "string",
+                "VarName",
+                "=",
+                "AnyType"
+            ],
+            "head": "Declatation",
+            "index": 11
+        },
+        {
+            "body": [
+                "VarName",
+                "=",
+                "AnyType"
+            ],
+            "head": "Initalization",
+            "index": 12
+        },
+        {
+            "body": [
+                "while",
+                "(",
+                "Condition",
+                ")",
+                "Body"
+            ],
+            "head": "Loop",
+            "index": 13
+        },
+        {
+            "body": [
+                "if",
+                "(",
+                "Condition",
+                ")",
+                "Body"
+            ],
+            "head": "If",
+            "index": 14
+        },
+        {
+            "body": [
+                "{",
+                "S",
+                "}"
+            ],
+            "head": "Body",
+            "index": 15
+        },
+        {
+            "body": [
+                "AnyType",
+                "AnyBoolOperator",
+                "AnyType"
+            ],
+            "head": "Condition",
+            "index": 16
+        },
+        {
+            "body": [
+                "ArithmeticOperations"
+            ],
+            "head": "AnyType",
+            "index": 17
+        },
+        {
+            "body": [
+                "stringI"
+            ],
+            "head": "AnyType",
+            "index": 18
+        },
+        {
+            "body": [
+                "charI"
+            ],
+            "head": "AnyType",
+            "index": 19
+        },
+        {
+            "body": [
+                ">",
+                "="
+            ],
+            "head": "AnyBoolOperator",
+            "index": 20
+        },
+        {
+            "body": [
+                "<",
+                "="
+            ],
+            "head": "AnyBoolOperator",
+            "index": 21
+        },
+        {
+            "body": [
+                ">"
+            ],
+            "head": "AnyBoolOperator",
+            "index": 22
+        },
+        {
+            "body": [
+                "<"
+            ],
+            "head": "AnyBoolOperator",
+            "index": 23
+        },
+        {
+            "body": [
+                "=="
+            ],
+            "head": "AnyBoolOperator",
+            "index": 24
+        },
+        {
+            "body": [
+                "ArithmeticOperations1",
+                "+",
+                "ArithmeticOperations"
+            ],
+            "head": "ArithmeticOperations",
+            "index": 25
+        },
+        {
+            "body": [
+                "ArithmeticOperations1",
+                "-",
+                "ArithmeticOperations"
+            ],
+            "head": "ArithmeticOperations",
+            "index": 26
+        },
+        {
+            "body": [
+                "ArithmeticOperations1",
+                "/",
+                "ArithmeticOperations"
+            ],
+            "head": "ArithmeticOperations",
+            "index": 27
+        },
+        {
+            "body": [
+                "ArithmeticOperations1",
+                "*",
+                "ArithmeticOperations"
+            ],
+            "head": "ArithmeticOperations",
+            "index": 28
+        },
+        {
+            "body": [
+                "(",
+                "ArithmeticOperations",
+                ")"
+            ],
+            "head": "ArithmeticOperations",
+            "index": 29
+        },
+        {
+            "body": [
+                "numberI"
+            ],
+            "head": "ArithmeticOperations",
+            "index": 30
+        },
+        {
+            "body": [
+                "VarName"
+            ],
+            "head": "ArithmeticOperations",
+            "index": 31
+        },
+        {
+            "body": [
+                "stringI"
+            ],
+            "head": "ArithmeticOperations",
+            "index": 32
+        },
+        {
+            "body": [
+                "charI"
+            ],
+            "head": "ArithmeticOperations",
+            "index": 33
+        },
+        {
+            "body": [
+                "[VARNAMETOKEN]"
+            ],
+            "head": "VarName",
+            "index": 34
+        },
+        {
+            "body": [
+                "[NUMBERTOKEN]"
+            ],
+            "head": "numberI",
+            "index": 35
+        },
+        {
+            "body": [
+                "[STRINGTOKEN]"
+            ],
+            "head": "stringI",
+            "index": 36
+        },
+        {
+            "body": [
+                "[CHARTOKEN]"
+            ],
+            "head": "charI",
+            "index": 37
+        },
+        {
+            "body": [
+                "print",
+                "(",
+                "AnyType",
+                ")"
+            ],
+            "head": "Print",
+            "index": 38
+        },
+        {
+            "body": [
+                "numberI"
+            ],
+            "head": "ArithmeticOperations1",
+            "index": 39
+        },
+        {
+            "body": [
+                "VarName"
+            ],
+            "head": "ArithmeticOperations1",
+            "index": 40
+        },
+        {
+            "body": [
+                "stringI"
+            ],
+            "head": "ArithmeticOperations1",
+            "index": 41
+        },
+        {
+            "body": [
+                "charI"
+            ],
+            "head": "ArithmeticOperations1",
+            "index": 42
+        },
+        {
+            "body": [
+                "(",
+                "ArithmeticOperations",
+                ")"
+            ],
+            "head": "ArithmeticOperations1",
+            "index": 43
+        }
+    ],
+    "Terminals": [
+        ";",
+        "int",
+        "double",
+        "char",
+        "string",
+        "=",
+        "while",
+        "print",
+        "if",
+        "(",
+        ")",
+        "<=",
+        ">=",
+        "<",
+        ">",
+        "==",
+        "{",
+        "}",
+        "+",
+        "-",
+        "*",
+        "/",
+        "[VARNAMETOKEN]",
+        "[NUMBERTOKEN]",
+        "[STRINGTOKEN]",
+        "[CHARTOKEN]",
+        "$"
+    ],
+    "Variables": [
+        "S",
+        "ProgramLine",
+        "Declatation",
+        "Initalization",
+        "Loop",
+        "If",
+        "Body",
+        "Condition",
+        "AnyType",
+        "AnyBoolOperator",
+        "ArithmeticOperations",
+        "VarName",
+        "numberI",
+        "stringI",
+        "charI",
+        "Print",
+        "ArithmeticOperations1"
+    ]
+}

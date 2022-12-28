@@ -1,2 +1,0 @@
-string test = "la' la";
-char cringe = '"';

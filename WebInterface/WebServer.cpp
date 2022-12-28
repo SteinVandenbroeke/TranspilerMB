@@ -30,7 +30,7 @@ void WebServer::start() {
                 myfile.close();
 
                 std::vector<Token*> tokens = t.convert("staalWebInt.c4");
-                CST cst = CST(tokens,"LR1ParserGenerator/test_grammar_0.json_PARSETABLE.json");
+                CST cst = CST(tokens,"inputs/test_grammar_0.json_PARSETABLE.json");
                 std::string cstDot = cst.generateDOT();
                 AstProgram* program = cst.toAst();
                 std::string astDot = program->generateDOT();
