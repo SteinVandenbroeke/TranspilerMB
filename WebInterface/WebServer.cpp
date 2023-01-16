@@ -22,6 +22,18 @@ void WebServer::start() {
         return indexPage;
     });
 
+    CROW_ROUTE(app, "/ast.png")
+            ([](const crow::request&, crow::response& res) {
+                res.set_static_file_info("testEnv/ast.png");
+                res.end();
+            });
+
+    CROW_ROUTE(app, "/cst.png")
+            ([](const crow::request&, crow::response& res) {
+                res.set_static_file_info("testEnv/cst.png");
+                res.end();
+            });
+
     CROW_ROUTE(app, "/staalCode")
             .methods("GET"_method, "POST"_method)([](const crow::request& req) {
                 Tokenizer t = Tokenizer("inputs/tokenizer.json");
@@ -29,18 +41,40 @@ void WebServer::start() {
                 myfile << req.body;
                 myfile.close();
 
-                std::vector<Token*> tokens = t.convert("staalWebInt.c4");
-                CST cst = CST(tokens,"inputs/staal_fixed.json_PARSETABLE.json");
-                std::string cstDot = cst.generateDOT();
-                AstProgram* program = cst.toAst();
-                std::string astDot = program->generateDOT();
-
-                std::stringstream errorStream = std::stringstream();
+                std::string errors = "Successfully transpiled!";
                 std::string jsCode = "fout";
-                if(program->checkTypes(errorStream)){
-                    jsCode = program->getJsCode();
+                try{
+                    std::vector<Token*> tokens = t.convert("staalWebInt.c4");
+                    CST cst = CST(tokens,"inputs/staal_fixed.json_PARSETABLE.json");
+                    std::string cstDot = cst.generateDOT();
+                    AstProgram* program = cst.toAst();
+                    std::string astDot = program->generateDOT();
+
+                    std::ofstream astFile ("ast.dot");
+                    astFile << astDot;
+                    astFile.close();
+
+                    system("dot -Tpng ast.dot > testEnv/ast.png");
+
+                    std::ofstream cstFile ("cst.dot");
+                    cstFile << cstDot;
+                    cstFile.close();
+
+                    system("dot -Tpng cst.dot > testEnv/cst.png");
+
+                    std::stringstream errorStream = std::stringstream();
+                    if(program->checkTypes(errorStream)){
+                        jsCode = program->getJsCode();
+                    }
+                    if(errorStream.str() != ""){
+                        errors = errorStream.str();
+                    }
                 }
-                crow::json::wvalue returnValue({{"jscode", jsCode}, {"errors", errorStream.str()}, {"cst", cstDot}, {"ast", astDot}});
+                catch (std::runtime_error& error){
+                    std::cout << error.what() << std::endl;
+                    errors = error.what();
+                }
+                crow::json::wvalue returnValue({{"jscode", jsCode}, {"errors", errors}, {"cst", "cst.png"}, {"ast", "ast.png"}});
                 return returnValue;
             });
 

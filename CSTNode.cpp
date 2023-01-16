@@ -62,8 +62,7 @@ CST::CST(const std::vector<Token *> &tokens, const std::string &parseTable){
                 break;
             }
         } else {
-            std::cout << "error on line " << currToken->getLine() << std::endl;
-            throw (std::runtime_error("LR(1) parsing error!")); //Parsing is unresolved / has failed
+            throw (std::runtime_error("LR(1) parsing error! on line " + std::to_string(currToken->getLine()))); //Parsing is unresolved / has failed
         }
     }
     CSTNode* temp = root;
