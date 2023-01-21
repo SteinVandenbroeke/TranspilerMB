@@ -77,6 +77,7 @@ window.onerror = function(msg, url, lineNo, columnNo, error){
     var programCounter = 0;
     let reRunButton = document.getElementById('reRunBtn');
     reRunButton.onclick = function(){
+        document.getElementById("reRunBtn").innerHTML = "<div class=\"spinner-border\" role=\"status\"><span class=\"visually-hidden\">Loading...</span></div>";
         let xhr = new XMLHttpRequest();
         xhr.open("POST", "staalCode");
         xhr.setRequestHeader("Accept", "application/json");
@@ -101,6 +102,7 @@ window.onerror = function(msg, url, lineNo, columnNo, error){
                     "run" + programCounter + "()";
 
                 document.getElementsByTagName("head")[0].appendChild(script);
+                document.getElementById("reRunBtn").innerHTML = "<span class=\"material-symbols-outlined\">play_arrow</span>";
             }};
 
         let data = document.getElementById("staalCode").value.replaceAll("\t", "");
