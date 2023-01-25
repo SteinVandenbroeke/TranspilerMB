@@ -328,16 +328,13 @@ AstArithmeticOperations::AstArithmeticOperations(Token *token) : AstNode(token) 
 }
 
 AstArithmeticOperations::AstArithmeticOperations(Token *token, AstNode *val1, AstNode *val2): AstNode(token), val1(val1), val2(val2) {
-    //TODO conditions on ASTNode
 }
 
 void AstArithmeticOperations::setVal1(AstNode *valOrValue) {
-    //TODO conditions on ASTNode
     this->val1 = valOrValue;
 }
 
 void AstArithmeticOperations::setVal2(AstNode *valOrValue) {
-    //TODO conditions on ASTNode
     this->val2 = valOrValue;
 }
 

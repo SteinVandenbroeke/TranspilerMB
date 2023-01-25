@@ -49,7 +49,6 @@ CST::CST(const std::vector<Token *> &tokens, const std::string &parseTable){
                 std::vector<CSTNode*> children;
                 for (int i = 0; i < productions[actionPair.first].second.size(); i++){
                     stack.pop_back();
-                    //children.push_back(root->removeChild(root->getChildren().back()));TODO Stein heeft hier aangepast
                     children.insert(children.begin(), root->removeChild(root->getChildren().back()));
                 }
                 stack.push_back(gotoTable[{stack.back(), productions[actionPair.first].first}]);
