@@ -8,7 +8,6 @@ project MB 2022 a c like language to js
 - [ ] Table to concrete tree
 - [ ] tree to ast
 - [ ] type error detection
-- [ ] Undefined var detection
 
 ## cfg
 Can be found in
