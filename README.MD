@@ -26,6 +26,11 @@ install deze dan met:
 sudo apt-get install libboost-all-dev
 ```
 
+##Voor tree generation is graphviz nodig
+```
+sudo apt install graphviz
+```
+
 ## Hoe gebruiken?
 -maak een map
 ```
