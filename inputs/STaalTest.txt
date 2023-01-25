@@ -1,0 +1,10 @@
+int a = 1;
+int b = 1;
+int n = 1;
+while(n < 20){
+    print(a);
+    int temp = a;
+    a = a + b;
+    b = temp;
+    n = n + 1;
+}

@@ -25,8 +25,13 @@ int main(int argc, char *argv[]) {
         delete program;
     }
     else{
-        std::cout << "Wrong parameter count" << std::endl;
-        std::cout << "call with \"./transpiler [staal file] [export file]\"" << std::endl;
+        Tokenizer t = Tokenizer("inputs/tokenizer.json");
+        t.convert("inputs/STaalTest.txt");
+        t.displayWords();
+        std::cout << "\n";
+        t.displayTokens();
+        //std::cout << "Wrong parameter count" << std::endl;
+        //std::cout << "call with \"./transpiler [staal file] [export file]\"" << std::endl;
     }
     return 0;
 }
