@@ -4,7 +4,6 @@
 #include "tokenizer/ENFA.h"
 #include "tokenizer/Tokenizer.h"
 #include "CSTNode.h"
-#include "WebInterface/WebServer.h"
 
 int main(int argc, char *argv[]) {
     if(argc == 3){
