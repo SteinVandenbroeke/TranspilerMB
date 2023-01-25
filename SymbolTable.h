@@ -7,6 +7,7 @@
 
 
 #include <string>
+#include <sstream>
 #include <map>
 
 class SymbolTable {
@@ -21,7 +22,7 @@ public:
     bool IsVarInCurrentScope(std::string varName);
     bool IsVarDeclared(std::string varName, std::string varType);
     bool IsVarDeclared(std::string varName);
-    bool IsAllowedType(std::string compaireType1, std::string compaireType2);
+    bool IsAllowedType(const std::string& compaireType1, const std::string& compaireType2, std::stringstream& errorStream) const;
     void newVar(std::string varName, std::string varType);
     std::string getVarType(std::string varName);
 };

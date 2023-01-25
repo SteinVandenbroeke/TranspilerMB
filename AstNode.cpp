@@ -159,7 +159,7 @@ bool AstDeclartion::checkTypes(SymbolTable &table, std::stringstream& errorStrea
         return false;
     }
     table.newVar(this->var->getTokenText(), this->getTokenText());
-    if(!table.IsAllowedType(this->var->getType(table), this->value->getType(table))){
+    if(!table.IsAllowedType(this->var->getType(table), this->value->getType(table), errorStream)){
         errorStream << "error on line: " << token->getLine() << " [" << "Variable " << this->var->getTokenText() << " of type \"" + this->var->getType(table) + "\" does not accept a value of type \"" + this->value->getType(table)  << "\"]" << std::endl;
         return false;
     }
@@ -206,7 +206,7 @@ bool AstIntalisation::checkTypes(SymbolTable &table, std::stringstream& errorStr
         errorStream << "error on line: " << token->getLine() << " [" << "Variable " << this->var->getTokenText() << " is not declared" << "]" << std::endl;
         return false;
     }
-    else if(!table.IsAllowedType(this->var->getType(table), this->value->getType(table))){
+    else if(!table.IsAllowedType(this->var->getType(table), this->value->getType(table), errorStream)){
         errorStream << "error on line: " << token->getLine() << " [" << "Variable " << this->var->getTokenText() << " of type \"" + this->var->getType(table) + "\" does not accept a value of type \"" + this->value->getType(table)  << "\"]" << std::endl;
         return false;
     }
@@ -360,7 +360,7 @@ std::string AstArithmeticOperations::getType(SymbolTable &table) const {
 }
 
 bool AstArithmeticOperations::checkTypes(SymbolTable &table, std::stringstream& errorStream) const {
-    if(!table.IsAllowedType(val1->getType(table), val2->getType(table)) && !table.IsAllowedType(val2->getType(table), val1->getType(table))){
+    if(!table.IsAllowedType(val1->getType(table), val2->getType(table),errorStream) && !table.IsAllowedType(val2->getType(table), val1->getType(table), errorStream)){
         errorStream << "error on line: " << token->getLine() << " [" << "Arithmetic operations between two types not allowed: \"" << this->val1->getType(table) << "\" " + this->getTokenText() + " \"" + this->val2->getType(table)  << "\"]" << std::endl;
         return false;
     }

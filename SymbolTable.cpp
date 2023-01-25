@@ -65,12 +65,12 @@ std::string SymbolTable::getVarType(std::string varName) {
     return outerScope->getVarType(varName);
 }
 
-bool SymbolTable::IsAllowedType(std::string compaireType1, std::string compaireType2) {
-    if((compaireType1 == compaireType2) || (compaireType1 == "double" && compaireType2 == "int") || (compaireType1 == "string" && compaireType2 == "char") || (compaireType1 == "string" && compaireType2 == "int")){
+bool SymbolTable::IsAllowedType(const std::string& compaireType1, const std::string& compaireType2, std::stringstream& errorStream) const {
+    if((compaireType1 == compaireType2) || (compaireType1 == "double" && compaireType2 == "int") || (compaireType1 == "string" && compaireType2 == "char") || (compaireType1 == "string" && compaireType2 == "int") || (compaireType1 == "string" && compaireType2 == "double") || (compaireType1 == "double" && compaireType2 == "string")){
         return true;
     }
     else if(compaireType1 == "int" && compaireType2 == "double"){
-        std::cout << "[Warning] implicit conversion found double to int" << std::endl;
+        errorStream << "[Warning] implicit type conversion found: double to int" << std::endl;
         return true;
     }
     return false;
