@@ -27,7 +27,6 @@ sudo apt-get install libboost-all-dev
 ```
 
 ## Hoe gebruiken?
--Clone de github repo
 -maak een map
 ```
 mkdir build
@@ -37,8 +36,7 @@ mkdir build
 cd build
 cmake ../.
 ```
--build project
--run cmake in folder
+-Build project
 ```
 make
 ```
