@@ -85,7 +85,15 @@
     },
     {
       "head": "Declatation",
+      "body": ["int", "VarName"]
+    },
+    {
+      "head": "Declatation",
       "body": ["double", "VarName", "=", "AnyType"]
+    },
+    {
+      "head": "Declatation",
+      "body": ["double", "VarName"]
     },
     {
       "head": "Declatation",
@@ -93,7 +101,15 @@
     },
     {
       "head": "Declatation",
+      "body": ["char", "VarName"]
+    },
+    {
+      "head": "Declatation",
       "body": ["string", "VarName", "=", "AnyType"]
+    },
+    {
+      "head": "Declatation",
+      "body": ["string", "VarName"]
     },
     {
       "head": "Initalization",

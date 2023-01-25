@@ -181,7 +181,20 @@ AstNode *CSTNode::toAst(AstProgram *program) const {
     }
     else if(this->getValue() == "Declatation"){
         AstVar* astVar = dynamic_cast<AstVar *>(this->children[1]->toAst(program));
-        AstNode* astValue = this->children[3]->toAst(program);
+        AstNode* astValue = nullptr;
+        if(this->children.size() == 4){
+            astValue = this->children[3]->toAst(program);
+        }
+        else{
+            std::string value = "0";
+            if(this->children[0]->getValue() == "string"){
+                value = "\"\"";
+            }
+            else if(this->children[0]->getValue() == "char"){
+                value = "'0'";
+            }
+            astValue = new AstValue(new Token(this->children[0]->getValue(), value,this->children[0]->getToken()->getLine(),this->children[0]->getToken()->getLinePos()));
+        }
         return new AstDeclartion(this->children[0]->getToken(), astVar, astValue);
     }
     else if(this->getValue() == "Initalization"){
