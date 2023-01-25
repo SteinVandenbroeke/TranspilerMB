@@ -26,3 +26,29 @@ install deze dan met:
 sudo apt-get install libboost-all-dev
 ```
 
+## Hoe gebruiken?
+-Clone de github repo
+-maak een map
+```
+mkdir build
+```
+-run cmake in folder
+```
+cd build
+cmake ../.
+```
+-build project
+-run cmake in folder
+```
+make
+```
+-test project in browser
+```
+./webInterface
+```
+-test project in cli
+```
+./transpiler [staal file] [export file]
+```
+
+
