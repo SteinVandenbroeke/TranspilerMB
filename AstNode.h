@@ -19,17 +19,17 @@ class AstWhile;
 class AstIf;
 class AstBody;
 class AstCondition;
-class AstBoolOperator;
 class AstArithmeticOperations;
 class AstVar;
-class AstNumber;
-class AstString;
-class AstChar;
 class AstProgram;
 class AstValue;
 class AstVarOrValue;
 class AstParentheses;
 class AstPrint;
+class AstBoolOperator;
+class AstNumber;
+class AstString;
+class AstChar;
 ///forward declarations
 
 static int identifierCounter = 0;

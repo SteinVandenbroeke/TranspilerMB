@@ -1,0 +1,6 @@
+//type checking
+int a = "hallo";	
+a = 10;
+a = "test";
+string b = 10;
+char c = "hallo";

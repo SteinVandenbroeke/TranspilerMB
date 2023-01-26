@@ -1,0 +1,10 @@
+//scoping
+int a = 1;
+if(a < 2){
+	string a = "jeej";
+	print(a);
+    if(a == "test"){
+        print("fout");
+    }
+}
+//string a = "dit is fout";

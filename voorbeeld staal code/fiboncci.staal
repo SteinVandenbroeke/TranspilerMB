@@ -1,0 +1,10 @@
+//Fibonacci
+int a = 1;
+int b = 1;
+int n = 1;
+while(n < 20){
+    print("het " + n + " de Fibonacci getal is: " + a);
+    a = a + b;
+    b = a - b;
+    n = n + 1;
+}
