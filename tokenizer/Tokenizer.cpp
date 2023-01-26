@@ -178,7 +178,7 @@ std::vector<Token *> Tokenizer::convert(const std::string& file) {
 
 void Tokenizer::displayWords() {
     for(const auto& i : split){
-        std::cout << i.first << ": ";
+        std::cout << i.first+1 << ": ";
         for(const auto& j : i.second){
             std::cout << j << " | ";
         }
